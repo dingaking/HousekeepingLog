@@ -51,3 +51,7 @@ func TodoShow(w http.ResponseWriter, r *http.Request) {
 	todoId := vars["todoId"]
 	fmt.Fprintln(w, "Todo show ", todoId)
 }
+
+////////////////////////////////////////////////////////////////////////
+// By adding struct tags you can control exactly what an how your struct will be marshalled to JSON.
+////////////////////////////////////////////////////////////////////////
