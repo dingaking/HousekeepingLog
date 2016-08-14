@@ -6,6 +6,8 @@
 // - hadlers.go
 // - routes.go
 // - todo.go
+// http://thenewstack.io/make-a-restful-json-api-go/
+// https://github.com/corylanou/tns-restful-json-api
 ////////////////////////////////////////////////////////////////////////
 package main
 
