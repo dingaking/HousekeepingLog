@@ -15,6 +15,12 @@ type Routes []Route
 
 var routes = Routes{
 	Route{
+		"TodoCreate",
+		"POST",
+		"/todos",
+		TodoCreate,
+	},
+	Route{
 		"Index",
 		"Get",
 		"/",
