@@ -1,11 +1,14 @@
 package main
 
 import (
+	"apis/model"
 	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
+
+	"labix.org/v2/mgo"
 
 	"github.com/gorilla/mux"
 )
@@ -50,6 +53,32 @@ func TodoCreate(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(t); err != nil {
+		panic(err)
+	}
+}
+
+func UserCreate(w http.ResponseWriter, r *http.Request) {
+
+	session, err := mgo.Dial("localhost")
+	if err != nil {
+		panic(err)
+	}
+	defer session.Close()
+	session.SetMode(mgo.Monotonic, true)
+
+	c := session.DB("hlog").C("user")
+
+	err = c.Insert(&model.User{UserId: "jungtek_whang@hanmail.net"})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("ddddd")
+
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
+
+	if err := json.NewEncoder(w).Encode(todos); err != nil {
 		panic(err)
 	}
 }

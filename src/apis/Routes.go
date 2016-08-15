@@ -15,6 +15,12 @@ type Routes []Route
 
 var routes = Routes{
 	Route{
+		"UserCreate",
+		"POST",
+		"/api/authC",
+		UserCreate,
+	},
+	Route{
 		"TodoCreate",
 		"POST",
 		"/todos",
