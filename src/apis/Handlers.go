@@ -49,7 +49,10 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
 
 	c := session.DB("hlog").C("user")
 
-	err = c.Insert(&model.User{UserId: user.UserId, Password: user.Password})
+	var insertUser = model.User{UserId: user.UserId, Password: user.Password}
+	insertUser.TokenList = append(insertUser.TokenList, model.TokenInfo{TokenId: SHA1()})
+
+	err = c.Insert(&insertUser)
 	if err != nil {
 		panic(err)
 	}
