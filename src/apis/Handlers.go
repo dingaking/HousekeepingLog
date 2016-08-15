@@ -59,6 +59,22 @@ func TodoCreate(w http.ResponseWriter, r *http.Request) {
 
 func UserCreate(w http.ResponseWriter, r *http.Request) {
 
+	var user model.User
+	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	if err != nil {
+		panic(err)
+	}
+	if err := r.Body.Close(); err != nil {
+		panic(err)
+	}
+	if err := json.Unmarshal(body, &user); err != nil {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(422) // unprocessable entity
+		if err := json.NewEncoder(w).Encode(err); err != nil {
+			panic(err)
+		}
+	}
+
 	session, err := mgo.Dial("localhost")
 	if err != nil {
 		panic(err)
@@ -68,12 +84,10 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
 
 	c := session.DB("hlog").C("user")
 
-	err = c.Insert(&model.User{UserId: "jungtek_whang@hanmail.net"})
+	err = c.Insert(&model.User{UserId: user.UserId, Password: user.Password})
 	if err != nil {
 		panic(err)
 	}
-
-	fmt.Println("ddddd")
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
