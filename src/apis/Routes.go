@@ -20,28 +20,4 @@ var routes = Routes{
 		"/api/authC",
 		UserCreate,
 	},
-	Route{
-		"TodoCreate",
-		"POST",
-		"/todos",
-		TodoCreate,
-	},
-	Route{
-		"Index",
-		"Get",
-		"/",
-		Index,
-	},
-	Route{
-		"TodoIndex",
-		"Get",
-		"/todos",
-		TodoIndex,
-	},
-	Route{
-		"TodoShow",
-		"Get",
-		"/todos/{todoId}",
-		TodoShow,
-	},
 }
