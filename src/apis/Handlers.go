@@ -104,11 +104,25 @@ func UserInfo(w http.ResponseWriter, r *http.Request) {
 
 	var qryResult model.User
 	c := session.DB("hlog").C("user")
-	c.Find(bson.M{"userid": user.UserId, "password": user.Password}).Select(bson.M{"password": user.Password}).One(&qryResult)
+	c.Find(bson.M{"userid": user.UserId, "password": user.Password}).One(&qryResult)
+
+	if qryResult.UserNo == "" {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusOK)
+		apiResTokenId := model.APIResTokenId{ErrorMessage: "id/pw not match", Result: "fail"}
+		if err := json.NewEncoder(w).Encode(apiResTokenId); err != nil {
+			panic(err)
+		}
+		return
+	}
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
 	apiResTokenId := model.APIResTokenId{Result: "success"}
+
+	if len(qryResult.TokenList) > 0 {
+		apiResTokenId.TokenId = qryResult.TokenList[0].TokenId
+	}
 
 	if err := json.NewEncoder(w).Encode(apiResTokenId); err != nil {
 		panic(err)
