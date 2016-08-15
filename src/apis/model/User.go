@@ -19,8 +19,8 @@ type User struct {
 	PhoneNumber    string        `json:"phone_number"`
 	State          int           `json:"state"`
 	Activated      int           `json:"activated"`
-	GroupnoList    []int         `json:"groupno"`
-	TokenList      []TokenInfo   `json:"token_info"`
+	GroupnoList    []int         `json:"groupno_list"`
+	TokenList      []TokenInfo   `json:"tokeninfo_list"`
 }
 
 type TokenInfo struct {

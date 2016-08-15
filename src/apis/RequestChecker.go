@@ -8,5 +8,9 @@ func CheckAuthC(request model.User) string {
 		return "UserId not found."
 	}
 
+	if len(request.Password) <= 0 {
+		return "Password not found."
+	}
+
 	return ""
 }
