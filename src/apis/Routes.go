@@ -20,4 +20,10 @@ var routes = Routes{
 		"/api/authC",
 		UserCreate,
 	},
+	Route{
+		"UserInfo",
+		"POST",
+		"/api/authR",
+		UserInfo,
+	},
 }
