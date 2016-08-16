@@ -28,6 +28,56 @@ var routes = Routes{
 		handler.AuthR,
 	},
 	Route{
+		"AuthU",
+		"POST",
+		"/api/authU",
+		handler.AuthU,
+	},
+	Route{
+		"AuthD",
+		"POST",
+		"/api/authD",
+		handler.AuthD,
+	},
+
+	Route{
+		"DeviceC",
+		"POST",
+		"/api/deviceC",
+		handler.DeviceC,
+	},
+	Route{
+		"DeviceR",
+		"POST",
+		"/api/deviceR",
+		handler.DeviceR,
+	},
+	Route{
+		"DeviceU",
+		"POST",
+		"/api/deviceU",
+		handler.DeviceU,
+	},
+	Route{
+		"DeviceD",
+		"POST",
+		"/api/deviceD",
+		handler.DeviceD,
+	},
+	Route{
+		"DeviceL",
+		"POST",
+		"/api/deviceL",
+		handler.DeviceL,
+	},
+	Route{
+		"DeviceS",
+		"POST",
+		"/api/deviceS",
+		handler.DeviceS,
+	},
+
+	Route{
 		"CapitalC",
 		"POST",
 		"/api/capitalC",
@@ -38,12 +88,6 @@ var routes = Routes{
 		"POST",
 		"/api/categoryC",
 		handler.CategoryC,
-	},
-	Route{
-		"DeviceC",
-		"POST",
-		"/api/deviceC",
-		handler.DeviceC,
 	},
 	Route{
 		"ItemC",

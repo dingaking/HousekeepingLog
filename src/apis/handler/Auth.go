@@ -5,6 +5,7 @@ import (
 	"apis/model"
 	"apis/util"
 	"encoding/json"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -129,4 +130,12 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 	if err := json.NewEncoder(w).Encode(apiResTokenId); err != nil {
 		panic(err)
 	}
+}
+
+func AuthU(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("AuthU")
+}
+
+func AuthD(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("AuthD")
 }
