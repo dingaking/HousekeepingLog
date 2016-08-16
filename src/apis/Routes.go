@@ -16,16 +16,16 @@ type Routes []Route
 
 var routes = Routes{
 	Route{
-		"UserCreate",
+		"AuthC",
 		"POST",
 		"/api/authC",
-		UserCreate,
+		handler.AuthC,
 	},
 	Route{
-		"UserInfo",
+		"AuthR",
 		"POST",
 		"/api/authR",
-		UserInfo,
+		handler.AuthR,
 	},
 	Route{
 		"CapitalC",

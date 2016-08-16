@@ -1,7 +1,9 @@
-package main
+package handler
 
 import (
+	"apis/checker"
 	"apis/model"
+	"apis/util"
 	"encoding/json"
 	"io"
 	"io/ioutil"
@@ -11,7 +13,7 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func UserCreate(w http.ResponseWriter, r *http.Request) {
+func AuthC(w http.ResponseWriter, r *http.Request) {
 
 	var user model.User
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
@@ -30,7 +32,7 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if chkResult := CheckAuthC(user); chkResult != "" {
+	if chkResult := checker.AuthC(user); chkResult != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
 		apiResponse := model.APIResponse{ErrorMessage: chkResult, Result: "fail"}
@@ -50,7 +52,7 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
 	c := session.DB("hlog").C("user")
 
 	var insertUser = model.User{UserId: user.UserId, Password: user.Password}
-	insertUser.TokenList = append(insertUser.TokenList, model.TokenInfo{TokenId: SHA1()})
+	insertUser.TokenList = append(insertUser.TokenList, model.TokenInfo{TokenId: util.SHA1()})
 
 	err = c.Insert(&insertUser)
 	if err != nil {
@@ -66,7 +68,7 @@ func UserCreate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func UserInfo(w http.ResponseWriter, r *http.Request) {
+func AuthR(w http.ResponseWriter, r *http.Request) {
 
 	var user model.User
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
@@ -85,7 +87,7 @@ func UserInfo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if chkResult := CheckAuthR(user); chkResult != "" {
+	if chkResult := checker.AuthR(user); chkResult != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
 		apiResTokenId := model.APIResTokenId{ErrorMessage: chkResult, Result: "fail"}

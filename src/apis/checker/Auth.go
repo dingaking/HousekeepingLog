@@ -1,8 +1,8 @@
-package main
+package checker
 
 import "apis/model"
 
-func CheckAuthC(request model.User) string {
+func AuthC(request model.User) string {
 
 	if len(request.UserId) <= 0 {
 		return "UserId not found."
@@ -15,7 +15,7 @@ func CheckAuthC(request model.User) string {
 	return ""
 }
 
-func CheckAuthR(request model.User) string {
+func AuthR(request model.User) string {
 
 	if len(request.UserId) <= 0 {
 		return "UserId not found."
