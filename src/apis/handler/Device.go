@@ -5,10 +5,6 @@ import (
 	"net/http"
 )
 
-func DeviceC(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("DeviceC")
-}
-
 func DeviceR(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("DeviceR")
 }

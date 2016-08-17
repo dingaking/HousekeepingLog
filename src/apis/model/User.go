@@ -24,6 +24,7 @@ type User struct {
 }
 
 type TokenInfo struct {
+	TerminalName   string    `json:"terminal_name"`
 	TerminalId     string    `json:"terminal_id"`
 	TokenId        string    `json:"token_id"`
 	ExpireDateTime time.Time `json:"expire_datetime"`

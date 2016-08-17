@@ -41,12 +41,6 @@ var routes = Routes{
 	},
 
 	Route{
-		"DeviceC",
-		"POST",
-		"/api/deviceC",
-		handler.DeviceC,
-	},
-	Route{
 		"DeviceR",
 		"POST",
 		"/api/deviceR",
