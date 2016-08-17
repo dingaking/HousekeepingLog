@@ -103,8 +103,8 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 	if chkResult := checker.AuthR(user); chkResult != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
-		apiResTokenId := model.AuthR{ErrorMessage: chkResult, Result: "fail"}
-		if err := json.NewEncoder(w).Encode(apiResTokenId); err != nil {
+		response := model.AuthR{ErrorMessage: chkResult, Result: "fail"}
+		if err := json.NewEncoder(w).Encode(response); err != nil {
 			panic(err)
 		}
 		return
@@ -124,8 +124,8 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 	if qryResult.UserNo == "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
-		apiResTokenId := model.AuthR{ErrorMessage: "id/pw not match", Result: "fail"}
-		if err := json.NewEncoder(w).Encode(apiResTokenId); err != nil {
+		response := model.AuthR{ErrorMessage: "id/pw not match", Result: "fail"}
+		if err := json.NewEncoder(w).Encode(response); err != nil {
 			panic(err)
 		}
 		return
@@ -133,13 +133,14 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
-	apiResTokenId := model.AuthR{Result: "success"}
+	response := model.AuthR{Result: "success"}
 
 	if len(qryResult.TokenList) > 0 {
-		apiResTokenId.TokenId = qryResult.TokenList[0].TokenId
+		response.TokenId = qryResult.TokenList[0].TokenId
 	}
+	response.UserNo = qryResult.UserNo
 
-	if err := json.NewEncoder(w).Encode(apiResTokenId); err != nil {
+	if err := json.NewEncoder(w).Encode(response); err != nil {
 		panic(err)
 	}
 }
