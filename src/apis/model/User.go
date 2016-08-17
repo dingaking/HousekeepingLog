@@ -36,8 +36,8 @@ type AuthC struct {
 }
 
 type AuthR struct {
-	ErrorMessage string        `json:"err_msg"`
-	Result       string        `json:"result"`
-	UserNo       bson.ObjectId `bson:"_id,omitempty"`
-	TokenId      string        `json:"token_id"`
+	ErrorMessage string `json:"err_msg"`
+	Result       string `json:"result"`
+	UserNo       string `json:"userno"`
+	TokenId      string `json:"token_id"`
 }

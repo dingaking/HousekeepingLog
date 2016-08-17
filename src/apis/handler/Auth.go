@@ -138,7 +138,7 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 	if len(qryResult.TokenList) > 0 {
 		response.TokenId = qryResult.TokenList[0].TokenId
 	}
-	response.UserNo = qryResult.UserNo
+	response.UserNo = qryResult.UserNo.Hex()
 
 	if err := json.NewEncoder(w).Encode(response); err != nil {
 		panic(err)
