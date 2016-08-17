@@ -52,6 +52,18 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 
 	c := session.DB("hlog").C("user")
 
+	var qryResult model.User
+	c.Find(bson.M{"userid": user.UserId}).One(&qryResult)
+	if qryResult.UserNo != "" {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusOK)
+		apiResponse := model.APIResponse{ErrorMessage: "duplicated id error."}
+		if err := json.NewEncoder(w).Encode(apiResponse); err != nil {
+			panic(err)
+		}
+		return
+	}
+
 	var insertUser = model.User{UserId: user.UserId, Password: user.Password}
 	insertUser.TokenList = append(insertUser.TokenList, model.TokenInfo{TokenId: util.SHA1()})
 
