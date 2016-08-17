@@ -29,3 +29,15 @@ type TokenInfo struct {
 	TokenId        string    `json:"token_id"`
 	ExpireDateTime time.Time `json:"expire_datetime"`
 }
+
+type AuthC struct {
+	ErrorMessage string `json:"err_msg"`
+	Result       string `json:"result"`
+}
+
+type AuthR struct {
+	ErrorMessage string `json:"err_msg"`
+	Result       string `json:"result"`
+	UserNo       string `json:"userno"`
+	TokenId      string `json:"token_id"`
+}

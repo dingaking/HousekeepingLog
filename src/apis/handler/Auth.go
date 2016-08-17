@@ -36,8 +36,8 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 	if chkResult := checker.AuthC(user); chkResult != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
-		apiResponse := model.APIResponse{ErrorMessage: chkResult, Result: "fail"}
-		if err := json.NewEncoder(w).Encode(apiResponse); err != nil {
+		response := model.AuthC{ErrorMessage: chkResult, Result: "fail"}
+		if err := json.NewEncoder(w).Encode(response); err != nil {
 			panic(err)
 		}
 		return
@@ -57,8 +57,8 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 	if qryResult.UserNo != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
-		apiResponse := model.APIResponse{ErrorMessage: "duplicated id error."}
-		if err := json.NewEncoder(w).Encode(apiResponse); err != nil {
+		response := model.AuthC{ErrorMessage: "duplicated id error."}
+		if err := json.NewEncoder(w).Encode(response); err != nil {
 			panic(err)
 		}
 		return
@@ -74,9 +74,9 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
-	apiResponse := model.APIResponse{Result: "success"}
+	response := model.AuthC{Result: "success"}
 
-	if err := json.NewEncoder(w).Encode(apiResponse); err != nil {
+	if err := json.NewEncoder(w).Encode(response); err != nil {
 		panic(err)
 	}
 }
@@ -103,7 +103,7 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 	if chkResult := checker.AuthR(user); chkResult != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
-		apiResTokenId := model.APIResTokenId{ErrorMessage: chkResult, Result: "fail"}
+		apiResTokenId := model.AuthR{ErrorMessage: chkResult, Result: "fail"}
 		if err := json.NewEncoder(w).Encode(apiResTokenId); err != nil {
 			panic(err)
 		}
@@ -124,7 +124,7 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 	if qryResult.UserNo == "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
-		apiResTokenId := model.APIResTokenId{ErrorMessage: "id/pw not match", Result: "fail"}
+		apiResTokenId := model.AuthR{ErrorMessage: "id/pw not match", Result: "fail"}
 		if err := json.NewEncoder(w).Encode(apiResTokenId); err != nil {
 			panic(err)
 		}
@@ -133,7 +133,7 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
-	apiResTokenId := model.APIResTokenId{Result: "success"}
+	apiResTokenId := model.AuthR{Result: "success"}
 
 	if len(qryResult.TokenList) > 0 {
 		apiResTokenId.TokenId = qryResult.TokenList[0].TokenId
