@@ -24,7 +24,6 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 	if err := r.Body.Close(); err != nil {
 		panic(err)
 	}
-
 	if err := json.Unmarshal(body, &user); err != nil {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(422)
@@ -58,7 +57,7 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 	if qryResult.UserNo != "" {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(http.StatusOK)
-		response := model.AuthC{ErrorMessage: "duplicated id error."}
+		response := model.AuthC{ErrorMessage: "duplicated id error.", Result: "fail"}
 		if err := json.NewEncoder(w).Encode(response); err != nil {
 			panic(err)
 		}

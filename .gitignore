@@ -109,3 +109,4 @@ src/labix.org/v2/mgo/txn/tarjan.go
 src/labix.org/v2/mgo/txn/tarjan_test.go
 src/labix.org/v2/mgo/txn/txn.go
 src/labix.org/v2/mgo/txn/txn_test.go
+fmtdate.v1.a
