@@ -1,4 +1,4 @@
 # HousekeepingLog
 
-cd $GOPATH<br>
+cd $GOPATH;<br>
 godoc -http=:6060
