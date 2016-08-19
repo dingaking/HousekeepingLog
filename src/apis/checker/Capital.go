@@ -12,9 +12,5 @@ func CapitalC(request model.Capital) string {
 		return "Capital Name not found."
 	}
 
-	if len(request.UserNo) <= 0 {
-		return "UserNo not found."
-	}
-
 	return ""
 }
