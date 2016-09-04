@@ -1,9 +1,18 @@
 var React = require('react');
+var Axios = require('axios');
+
 
 var LoginForm = React.createClass({
 
-	requestLogin : function () {
+	requestLogin : function (e) {
+		e.preventDefault(); 
+		
 		console.log('requestlogin');
+
+		Axios.post('/api/authC').then(response => {
+			console.log(response);
+            //this.props.onReceive(response.data.number);
+        });
 	},
 
 	render: function () {
