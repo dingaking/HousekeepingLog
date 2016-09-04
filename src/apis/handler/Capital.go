@@ -53,38 +53,40 @@ func CapitalC(w http.ResponseWriter, r *http.Request) {
 	c := session.DB("hlog").C("user")
 	c.Find(bson.M{"_id": bson.ObjectIdHex(capital.UserNo)}).One(&qryResult)
 
-	found := false
-	for _, token := range qryResult.TokenList {
-		if token.TokenId == capital.TokenId {
-			found = true
-			break
-		}
-	}
+	/*
+		found := false
+			for _, token := range qryResult.TokenList {
+				if token.TokenId == capital.TokenId {
+					found = true
+					break
+				}
+			}
 
-	if found == false {
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(http.StatusOK)
-		response := model.CapitalC{ErrorMessage: "user & token_id not match.", Result: "fail"}
-		if err := json.NewEncoder(w).Encode(response); err != nil {
-			panic(err)
-		}
-		return
-	}
+			if found == false {
+				w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+				w.WriteHeader(http.StatusOK)
+				response := model.CapitalC{ErrorMessage: "user & token_id not match.", Result: "fail"}
+				if err := json.NewEncoder(w).Encode(response); err != nil {
+					panic(err)
+				}
+				return
+			}
 
-	d := session.DB("hlog").C("capital")
-	var insertCapital = model.CapitalI{UserNo: capital.UserNo, CapitalName: capital.CapitalName}
-	err = d.Insert(&insertCapital)
-	if err != nil {
-		panic(err)
-	}
+			d := session.DB("hlog").C("capital")
+			var insertCapital = model.CapitalI{UserNo: capital.UserNo, CapitalName: capital.CapitalName}
+			err = d.Insert(&insertCapital)
+			if err != nil {
+				panic(err)
+			}
 
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.WriteHeader(http.StatusOK)
-	response := model.CapitalC{Result: "success"}
+			w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+			w.WriteHeader(http.StatusOK)
+			response := model.CapitalC{Result: "success"}
 
-	if err := json.NewEncoder(w).Encode(response); err != nil {
-		panic(err)
-	}
+			if err := json.NewEncoder(w).Encode(response); err != nil {
+				panic(err)
+			}
+	*/
 }
 
 func CapitalR(w http.ResponseWriter, r *http.Request) {

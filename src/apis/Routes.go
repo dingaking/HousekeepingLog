@@ -16,6 +16,24 @@ type Routes []Route
 
 var routes = Routes{
 	Route{
+		"Admin",
+		"GET",
+		"/admin/",
+		handler.StaticHandler,
+	},
+	Route{
+		"Admin",
+		"GET",
+		"/admin/index.html",
+		handler.StaticHandler,
+	},
+	Route{
+		"Admin",
+		"GET",
+		"/admin/snapterest.js",
+		handler.StaticHandler,
+	},
+	Route{
 		"AuthC",
 		"POST",
 		"/api/authC",

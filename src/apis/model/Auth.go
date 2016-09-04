@@ -23,6 +23,7 @@ type User struct {
 	State          int           `json:"state"`          // 회원상태, 1=ON(사용), 0=OFF(탈퇴)
 	Activated      int           `json:"activated"`      // 인증여부, 2=관리자인증, 1=URL인증, 0=OFF(미인증)
 	Public         int           `json:"public"`         // 그룹에 공개여부, 1=공개 0=비공개
+	AccessToken    string        `json:"access_token"`   // 회원접속키
 }
 
 // 단말기 모델
@@ -60,9 +61,19 @@ type Admin struct {
 	State     int           `json:"state"`         // 사용여부, 1=ON(사용), 0=OFF(삭제)
 }
 
-type AuthC struct {
+// 회원가입 요청 Model
+type AuthCReq struct {
+	UserId      string `json:"userid"`
+	Password    string `json:"password"`
+	TerminalId  string `json:"terminal_id"`
+	DeviceType  int    `json:"device_type"`
+	AccessToken string `json:"access_token"`
+}
+
+type AuthCRep struct {
 	ErrorMessage string `json:"err_msg"`
 	Result       string `json:"result"`
+	AccessToken  string `json:"access_token"`
 }
 
 type AuthR struct {
