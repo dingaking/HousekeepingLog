@@ -1,8 +1,31 @@
 var React = require('react');
+var LoginForm = require('./LoginForm.react');
+var FindPW = require('./FindPW.react');
+var ChangePW = require('./ChangePW.react');
 
 var Auth = React.createClass({
+
+	getInitialState: function () {
+		return {
+			mode: 'LoginForm'
+		};
+	},
+
+	setAuthState: function (mode) {
+		this.setState({
+			mode: mode
+		});
+	},
+
 	render: function () {
-		return (<div>auth</div>);
+		if (this.state.mode == 'LoginForm') {
+			return (<LoginForm updateState={this.setAuthState} />);
+		} else if (this.state.mode == 'FindPW') {
+			return (<FindPW updateState={this.setAuthState} />);
+		} else if (this.state.mode == 'ChangePW') {
+			return (<ChangePW updateState={this.setAuthState} />);
+		}
+return (<LoginForm updateState={this.setAuthState} />);
 	}
 });
 
