@@ -30,7 +30,7 @@ var routes = Routes{
 	Route{
 		"Admin",
 		"GET",
-		"/admin/snapterest.js",
+		"/admin/admin.js",
 		handler.StaticHandler,
 	},
 	Route{

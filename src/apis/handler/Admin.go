@@ -9,9 +9,8 @@ import (
 	"time"
 )
 
-const STATIC_URL string = "/static/"
 const ADMIN_URL string = "/admin/"
-const STATIC_ROOT string = "templates/"
+const ADMIN_BUILD string = "admin/build/"
 
 type Context struct {
 	Title  string
@@ -21,14 +20,14 @@ type Context struct {
 func StaticHandler(w http.ResponseWriter, req *http.Request) {
 	static_file := req.URL.Path[len(ADMIN_URL):]
 	if len(static_file) != 0 {
-		f, err := http.Dir(STATIC_ROOT).Open(static_file)
+		f, err := http.Dir(ADMIN_BUILD).Open(static_file)
 		if err == nil {
 			content := io.ReadSeeker(f)
 			http.ServeContent(w, req, static_file, time.Now(), content)
 			return
 		}
 	} else {
-		f, err := http.Dir(STATIC_ROOT).Open("index.html")
+		f, err := http.Dir(ADMIN_BUILD).Open("index.html")
 		if err == nil {
 			content := io.ReadSeeker(f)
 			http.ServeContent(w, req, static_file, time.Now(), content)
