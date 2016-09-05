@@ -11,7 +11,6 @@ var LoginForm = React.createClass({
 	},
 
 	useridChange: function (e) {
-		console.log(e.target.value);
 		this.setState({
 			userid: e.target.value
 		})
