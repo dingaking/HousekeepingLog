@@ -39,8 +39,18 @@ var LoginForm = React.createClass({
 			<div className="loginmodal-container">
 				<h1>Login to Your Account</h1><br />
 				<form>
-					<input type="text" name="user" placeholder="Username" valChange={this.useridChange} val={this.state.userid} />
-					<input type="password" name="pass" placeholder="Password" valChange={this.passwordChange} />
+					<input 
+						type="text" 
+						name="user" 
+						placeholder="Username" 
+						onChange={this.useridChange} 
+						value={this.state.userid} />
+					<input 
+						type="password" 
+						name="pass" 
+						placeholder="Password" 
+						onChange={this.passwordChange} 
+						value={this.state.password} />
 					<input type="submit" name="login" className="login loginmodal-submit" value="Login" onClick={this.requestLogin} val={this.state.password} />
 				</form>
 					
