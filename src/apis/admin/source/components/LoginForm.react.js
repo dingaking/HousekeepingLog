@@ -25,7 +25,7 @@ var LoginForm = React.createClass({
 	requestLogin : function (e) {
 		e.preventDefault(); 
 		console.log(this.state.userid);
-		Axios.post('/api/authC', {
+		Axios.post('/api/admin/userR', {
 			userid: this.state.userid,
 			password: this.state.password
 		}).then(response => {
@@ -50,7 +50,11 @@ var LoginForm = React.createClass({
 						placeholder="Password" 
 						onChange={this.passwordChange} 
 						value={this.state.password} />
-					<input type="submit" name="login" className="login loginmodal-submit" value="Login" onClick={this.requestLogin} val={this.state.password} />
+					<input type="submit" 
+						name="login" 
+						className="login loginmodal-submit" 
+						value="Login" 
+						onClick={this.requestLogin} />
 				</form>
 					
 				<div className="login-help">

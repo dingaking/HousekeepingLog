@@ -21,6 +21,9 @@ func AuthC(session *mgo.Session, db string, collection string, authc *model.Auth
 	return err
 }
 
+// insert user document
+// 1. make access token and set value to AuthCReq.AccessToken field
+// 2. insert info to DB
 func insertUserId(session *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
 
 	c := session.DB(db).C(collection)
@@ -42,6 +45,9 @@ func insertUserId(session *mgo.Session, db string, collection string, authc *mod
 	return err
 }
 
+// userid duplication check
+// return nil : success
+// return error : duplicated
 func checkDuplicationUserId(session *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
 
 	c := session.DB(db).C(collection)
