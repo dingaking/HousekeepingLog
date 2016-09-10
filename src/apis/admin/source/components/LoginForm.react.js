@@ -24,12 +24,15 @@ var LoginForm = React.createClass({
 
 	requestLogin : function (e) {
 		e.preventDefault(); 
-		console.log(this.state.userid);
 		Axios.post('/api/admin/userR', {
 			userid: this.state.userid,
 			password: this.state.password
 		}).then(response => {
-			console.log(response.request.response);
+            var result = JSON.parse(response.request.response);
+            if (result.result == "success" && result.access_token == "") {
+                console.log("is success....");
+                this.props.updateState("ChangePW");
+            }
         });
 	},
 

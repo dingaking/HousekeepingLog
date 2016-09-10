@@ -25,7 +25,7 @@ var Auth = React.createClass({
 		} else if (this.state.mode == 'ChangePW') {
 			return (<ChangePW updateState={this.setAuthState} />);
 		}
-return (<LoginForm updateState={this.setAuthState} />);
+        return (<LoginForm updateState={this.setAuthState} />);
 	}
 });
 
