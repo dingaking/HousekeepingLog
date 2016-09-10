@@ -8,5 +8,6 @@ type AdminUserRReq struct {
 
 type AdminUserRRes struct {
 	Result      string `json:"result"`
+	Message     string `json:"message"`
 	AccessToken string `json:"access_token"`
 }

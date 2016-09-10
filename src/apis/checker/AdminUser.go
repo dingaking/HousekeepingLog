@@ -14,8 +14,5 @@ func AdminUserR(req model.AdminUserRReq) error {
 		return errors.New("Password not found.")
 	}
 
-	if req.UserId == "admin" && req.Password == "admin" {
-		return errors.New("You must change your init Password.")
-	}
 	return nil
 }
