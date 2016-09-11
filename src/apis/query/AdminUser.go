@@ -2,6 +2,7 @@ package query
 
 import (
 	"apis/model"
+	"apis/util"
 	"errors"
 	"fmt"
 	"time"
@@ -23,16 +24,25 @@ func AdminUserR(session *mgo.Session, db string, collection string, req *model.A
 	return nil
 }
 
+//
 func AdminUserU(session *mgo.Session, db string, collection string, req *model.AdminUserUReq) error {
 	c := session.DB(db).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&result)
-	if result.UserNo != "" {
-		fmt.Println(result)
-	} else {
-		fmt.Println("no user.")
+	if result.UserNo == "" {
+		return errors.New("invalid userid or password.")
 	}
+
+	req.AccessToken = util.SHA1()
+
+	colQuerier := bson.M{"_id": result.UserNo}
+	change := bson.M{"$set": bson.M{"password": req.NewPassword, "accesstoken": req.AccessToken}}
+	err := c.Update(colQuerier, change)
+	if err != nil {
+		return errors.New("update err")
+	}
+
 	return nil
 }
 

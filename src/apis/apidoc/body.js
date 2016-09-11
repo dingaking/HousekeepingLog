@@ -14,7 +14,9 @@
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지가 "success"인 경우 ""
  *
  * @apiExample {curl} Example usage:
- * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" -d '{"userid":"admin", "password":"12345678"}' http://localhost:8082/api/admin/userU
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"userid":"admin", "password":"12345678"}' \
+http://localhost:8082/api/authC
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -40,7 +42,9 @@
  * @apiSuccess {String} access_token result가 "success"인 경우
  *
  * @apiExample {curl} Example usage:
- * curl -H -d '{"userid":"admin", "password":"12345678"}' http://localhost:8082/api/admin/userR
+ * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"userid":"admin", "password":"admin"}' \
+http://localhost:8082/api/admin/userR
  * 
  * @apiSuccessExample Success-Response:
  * HTTP/1.1 200 OK
@@ -69,7 +73,7 @@
  *
  * @apiExample {curl} Example usage:
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
- -d '{"action":"1", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
+-d '{"action":"1", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
 http://localhost:8082/api/admin/userU
  * 
  * @apiSuccessExample Success-Response[SubAction:1]:
