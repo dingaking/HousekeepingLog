@@ -11,17 +11,22 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func AdminUserR(session *mgo.Session, db string, collection string, req *model.AdminUserRReq) error {
+func AdminUserR(session *mgo.Session, db string, collection string, req *model.AdminUserRReq) (error, string) {
 
 	c := session.DB(db).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": req.UserId, "password": req.Password}).One(&result)
-	if result.UserNo != "" {
-		return errors.New("wrong userid or password error.")
-	}
 
-	return nil
+	if result.UserNo == "" {
+		return errors.New("wrong userid or password error."), ""
+	}
+	if result.UserId == "admin" && result.Password == "admin" {
+		return nil, "You must change your initial Password."
+	}
+	req.AccessToken = result.AccessToken
+
+	return nil, ""
 }
 
 //

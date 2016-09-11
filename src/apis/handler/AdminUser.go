@@ -57,18 +57,6 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if isAccountNotInitialized(req) {
-		response := model.AdminUserRRes{
-			Result:      "success",
-			Message:     "You must change your initial Password.",
-			AccessToken: req.AccessToken}
-		err = WriteSuccess(w, response)
-		if err != nil {
-			panic(err)
-		}
-		return
-	}
-
 	session, err := query.GetConnect()
 	if err != nil {
 		WriteError(w, err)
@@ -76,9 +64,19 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.AdminUserR(session, "hlog", "user", &req)
+	err, msg := query.AdminUserR(session, "hlog", "user", &req)
 	if err != nil {
 		WriteError(w, err)
+		return
+	}
+	if err == nil && msg != "" {
+		response := model.AdminUserRRes{
+			Result:  "success",
+			Message: msg}
+		err = WriteSuccess(w, response)
+		if err != nil {
+			panic(err)
+		}
 		return
 	}
 
@@ -89,13 +87,6 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-}
-
-func isAccountNotInitialized(req model.AdminUserRReq) bool {
-	if req.UserId == "admin" && req.Password == "admin" {
-		return true
-	}
-	return false
 }
 
 func AdminInitFromBoot() {

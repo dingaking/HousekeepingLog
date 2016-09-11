@@ -56,7 +56,7 @@ http://localhost:8082/api/admin/userR
 
 
 /**
- * @api {post} /api/admin/UserU UserU
+ * @api {post} /api/admin/userU userU
  * @apiVersion 0.1.0
  * @apiName AdminUserU
  * @apiDescription 가계부 관리자 정보 수정
