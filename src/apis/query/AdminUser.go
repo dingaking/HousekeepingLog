@@ -4,6 +4,7 @@ import (
 	"apis/model"
 	"errors"
 	"fmt"
+	"time"
 
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
@@ -35,6 +36,29 @@ func AdminUserU(session *mgo.Session, db string, collection string, req *model.A
 	return nil
 }
 
+// add admin account if has no admin user
 func AdminInitFromBoot(session *mgo.Session, db string, collection string) error {
-	return nil
+
+	fmt.Println("AdminInitFromBoot")
+
+	c := session.DB(db).C(collection)
+
+	var result model.User
+	c.Find(bson.M{"userid": "admin"}).One(&result)
+	if result.UserNo != "" {
+		return nil
+	}
+
+	now := time.Now()
+	fmt.Println("admin inserted at " + now.String())
+	var insert = model.User{
+		UserId:         "admin",
+		Password:       "admin",
+		UserType:       4,
+		CreateDateTime: now,
+		State:          1,
+		Activated:      0,
+	}
+	err := c.Insert(&insert)
+	return err
 }
