@@ -17,13 +17,17 @@ var Auth = React.createClass({
 		});
 	},
 
+    setAccessToken: function (accessToken) {
+        this.props.updateAuthorized(true, accessToken);
+    },
+
 	render: function () {
 		if (this.state.mode == 'LoginForm') {
-			return (<LoginForm updateState={this.setAuthState} />);
+			return (<LoginForm updateState={this.setAuthState} setAccessToken={this.setAccessToken} />);
 		} else if (this.state.mode == 'FindPW') {
-			return (<FindPW updateState={this.setAuthState} />);
+			return (<FindPW updateState={this.setAuthState} setAccessToken={this.setAccessToken} />);
 		} else if (this.state.mode == 'ChangePW') {
-			return (<ChangePW updateState={this.setAuthState} />);
+			return (<ChangePW updateState={this.setAuthState} setAccessToken={this.setAccessToken} />);
 		}
         return (<LoginForm updateState={this.setAuthState} />);
 	}

@@ -1,5 +1,6 @@
 var React = require('react');
 var Axios = require('axios');
+var Cookie = require('react-cookie');
 
 var ChangePW = React.createClass({
 
@@ -36,16 +37,23 @@ var ChangePW = React.createClass({
             return;
         }
         Axios.post('/api/admin/userU', {
-            oldPassword: this.state.oldPassword,
-            newPassword: this.state.newPassword
+            action: "1",
+            userid: Cookie.load('userid'),
+            old_password: this.state.oldPassword,
+            new_password: this.state.newPassword
         }).then(response => {
+            var result = JSON.parse(response.request.response);
+            if (result.result == "success") {
+                Cookie.save('access_token', result.result.access_token, {path: '/'});
+                this.props.setAccessToken(result.result.access_token);
+            }
         });
     },
 
     render: function () {
         return (
             <div className="changepw-container">
-                <h1>Changle User Password</h1> 
+                <h1>Change User Password</h1> 
                 <form>
                     <input
                         type="text"

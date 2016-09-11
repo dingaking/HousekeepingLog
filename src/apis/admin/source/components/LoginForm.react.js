@@ -1,5 +1,6 @@
 var React = require('react');
 var Axios = require('axios');
+var Cookie = require('react-cookie');
 
 var LoginForm = React.createClass({
 
@@ -31,6 +32,12 @@ var LoginForm = React.createClass({
             var result = JSON.parse(response.request.response);
             if (result.result == "success" && result.access_token == "") {
                 this.props.updateState("ChangePW");
+                Cookie.save('userid', this.state.userid, { path: '/' });
+                Cookie.save('access_token', this.state.userid, { path: '/' });
+            } else if (result.result == "success" && result.access_token != "") {
+                this.props.setAccessToken(result.access_token);
+                Cookie.save('userid', this.state.userid, { path: '/' });
+                Cookie.save('access_token', result.access_token, { path: '/' });
             }
         });
 	},
