@@ -30,7 +30,6 @@ var LoginForm = React.createClass({
 		}).then(response => {
             var result = JSON.parse(response.request.response);
             if (result.result == "success" && result.access_token == "") {
-                console.log("is success....");
                 this.props.updateState("ChangePW");
             }
         });

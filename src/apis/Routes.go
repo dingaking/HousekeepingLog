@@ -18,7 +18,9 @@ var routes = Routes{
 	Route{"AdminWeb", "GET", "/admin/", handler.StaticHandler},
 	Route{"AdminWeb", "GET", "/admin/index.html", handler.StaticHandler},
 	Route{"AdminWeb", "GET", "/admin/admin.js", handler.StaticHandler},
+
 	Route{"AdminUserR", "POST", "/api/admin/userR", handler.AdminUserR},
+	Route{"AdminUserU", "POST", "/api/admin/userU", handler.AdminUserU},
 
 	Route{"AuthC", "POST", "/api/authC", handler.AuthC},
 	Route{"AuthR", "POST", "/api/authR", handler.AuthR},
