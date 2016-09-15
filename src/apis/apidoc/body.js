@@ -169,12 +169,6 @@ http://localhost:8082/api/authD
 -d '{"userid":"admin", "password":"admin"}' \
 http://localhost:8082/api/admin/userR
  * 
- * @apiSuccessExample Success-Response:
- * HTTP/1.1 200 OK
- * {
- *     "result":"success",
- *     "access_token":"111111"
- * }
  */
 
 
@@ -185,34 +179,19 @@ http://localhost:8082/api/admin/userR
  * @apiDescription 가계부 관리자 정보 수정
  * @apiGroup Admin_User
  *
- * @apiParam (AdminUserU_Action_1) {String} action=1:admin init password change
- * @apiParam (AdminUserU_Action_1) {String} userid userid
- * @apiParam (AdminUserU_Action_1) {String} old_password 이전 비밀번호
- * @apiParam (AdminUserU_Action_1) {String} new_password 새 비밀번호
+ * @apiExample {curl} Example : (action=1)
+ * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"action":"1", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
+http://localhost:8082/api/admin/userU
+ *
+ * @apiParam (Param_Action_1) {String} action 1 : admin init password change
+ * @apiParam (Param_Action_1) {String} userid userid
+ * @apiParam (Param_Action_1) {String} old_password 이전 비밀번호
+ * @apiParam (Param_Action_1) {String} new_password 새 비밀번호
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우
  * @apiSuccess {String} access_token result가 "success"인 경우
- *
- * @apiExample {curl} Example usage:
- * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"1", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
-http://localhost:8082/api/admin/userU
- * 
- * @apiSuccessExample Success-Response[SubAction:1]:
- * HTTP/1.1 200 OK
- * {
- *     "result":"success",
- *     "access_token":"111111"
- * }
- * 
- * @apiSuccessExample Success-Response[SubAction:2]:
- * HTTP/1.1 200 OK
- * {
- *     "result":"success",
- *     "access_token":"111111"
- * }
- * 
  * 
  */
 /**
@@ -228,6 +207,11 @@ http://localhost:8082/api/admin/userU
  * @apiDescription 가계부 관리자 회원목록
  * @apiGroup Admin_User
  *
+ * @apiExample {curl} Example usage:
+ * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"action":"1", "access_token":"access_token_value"}' \
+http://localhost:8082/api/admin/userL
+ *
  * @apiParam (AdminUserL_Action_1) {String} action 1:회원목록 조회
  * @apiParam (AdminUserL_Action_1) {String} access_token 인증키
  * @apiParam (AdminUserL_Action_1) {String} page 목록 페이지
@@ -241,26 +225,6 @@ http://localhost:8082/api/admin/userU
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우
  * @apiSuccess {String} data result가 "success"인 경우
- *
- * @apiExample {curl} Example usage:
- * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"1", "access_token":"access_token_value"}' \
-http://localhost:8082/api/admin/userL
- * 
- * @apiSuccessExample Success-Response[SubAction:1]:
- * HTTP/1.1 200 OK
- * {
- *     "result":"success",
- *     "access_token":"111111"
- * }
- * 
- * @apiSuccessExample Success-Response[SubAction:2]:
- * HTTP/1.1 200 OK
- * {
- *     "result":"success",
- *     "access_token":"111111"
- * }
- * 
  * 
  */
 /**
