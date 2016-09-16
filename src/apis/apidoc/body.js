@@ -171,7 +171,7 @@ http://localhost:8082/api/deviceC
  *
  * @apiSuccess {String} result 요청 결과 "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
- * @apiSuccess {String} terminal_no 터미널no
+ * @apiSuccess {String} terminalno 터미널no
  *
  */
 
@@ -184,12 +184,12 @@ http://localhost:8082/api/deviceC
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"terminal_no":"34", \
+-d '{"terminalno":"34", \
 "access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
 http://localhost:8082/api/deviceR
  *
  * @apiParam {String} access_token 인증키
- * @apiParam {String} terminal_no 터미널no
+ * @apiParam {String} terminalno 터미널no
  *
  * @apiSuccess {String} result 요청 결과 "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
@@ -213,11 +213,11 @@ http://localhost:8082/api/deviceR
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
 -d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
-"terminal_no":"36", "terminal_name":"my iphone"}' \
+"terminalno":"36", "terminal_name":"my iphone"}' \
 http://localhost:8082/api/deviceU
  *
  * @apiParam (Param_Action_1) {String} access_token 인증키
- * @apiParam (Param_Action_1) {String} terminal_no 터미널no
+ * @apiParam (Param_Action_1) {String} terminalno 터미널no
  * @apiParam (Param_Action_1) {String} [device_token] push키
  * @apiParam (Param_Action_1) {String} [terminal_name] 단말기 별칭
  * @apiParam (Param_Action_1) {String} [notification] 1:ON, 0:OFF
@@ -236,11 +236,11 @@ http://localhost:8082/api/deviceU
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
 -d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
-"terminal_no":"36"}' \
+"terminalno":"36"}' \
 http://localhost:8082/api/deviceD
  *
  * @apiParam (Param_Action_1) {String} access_token 인증키
- * @apiParam (Param_Action_1) {String} terminal_no 터미널no
+ * @apiParam (Param_Action_1) {String} terminalno 터미널no
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
@@ -465,12 +465,12 @@ http://localhost:8082/api/deviceC
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"category_no":"34", \
+-d '{"categoryno":"34", \
 "access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
 http://localhost:8082/api/categoryR
  *
  * @apiParam {String} access_token 인증키
- * @apiParam {String} category_no 카테고리 no
+ * @apiParam {String} categoryno 카테고리 no
  *
  * @apiSuccess {String} result 요청 결과 "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
@@ -488,11 +488,11 @@ http://localhost:8082/api/categoryR
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
 -d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
-"category_no":"36", "category_name":"my iphone"}' \
+"categoryno":"36", "category_name":"my iphone"}' \
 http://localhost:8082/api/categoryU
  *
  * @apiParam {String} access_token 인증키
- * @apiParam {String} category_no 카테고리 no
+ * @apiParam {String} categoryno 카테고리 no
  * @apiParam {String} [category_name] 구분항목명
  * @apiParam {String} [is_input] 1:수입, 0:지출
  *
@@ -510,11 +510,11 @@ http://localhost:8082/api/categoryU
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
 -d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
-"category_no":"36"}' \
+"categoryno":"36"}' \
 http://localhost:8082/api/categoryD
  *
  * @apiParam (Param_Action_1) {String} access_token 인증키
- * @apiParam (Param_Action_1) {String} category_no 카테고리 no
+ * @apiParam (Param_Action_1) {String} categoryno 카테고리 no
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
@@ -538,7 +538,7 @@ http://localhost:8082/api/categoryL
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
  * @apiSuccess {Object[]} data 구분항목 목록
- * @apiSuccess {String} data.category_no 카테고리 no
+ * @apiSuccess {String} data.categoryno 카테고리 no
  * @apiSuccess {String} data.category_name 구분항목명
  * @apiSuccess {String} data.is_input 1:수입, 0:지출
  *
@@ -563,7 +563,7 @@ http://localhost:8082/api/categoryS
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
  * @apiSuccess {Object[]} data 구분항목 목록
- * @apiSuccess {String} data.category_no 카테고리 no
+ * @apiSuccess {String} data.categoryno 카테고리 no
  * @apiSuccess {String} data.category_name 구분항목명
  * @apiSuccess {String} data.is_input 1:수입, 0:지출
  *
