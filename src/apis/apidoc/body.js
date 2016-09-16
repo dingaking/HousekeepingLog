@@ -305,6 +305,136 @@ http://localhost:8082/api/deviceS
  */
 
 /**
+ * @api {post} /api/capitalC capitalC
+ * @apiVersion 0.1.0
+ * @apiName CapitalCreate
+ * @apiDescription 재산항목 추가
+ * @apiGroup Capital
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"capital_name":"월급통장", \
+"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/capitalC
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} capital_name 재산항목명
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ *
+ */
+
+/**
+ * @api {post} /api/capitalR capitalR
+ * @apiVersion 0.1.0
+ * @apiName CapitalRead
+ * @apiDescription 재산항목 정보 조회
+ * @apiGroup Capital
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"capitalno":"34", \
+"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/capitalR
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} capitalno 재산항목 no
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {String} capitalno 재산항목 no
+ * @apiSuccess {String} capital_name 재산항목명
+ */
+
+/**
+ * @api {post} /api/capitalU capitalU
+ * @apiVersion 0.1.0
+ * @apiName CapitalUpdate
+ * @apiDescription 재산항목 정보 갱신
+ * @apiGroup Capital
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"capitalno":"36", "capital_name":"my capital"}' \
+http://localhost:8082/api/deviceU
+ *
+ * @apiParam (Param_Action_1) {String} access_token 인증키
+ * @apiParam (Param_Action_1) {String} capitalno 재산항목 no
+ * @apiParam (Param_Action_1) {String} capital_name 재산항목명
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ */
+
+/**
+ * @api {post} /api/capitalD capitalD
+ * @apiVersion 0.1.0
+ * @apiName CapitalDelete
+ * @apiDescription 재산항목 삭제
+ * @apiGroup Capital
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"capitalno":"36"}' \
+http://localhost:8082/api/capitalD
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} capitalno 재산항목 no
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ *
+ */
+
+/**
+ * @api {post} /api/capitalL capitalL
+ * @apiVersion 0.1.0
+ * @apiName CapitalList
+ * @apiDescription 단말기 목록
+ * @apiGroup Capital
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/capitalL
+ *
+ * @apiParam {String} access_token 인증키
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 재산항목 목록
+ * @apiSuccess {String} data.capitalno 재산항목 no
+ * @apiSuccess {String} data.capital_name 재산항목명
+ *
+ */
+
+/**
+ * @api {post} /api/capitalS capitalS
+ * @apiVersion 0.1.0
+ * @apiName CapitalSearch
+ * @apiDescription 재산항목 검색
+ * @apiGroup Capital
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "capital_name":"my"}' \
+http://localhost:8082/api/capitalS
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} capital_name 검색어
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 재산항목 목록
+ * @apiSuccess {String} data.capitalno 재산항목 no
+ * @apiSuccess {String} data.capital_name 재산항목명
+ *
+ */
+
+/**
  * @api {post} /api/admin/userR userR
  * @apiVersion 0.1.0
  * @apiName AdminUserR
