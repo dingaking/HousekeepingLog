@@ -570,6 +570,158 @@ http://localhost:8082/api/categoryS
  */
 
 /**
+ * @api {post} /api/itemC itemC
+ * @apiVersion 0.1.0
+ * @apiName ItemCreate
+ * @apiDescription 항목 추가
+ * @apiGroup Item
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"categoryno":"23", "capitalno":"43", "item_name":"점심", "item_value":"8000", \
+"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/itemC
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} categoryno 카테고리 no
+ * @apiParam {String} capitalno 재산항목 no
+ * @apiParam {String} item_name 항목이름
+ * @apiParam {String} item_value 항목금액
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ *
+ */
+
+/**
+ * @api {post} /api/itemR itemR
+ * @apiVersion 0.1.0
+ * @apiName ItemRead
+ * @apiDescription 항목 조회
+ * @apiGroup Item
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"itemno":"34", \
+"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/itemR
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} itemno 항목 no
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {String} categoryno 카테고리 no
+ * @apiSuccess {String} capitalno 재산항목 no
+ * @apiSuccess {String} item_name 항목이름
+ * @apiSuccess {String} item_value 항목금액
+ * @apiSuccess {String} create_datetime 등록일시
+ */
+
+/**
+ * @api {post} /api/itemU itemU
+ * @apiVersion 0.1.0
+ * @apiName ItemUpdate
+ * @apiDescription 항목 갱신
+ * @apiGroup Item
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"itemno":"36", "item_name":"점심"}' \
+http://localhost:8082/api/itemU
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} itemno 항목 no
+ * @apiParam {String} [categoryno] 카테고리 no
+ * @apiParam {String} [capitalno] 재산항목 no
+ * @apiParam {String} [item_name] 항목이름
+ * @apiParam {String} [item_value] 항목금액
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ */
+
+/**
+ * @api {post} /api/itemD itemD
+ * @apiVersion 0.1.0
+ * @apiName ItemDelete
+ * @apiDescription 항목 삭제
+ * @apiGroup Item
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"itemno":"36"}' \
+http://localhost:8082/api/itemD
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} itemno 항목 no
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ *
+ */
+
+/**
+ * @api {post} /api/itemL itemL
+ * @apiVersion 0.1.0
+ * @apiName ItemList
+ * @apiDescription 항목 목록
+ * @apiGroup Item
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/deviceL
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} [page] 페이지
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 데이터 목록
+ * @apiSuccess {String} data.categoryno 카테고리 no
+ * @apiSuccess {String} data.capitalno 재산항목 no
+ * @apiSuccess {String} data.item_name 항목이름
+ * @apiSuccess {String} data.create_datetime 등록일시
+ *
+ */
+
+/**
+ * @api {post} /api/itemS itemS
+ * @apiVersion 0.1.0
+ * @apiName ItemSearch
+ * @apiDescription 항목 검색
+ * @apiGroup Item
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "search":{"capitalno":"34"}}' \
+http://localhost:8082/api/itemS
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} [page] 페이지
+ * @apiParam {Object[]} search 검색 필터
+ * @apiParam {String} [search.categoryno] 카테고리 no
+ * @apiParam {String} [search.capitalno] 재산항목 no
+ * @apiParam {String} [search.item_name] 항목이름
+ * @apiParam {String} [search.item_value] 항목금액
+ * @apiParam {String} [search.date_begin] 시작 일시
+ * @apiParam {String} [search.date_end] 종료 일시
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 데이터 목록
+ * @apiSuccess {String} data.categoryno 카테고리 no
+ * @apiSuccess {String} data.capitalno 재산항목 no
+ * @apiSuccess {String} data.item_name 항목이름
+ * @apiSuccess {String} data.item_value 항목금액
+ * @apiSuccess {String} data.create_datetime 등록일시
+ *
+ */
+
+/**
  * @api {post} /api/admin/userR userR
  * @apiVersion 0.1.0
  * @apiName AdminUserR
