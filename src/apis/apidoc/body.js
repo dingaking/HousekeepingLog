@@ -435,6 +435,141 @@ http://localhost:8082/api/capitalS
  */
 
 /**
+ * @api {post} /api/categoryC categoryC
+ * @apiVersion 0.1.0
+ * @apiName CategoryCreate
+ * @apiDescription 구분항목 추가
+ * @apiGroup Category
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"category_name":"월급", "is_input":"1", \
+"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/deviceC
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} category_name 구분항목명
+ * @apiParam {String} is_input 1:수입, 0:지출
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ *
+ */
+
+/**
+ * @api {post} /api/categoryR categoryR
+ * @apiVersion 0.1.0
+ * @apiName CategoryRead
+ * @apiDescription 구분항목 정보 조회
+ * @apiGroup Category
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"category_no":"34", \
+"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/categoryR
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} category_no 카테고리 no
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {String} category_name 구분항목명
+ * @apiSuccess {String} is_input 1:수입, 0:지출
+ */
+
+/**
+ * @api {post} /api/categoryU categoryU
+ * @apiVersion 0.1.0
+ * @apiName CategoryUpdate
+ * @apiDescription 구분항목 정보 갱신
+ * @apiGroup Category
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"category_no":"36", "category_name":"my iphone"}' \
+http://localhost:8082/api/categoryU
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} category_no 카테고리 no
+ * @apiParam {String} [category_name] 구분항목명
+ * @apiParam {String} [is_input] 1:수입, 0:지출
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ */
+
+/**
+ * @api {post} /api/categoryD categoryD
+ * @apiVersion 0.1.0
+ * @apiName CategoryDelete
+ * @apiDescription 구분항목 삭제
+ * @apiGroup Category
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"category_no":"36"}' \
+http://localhost:8082/api/categoryD
+ *
+ * @apiParam (Param_Action_1) {String} access_token 인증키
+ * @apiParam (Param_Action_1) {String} category_no 카테고리 no
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ *
+ */
+
+/**
+ * @api {post} /api/categoryL categoryL
+ * @apiVersion 0.1.0
+ * @apiName CategoryList
+ * @apiDescription 구분항목 목록
+ * @apiGroup Category
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/categoryL
+ *
+ * @apiParam {String} access_token 인증키
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 구분항목 목록
+ * @apiSuccess {String} data.category_no 카테고리 no
+ * @apiSuccess {String} data.category_name 구분항목명
+ * @apiSuccess {String} data.is_input 1:수입, 0:지출
+ *
+ */
+
+/**
+ * @api {post} /api/categoryS categoryS
+ * @apiVersion 0.1.0
+ * @apiName CategorySearch
+ * @apiDescription 구분항목 검색
+ * @apiGroup Category
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "category_name":"my"}' \
+http://localhost:8082/api/categoryS
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} category_name 구분항목명
+ * @apiParam {String} [is_input] 1:수입, 0:지출
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 구분항목 목록
+ * @apiSuccess {String} data.category_no 카테고리 no
+ * @apiSuccess {String} data.category_name 구분항목명
+ * @apiSuccess {String} data.is_input 1:수입, 0:지출
+ *
+ */
+
+/**
  * @api {post} /api/admin/userR userR
  * @apiVersion 0.1.0
  * @apiName AdminUserR
