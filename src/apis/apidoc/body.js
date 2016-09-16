@@ -722,6 +722,22 @@ http://localhost:8082/api/itemS
  */
 
 /**
+ * @api {post} /api/systemR systemR
+ * @apiVersion 0.1.0
+ * @apiName SystemRead
+ * @apiDescription 시스템 정보 조회
+ * @apiGroup Device
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+http://localhost:8082/api/systemR
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {String} api_version
+ */
+
+/**
  * @api {post} /api/admin/userR userR
  * @apiVersion 0.1.0
  * @apiName AdminUserR
