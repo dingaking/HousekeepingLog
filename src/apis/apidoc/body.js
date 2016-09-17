@@ -749,7 +749,7 @@ http://localhost:8082/api/systemR
  * @api {post} /api/organizationR organizationR
  * @apiVersion 0.1.0
  * @apiName OrganizationRead
- * @apiDescription 조직 정보 조회
+ * @apiDescription 조직 멤버 목록 조회
  * @apiGroup Organization
  *
  * @apiExample {curl} Example :
@@ -1119,4 +1119,139 @@ http://localhost:8082/api/admin/systemS
  * @apiSuccess {String} data.adminno 관리항목no
  * @apiSuccess {String} data.item_name 관리항목 이름
  * @apiSuccess {String} data.item_value 관리항목 내용
+ */
+
+/**
+ * @api {post} /api/admin/groupC groupC
+ * @apiVersion 0.1.0
+ * @apiName AdminGroupCreate
+ * @apiDescription 그룹 추가(관리자용)
+ * @apiGroup AdminGroup
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"group_name":"group name.", \
+"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/admin/groupC
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} group_name 그룹명
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ *
+ */
+
+/**
+ * @api {post} /api/admin/groupR groupR
+ * @apiVersion 0.1.0
+ * @apiName AdminGroupRead
+ * @apiDescription 그룹 정보 조회(관리자용)
+ * @apiGroup AdminGroup
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"groupno":"34", \
+"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/admin/groupR
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} groupno 그룹 no
+ *
+ * @apiSuccess {String} result 요청 결과 "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {String} group_name 그룹명
+ * @apiSuccess {String} create_datetime 등록일시
+ * @apiSuccess {String} state 1:ON(사용),0:OFF(삭제)
+ */
+
+/**
+ * @api {post} /api/admin/groupU groupU
+ * @apiVersion 0.1.0
+ * @apiName AdminGroupUpdate
+ * @apiDescription 그룹 정보 갱신(관리자용)
+ * @apiGroup AdminGroup
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"group_name":"gname", "state":"1"}' \
+http://localhost:8082/api/deviceU
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} [group_name] 그룹명
+ * @apiParam {String} [state] 1:ON(사용),0:OFF(삭제)
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ */
+
+/**
+ * @api {post} /api/admin/groupD groupD
+ * @apiVersion 0.1.0
+ * @apiName AdminGroupDelete
+ * @apiDescription 그룹 삭제(관리자용)
+ * @apiGroup AdminGroup
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"terminalno":"36"}' \
+http://localhost:8082/api/admin/groupD
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} groupno 그룹 no
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ *
+ */
+
+/**
+ * @api {post} /api/admin/groupL groupL
+ * @apiVersion 0.1.0
+ * @apiName AdminGroupList
+ * @apiDescription 그룹 목록 조회(관리자용)
+ * @apiGroup AdminGroup
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/admin/groupL
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} [page] 페이지
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 그룹 목록
+ * @apiSuccess {String} data.groupno 그룹 no
+ * @apiSuccess {String} data.group_name 그룹명
+ * @apiSuccess {String} data.create_datetime 등록일시
+ * @apiSuccess {String} data.state 1:ON(사용),0:OFF(삭제)
+ */
+
+/**
+ * @api {post} /api/admin/groupS groupS
+ * @apiVersion 0.1.0
+ * @apiName AdminGroupSearch
+ * @apiDescription 그룹 목록 검색(관리자용)
+ * @apiGroup AdminGroup
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "group_name":"my"}' \
+http://localhost:8082/api/admin/groupS
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} group_name 그룹명
+ * @apiParam {String} [page] 페이지
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 그룹 목록
+ * @apiSuccess {String} data.groupno 그룹 no
+ * @apiSuccess {String} data.group_name 그룹명
+ * @apiSuccess {String} data.create_datetime 등록일시
+ * @apiSuccess {String} data.state 1:ON(사용),0:OFF(삭제)
  */
