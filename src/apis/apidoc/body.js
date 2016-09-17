@@ -738,26 +738,121 @@ http://localhost:8082/api/systemR
  */
 
 /**
- * @api {post} /api/admin/userR userR
+ * @api {post} /api/organizationR organizationR
  * @apiVersion 0.1.0
- * @apiName AdminUserR
- * @apiDescription 가계부 관리자 로그인
+ * @apiName OrganizationRead
+ * @apiDescription 조직 정보 조회
+ * @apiGroup Organization
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "groupno":"35"}' \
+http://localhost:8082/api/organizationR
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} groupno 그룹 no
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {String} group_name 그룹명
+ * @apiSuccess {String} create_datetime 등록일시
+ * @apiSuccess {Object[]} data 멤버 정보 목록
+ * @apiSuccess {String} data.dispname 대화명
+ * @apiSuccess {String} data.intro 자기소개
+ * @apiSuccess {String} data.profile 프로필 사진
+ * @apiSuccess {String} data.create_datetime 가입일시
+ * @apiSuccess {String} data.phone_number 전화번호
+ */
+
+/**
+ * @api {post} /api/organizationL organizationL
+ * @apiVersion 0.1.0
+ * @apiName OrganizationList
+ * @apiDescription 조직 목록 조회
+ * @apiGroup Organization
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/organizationL
+ *
+ * @apiParam {String} access_token 인증키
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 그룹 목록
+ * @apiSuccess {String} data.groupno 그룹 no
+ * @apiSuccess {String} data.group_name 그룹명
+ * @apiSuccess {String} data.create_datetime 등록일시
+ */
+
+/**
+ * @api {post} /api/organizationS organizationS
+ * @apiVersion 0.1.0
+ * @apiName OrganizationSearch
+ * @apiDescription 조직 목록 검색
+ * @apiGroup Organization
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "group_name":"my group"}' \
+http://localhost:8082/api/organizationS
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} group_name 그룹명
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess {Object[]} data 그룹 목록
+ * @apiSuccess {String} data.groupno 그룹 no
+ * @apiSuccess {String} data.group_name 그룹명
+ * @apiSuccess {String} data.create_datetime 등록일시
+ */
+
+/**
+ * @api {post} /api/admin/userC userC
+ * @apiVersion 0.1.0
+ * @apiName AdminUserC
+ * @apiDescription 가계부 사용자 추가(관리자용)
  * @apiGroup Admin_User
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"userid":"admin@aaa.com", "password":"admin"}' \
+http://localhost:8082/api/admin/userC
  *
  * @apiParam {String} userid userid
  * @apiParam {String} password 비밀번호
+ * @apiParam {String} [dispname] 대화명
+ * @apiParam {String} [intro] 자기소개
+ * @apiParam {String} [profile] 프로필 사진
+ * @apiParam {String} [phone_number] 전화번호
+ * @apiParam {String} [public] 그룹에 공개여부
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우
- * @apiSuccess {String} access_token result가 "success"인 경우
+ */
+
+/**
+ * @api {post} /api/admin/userR userR
+ * @apiVersion 0.1.0
+ * @apiName AdminUserR
+ * @apiDescription 가계부 사용자 조회(관리자용)
+ * @apiGroup Admin_User
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
 -d '{"userid":"admin", "password":"admin"}' \
 http://localhost:8082/api/admin/userR
- * 
+ *
+ * @apiParam (Param_Action_1) {String} action 1 : login
+ * @apiParam (Param_Action_1) {String} userid userid
+ * @apiParam (Param_Action_1) {String} password 비밀번호
+ *
+ * @apiSuccess (Response_Action_1) {String} result "success" or "fail"
+ * @apiSuccess (Response_Action_1) {String} err_msg result가 "fail"인 경우
+ * @apiSuccess (Response_Action_1) {String} access_token result가 "success"인 경우
  */
-
 
 /**
  * @api {post} /api/admin/userU userU
