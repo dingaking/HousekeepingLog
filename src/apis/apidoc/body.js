@@ -37,26 +37,26 @@ http://localhost:8082/api/authR
 -d '{"action":"2", "access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
 http://localhost:8082/api/authR
  *
- * @apiParam (AuthRead_Action_1) {String} action 1 : login
- * @apiParam (AuthRead_Action_1) {String} userid userid(email)
- * @apiParam (AuthRead_Action_1) {String} password 비밀번호(8~16자리)
+ * @apiParam (Param_Action_1) {String} action 1 : login
+ * @apiParam (Param_Action_1) {String} userid userid(email)
+ * @apiParam (Param_Action_1) {String} password 비밀번호(8~16자리)
  *
- * @apiParam (AuthRead_Action_2) {String} action 2 : 회원정보 조회
- * @apiParam (AuthRead_Action_2) {String} access_token 인증키
+ * @apiParam (Param_Action_2) {String} action 2 : 회원정보 조회
+ * @apiParam (Param_Action_2) {String} access_token 인증키
  *
- * @apiSuccess (AuthRead_Success_Action_1) {String} result "success" or "fail"
- * @apiSuccess (AuthRead_Success_Action_1) {String} err_msg result가 "fail"인 경우 에러 메시지
- * @apiSuccess (AuthRead_Success_Action_1) {String} access_token result가 "success"인 경우
+ * @apiSuccess (Response_Action_1) {String} result "success" or "fail"
+ * @apiSuccess (Response_Action_1) {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess (Response_Action_1) {String} access_token result가 "success"인 경우
  *
- * @apiSuccess (AuthRead_Success_Action_2) {String} result "success" or "fail"
- * @apiSuccess (AuthRead_Success_Action_2) {String} err_msg result가 "fail"인 경우 에러 메시지
- * @apiSuccess (AuthRead_Success_Action_2) {String} dispname 대화명
- * @apiSuccess (AuthRead_Success_Action_2) {String} intro 자기소개
- * @apiSuccess (AuthRead_Success_Action_2) {String} profile 프로필 사진
- * @apiSuccess (AuthRead_Success_Action_2) {String} create_datetime 가입일시
- * @apiSuccess (AuthRead_Success_Action_2) {String} phone_number 전화번호
- * @apiSuccess (AuthRead_Success_Action_2) {String} public 그룹에 공개여부
- * @apiSuccess (AuthRead_Success_Action_2) {String} access_token 접속키
+ * @apiSuccess (Response_Action_2) {String} result "success" or "fail"
+ * @apiSuccess (Response_Action_2) {String} err_msg result가 "fail"인 경우 에러 메시지
+ * @apiSuccess (Response_Action_2) {String} dispname 대화명
+ * @apiSuccess (Response_Action_2) {String} intro 자기소개
+ * @apiSuccess (Response_Action_2) {String} profile 프로필 사진
+ * @apiSuccess (Response_Action_2) {String} create_datetime 가입일시
+ * @apiSuccess (Response_Action_2) {String} phone_number 전화번호
+ * @apiSuccess (Response_Action_2) {String} public 그룹에 공개여부
+ * @apiSuccess (Response_Action_2) {String} access_token 접속키
  *
  */
 /**
