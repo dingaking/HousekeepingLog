@@ -438,3 +438,32 @@ http://localhost:8082/api/admin/groupS
  * @apiSuccess {String} data.create_datetime 등록일시
  * @apiSuccess {String} data.state 1:ON(사용),0:OFF(삭제)
  */
+
+/**
+ * @apiDefine Param_Action_1
+ * Parameter(action=1)
+ */
+/**
+ * @apiDefine Param_Action_2
+ * Parameter(action=2)
+ */
+/**
+ * @apiDefine Param_Action_3
+ * Parameter(action=3)
+ */
+/**
+ * @apiDefine Response_Action_1
+ * Response(action=1)
+ */
+/**
+ * @apiDefine Response_Action_2
+ * Response(action=2)
+ */
+/**
+ * @apiDefine Response_Action_3
+ * Response(action=3)
+ */
+/**
+ * @apiDefine Param_access_token
+ * 111122223333
+ */
