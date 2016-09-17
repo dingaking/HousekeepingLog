@@ -1028,3 +1028,95 @@ http://localhost:8082/api/admin/userL
  * @apiSuccess {String} data.activated 2:관리자 인증, 1:URL 인증,0:OFF 미인증
  * @apiSuccess {String} data.public 1 = 공개 0 = 비공개
  */
+
+/**
+ * @api {post} /api/admin/systemR systemR
+ * @apiVersion 0.1.0
+ * @apiName AdminSystemR
+ * @apiDescription 가계부 시스템 조회(관리자용)
+ * @apiGroup Admin_System
+ *
+ * @apiExample {curl} Example
+ * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/admin/systemR
+ *
+ * @apiParam {String} access_token 인증키
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우
+ * @apiSuccess {Object[]} data system 정보
+ * @apiSuccess {String} data.adminno 관리항목no
+ * @apiSuccess {String} data.smtp_url SMTP 서버
+ * @apiSuccess {String} data.smtp_port SMTP 포트
+ * @apiSuccess {String} data.smtp_id SMTP 아이디
+ * @apiSuccess {String} data.smtp_pw SMTP 패스워드
+ * @apiSuccess {String} data.email_success SMTP 인증 완료
+ * @apiSuccess {String} data.email_authdate 5분 후 만료
+ */
+
+/**
+ * @api {post} /api/admin/systemU systemU
+ * @apiVersion 0.1.0
+ * @apiName AdminSystemU
+ * @apiDescription 가계부 시스템 갱신(관리자용)
+ * @apiGroup Admin_System
+ *
+ * @apiExample {curl} Example :
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", \
+"adminno":"36", "adminvalue":"admin@test.com"}' \
+http://localhost:8082/api/admin/systemU
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} adminno 관리항목no
+ * @apiParam {String} admin_value 관리항목value
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
+ */
+
+/**
+ * @api {post} /api/admin/systemL systemL
+ * @apiVersion 0.1.0
+ * @apiName AdminSystemL
+ * @apiDescription 가계부 시스템 목록 조회(관리자용)
+ * @apiGroup Admin_System
+ *
+ * @apiExample {curl} Example
+ * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+http://localhost:8082/api/admin/systemL
+ *
+ * @apiParam {String} access_token 인증키
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우
+ * @apiSuccess {Object[]} data system 정보
+ * @apiSuccess {String} data.adminno 관리항목no
+ * @apiSuccess {String} data.item_name 관리항목 이름
+ * @apiSuccess {String} data.item_value 관리항목 내용
+ */
+
+/**
+ * @api {post} /api/admin/systemS systemS
+ * @apiVersion 0.1.0
+ * @apiName AdminSystemS
+ * @apiDescription 가계부 시스템 목록 검색(관리자용)
+ * @apiGroup Admin_System
+ *
+ * @apiExample {curl} Example
+ * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd","item_name":"search value"}' \
+http://localhost:8082/api/admin/systemS
+ *
+ * @apiParam {String} access_token 인증키
+ * @apiParam {String} item_name 관리항목 이름
+ *
+ * @apiSuccess {String} result "success" or "fail"
+ * @apiSuccess {String} err_msg result가 "fail"인 경우
+ * @apiSuccess {Object[]} data system 정보
+ * @apiSuccess {String} data.adminno 관리항목no
+ * @apiSuccess {String} data.item_name 관리항목 이름
+ * @apiSuccess {String} data.item_value 관리항목 내용
+ */
