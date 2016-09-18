@@ -43,6 +43,15 @@ func GroupL(s *mgo.Session, db string, collection string, rep *model.AdminGroupL
 
 	var data []model.Group
 	err := c.Find(bson.M{}).All(&data)
-	rep.Data = data
+
+	rep.Data = make([]model.GroupJ, 0, 0)
+	for _, group := range data {
+		rep.Data = append(rep.Data, model.GroupJ{
+			GroupNo:        group.GroupNo.Hex(),
+			GroupName:      group.GroupName,
+			CreateDateTime: group.CreateDateTime,
+			State:          group.State,
+		})
+	}
 	return err
 }

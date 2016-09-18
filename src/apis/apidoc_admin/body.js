@@ -378,7 +378,7 @@ http://localhost:8082/api/deviceU
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "terminalno":"36"}' \
+-d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "groupno":"36"}' \
 http://localhost:8082/api/admin/groupD
  *
  * @apiParam {String} access_token 인증키

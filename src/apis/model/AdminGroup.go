@@ -13,6 +13,13 @@ type Group struct {
 	State          int           `bson:"state"`           // 상태, 1=ON(사용), 0=OFF(삭제)
 }
 
+type GroupJ struct {
+	GroupNo        string    `json:"groupno"`         // groupno 그룹 no
+	GroupName      string    `json:"group_name"`      // 그룹명
+	CreateDateTime time.Time `json:"create_datetime"` // 등록일시
+	State          int       `json:"state"`           // 상태, 1=ON(사용), 0=OFF(삭제)
+}
+
 type AdminGroupCReq struct {
 	AccessToken string `json:"access_token"`
 	GroupName   string `json:"group_name"`
@@ -29,7 +36,7 @@ type AdminGroupLReq struct {
 }
 
 type AdminGroupLRep struct {
-	ErrorMessage string  `json:"err_msg"`
-	Result       string  `json:"result"`
-	Data         []Group `json:"data"`
+	ErrorMessage string   `json:"err_msg"`
+	Result       string   `json:"result"`
+	Data         []GroupJ `json:"data"`
 }
