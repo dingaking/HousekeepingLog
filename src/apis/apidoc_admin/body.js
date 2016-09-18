@@ -4,7 +4,7 @@
  * @api {post} /api/admin/userC userC
  * @apiVersion 0.1.0
  * @apiName AdminUserC
- * @apiDescription 가계부 사용자 추가(관리자용)
+ * @apiDescription 가계부 사용자 추가
  * @apiGroup Admin_User
  *
  * @apiExample {curl} Example :
@@ -28,7 +28,7 @@ http://localhost:8082/api/admin/userC
  * @api {post} /api/admin/userR userR
  * @apiVersion 0.1.0
  * @apiName AdminUserR
- * @apiDescription 가계부 사용자 조회(관리자용)
+ * @apiDescription 가계부 사용자 조회
  * @apiGroup Admin_User
  *
  * @apiExample {curl} Example : (action=1)
@@ -215,7 +215,7 @@ http://localhost:8082/api/admin/userL
  * @api {post} /api/admin/systemR systemR
  * @apiVersion 0.1.0
  * @apiName AdminSystemR
- * @apiDescription 가계부 시스템 조회(관리자용)
+ * @apiDescription 가계부 시스템 조회
  * @apiGroup Admin_System
  *
  * @apiExample {curl} Example
@@ -241,7 +241,7 @@ http://localhost:8082/api/admin/systemR
  * @api {post} /api/admin/systemU systemU
  * @apiVersion 0.1.0
  * @apiName AdminSystemU
- * @apiDescription 가계부 시스템 갱신(관리자용)
+ * @apiDescription 가계부 시스템 갱신
  * @apiGroup Admin_System
  *
  * @apiExample {curl} Example :
@@ -261,7 +261,7 @@ http://localhost:8082/api/admin/systemU
  * @api {post} /api/admin/systemL systemL
  * @apiVersion 0.1.0
  * @apiName AdminSystemL
- * @apiDescription 가계부 시스템 목록 조회(관리자용)
+ * @apiDescription 가계부 시스템 목록 조회
  * @apiGroup Admin_System
  *
  * @apiExample {curl} Example
@@ -283,7 +283,7 @@ http://localhost:8082/api/admin/systemL
  * @api {post} /api/admin/systemS systemS
  * @apiVersion 0.1.0
  * @apiName AdminSystemS
- * @apiDescription 가계부 시스템 목록 검색(관리자용)
+ * @apiDescription 가계부 시스템 목록 검색
  * @apiGroup Admin_System
  *
  * @apiExample {curl} Example
@@ -306,7 +306,7 @@ http://localhost:8082/api/admin/systemS
  * @api {post} /api/admin/groupC groupC
  * @apiVersion 0.1.0
  * @apiName AdminGroupCreate
- * @apiDescription 그룹 추가(관리자용)
+ * @apiDescription 그룹 추가
  * @apiGroup Admin_Group
  *
  * @apiExample {curl} Example :
@@ -331,7 +331,7 @@ http://localhost:8082/api/admin/groupC
  * @api {post} /api/admin/groupR groupR
  * @apiVersion 0.1.0
  * @apiName AdminGroupRead
- * @apiDescription 그룹 정보 조회(관리자용)
+ * @apiDescription 그룹 정보 조회
  * @apiGroup Admin_Group
  *
  * @apiExample {curl} Example :
@@ -353,7 +353,7 @@ http://localhost:8082/api/admin/groupR
  * @api {post} /api/admin/groupU groupU
  * @apiVersion 0.1.0
  * @apiName AdminGroupUpdate
- * @apiDescription 그룹 정보 갱신(관리자용)
+ * @apiDescription 그룹 정보 갱신
  * @apiGroup Admin_Group
  *
  * @apiExample {curl} Example :
@@ -373,7 +373,7 @@ http://localhost:8082/api/deviceU
  * @api {post} /api/admin/groupD groupD
  * @apiVersion 0.1.0
  * @apiName AdminGroupDelete
- * @apiDescription 그룹 삭제(관리자용)
+ * @apiDescription 그룹 삭제
  * @apiGroup Admin_Group
  *
  * @apiExample {curl} Example :
@@ -393,7 +393,7 @@ http://localhost:8082/api/admin/groupD
  * @api {post} /api/admin/groupL groupL
  * @apiVersion 0.1.0
  * @apiName AdminGroupList
- * @apiDescription 그룹 목록 조회(관리자용)
+ * @apiDescription 그룹 목록 조회
  * @apiGroup Admin_Group
  *
  * @apiExample {curl} Example :
@@ -417,7 +417,7 @@ http://localhost:8082/api/admin/groupL
  * @api {post} /api/admin/groupS groupS
  * @apiVersion 0.1.0
  * @apiName AdminGroupSearch
- * @apiDescription 그룹 목록 검색(관리자용)
+ * @apiDescription 그룹 목록 검색
  * @apiGroup Admin_Group
  *
  * @apiExample {curl} Example :
