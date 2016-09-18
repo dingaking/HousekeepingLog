@@ -10,23 +10,23 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func AuthC(session *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
+func AuthC(s *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
 
-	err := checkDuplicationUserId(session, db, collection, authc)
+	err := checkDuplicationUserId(s, db, collection, authc)
 	if err != nil {
 		return err
 	}
 
-	err = insertUserId(session, db, collection, authc)
+	err = insertUserId(s, db, collection, authc)
 	return err
 }
 
 // insert user document
 // 1. make access token and set value to AuthCReq.AccessToken field
 // 2. insert info to DB
-func insertUserId(session *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
+func insertUserId(s *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
 
-	c := session.DB(db).C(collection)
+	c := s.DB(db).C(collection)
 
 	authc.AccessToken = util.SHA1()
 
@@ -48,9 +48,9 @@ func insertUserId(session *mgo.Session, db string, collection string, authc *mod
 // userid duplication check
 // return nil : success
 // return error : duplicated
-func checkDuplicationUserId(session *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
+func checkDuplicationUserId(s *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
 
-	c := session.DB(db).C(collection)
+	c := s.DB(db).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": authc.UserId}).One(&result)
@@ -59,4 +59,18 @@ func checkDuplicationUserId(session *mgo.Session, db string, collection string, 
 	}
 
 	return nil
+}
+
+func GetUserInfoById(s *mgo.Session, db string, collection string, req *model.AuthRReq) model.User {
+	var result model.User
+	c := s.DB(db).C(collection)
+	c.Find(bson.M{"userid": req.UserId, "password": req.Password}).One(&result)
+	return result
+}
+
+func GetUserInfoByAccessToken(s *mgo.Session, db string, collection string, req *model.AuthRReq) model.User {
+	var result model.User
+	c := s.DB(db).C(collection)
+	c.Find(bson.M{"accesstoken": req.AccessToken}).One(&result)
+	return result
 }

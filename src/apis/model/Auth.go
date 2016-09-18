@@ -11,44 +11,35 @@ import (
 
 // 회원 모델
 type User struct {
-	UserNo         bson.ObjectId `bson:"_id,omitempty"`  // 회원키
-	UserId         string        `json:"userid"`         // userid(email)
-	Password       string        `json:"password"`       // 비밀번호(8~16자리)
-	UserType       int           `json:"usertype"`       // 5:사용자, 9:관리자
-	DisplayName    string        `json:"displayname"`    // 대화명
-	Intro          string        `json:"intro"`          // 자기소개
-	Profile        string        `json:"profile"`        // 프로필 사진
-	CreateDateTime time.Time     `json"create_datetime"` // 가입일시
-	PhoneNumber    string        `json:"phone_number"`   // 전화번호
-	State          int           `json:"state"`          // 회원상태, 1=ON(사용), 0=OFF(탈퇴)
-	Activated      int           `json:"activated"`      // 인증여부, 2=관리자인증, 1=URL인증, 0=OFF(미인증)
-	Public         int           `json:"public"`         // 그룹에 공개여부, 1=공개 0=비공개
-	AccessToken    string        `json:"access_token"`   // 회원접속키
+	UserNo         bson.ObjectId `bson:"_id,omitempty"`   // 회원키
+	UserId         string        `bson:"userid"`          // userid(email)
+	Password       string        `bson:"password"`        // 비밀번호(8~16자리)
+	UserType       int           `bson:"usertype"`        // 5:사용자, 9:관리자
+	DisplayName    string        `bson:"displayname"`     // 대화명
+	Intro          string        `bson:"intro"`           // 자기소개
+	Profile        string        `bson:"profile"`         // 프로필 사진
+	CreateDateTime time.Time     `bson:"create_datetime"` // 가입일시
+	PhoneNumber    string        `bson:"phone_number"`    // 전화번호
+	State          int           `bson:"state"`           // 회원상태, 1=ON(사용), 0=OFF(탈퇴)
+	Activated      int           `bson:"activated"`       // 인증여부, 2=관리자인증, 1=URL인증, 0=OFF(미인증)
+	Public         int           `bson:"public"`          // 그룹에 공개여부, 1=공개 0=비공개
+	AccessToken    string        `bson:"access_token"`    // 회원접속키
 }
 
 // 단말기 모델
 type Terminal struct {
 	TerminalNo     bson.ObjectId `bson:"_id,omitempty"`   // 단말키
-	UserNo         string        `json:"userno"`          // 회원키
-	TokenId        string        `json:"token_id"`        // 접속인증키(서버에서 생성)
-	TerminalId     string        `json:"terminal_id"`     // 터미널ID(단말에서 생성,Web은 null)
-	DeviceType     int           `json:"device_type"`     // 단말기 종류, i:iOS, a:android, w:web
-	DeviceToken    string        `json:"device_token"`    // type이 i,a인 경우의 PUSH 키
-	CreateDateTime time.Time     `json"create_datetime"`  // 단말기 등록일시
-	Notification   int           `json:"notification"`    // PUSH 수신 여부, 1:ON, 0:OFF
-	State          int           `json:"state"`           // 사용여부, 1=ON(사용), 0=OFF(삭제)
-	TerminalName   string        `json:"terminal_name"`   // 단말기 별칭
-	ExpireDateTime time.Time     `json:"expire_datetime"` // token_id 만료일시
-	LastAccess     time.Time     `json:"last_access"`     // 전화번호
-}
-
-// 그룹 모델
-type Group struct {
-	GroupNo        bson.ObjectId `bson:"_id,omitempty"`  // 그룹키
-	UserNo         string        `json:"userno"`         // 회원키
-	GroupName      string        `json:"group_name"`     // 그룹이름
-	CreateDateTime time.Time     `json"create_datetime"` // 단말기 등록일시
-	State          int           `json:"state"`          // 사용여부, 1=ON(사용), 0=OFF(삭제)
+	UserNo         string        `bson:"userno"`          // 회원키
+	TokenId        string        `bson:"token_id"`        // 접속인증키(서버에서 생성)
+	TerminalId     string        `bson:"terminal_id"`     // 터미널ID(단말에서 생성,Web은 null)
+	DeviceType     int           `bson:"device_type"`     // 단말기 종류, i:iOS, a:android, w:web
+	DeviceToken    string        `bson:"device_token"`    // type이 i,a인 경우의 PUSH 키
+	CreateDateTime time.Time     `bson:"create_datetime"` // 단말기 등록일시
+	Notification   int           `bson:"notification"`    // PUSH 수신 여부, 1:ON, 0:OFF
+	State          int           `bson:"state"`           // 사용여부, 1=ON(사용), 0=OFF(삭제)
+	TerminalName   string        `bson:"terminal_name"`   // 단말기 별칭
+	ExpireDateTime time.Time     `bson:"expire_datetime"` // token_id 만료일시
+	LastAccess     time.Time     `bson:"last_access"`     // 전화번호
 }
 
 // 관리자 모델 <---->
@@ -76,9 +67,15 @@ type AuthCRep struct {
 	AccessToken  string `json:"access_token"`
 }
 
-type AuthR struct {
-	ErrorMessage string `json:"err_msg"`
+type AuthRReq struct {
+	UserId      string `json:"userid"`
+	Password    string `json:"password"`
+	Action      string `json:"action"`
+	AccessToken string `json:"access_token"`
+}
+
+type AuthRRep struct {
 	Result       string `json:"result"`
-	UserNo       string `json:"userno"`
-	TokenId      string `json:"token_id"`
+	ErrorMessage string `json:"err_msg"`
+	AccessToken  string `json:"access_token"`
 }

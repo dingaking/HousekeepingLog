@@ -11,9 +11,9 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func AdminUserR(session *mgo.Session, db string, collection string, req *model.AdminUserRReq) (error, string) {
+func AdminUserR(s *mgo.Session, db string, collection string, req *model.AdminUserRReq) (error, string) {
 
-	c := session.DB(db).C(collection)
+	c := s.DB(db).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": req.UserId, "password": req.Password}).One(&result)
@@ -30,8 +30,8 @@ func AdminUserR(session *mgo.Session, db string, collection string, req *model.A
 }
 
 //
-func AdminUserU(session *mgo.Session, db string, collection string, req *model.AdminUserUReq) error {
-	c := session.DB(db).C(collection)
+func AdminUserU(s *mgo.Session, db string, collection string, req *model.AdminUserUReq) error {
+	c := s.DB(db).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&result)
@@ -52,11 +52,11 @@ func AdminUserU(session *mgo.Session, db string, collection string, req *model.A
 }
 
 // add admin account if has no admin user
-func AdminInitFromBoot(session *mgo.Session, db string, collection string) error {
+func AdminInitFromBoot(s *mgo.Session, db string, collection string) error {
 
 	fmt.Println("AdminInitFromBoot")
 
-	c := session.DB(db).C(collection)
+	c := s.DB(db).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": "admin"}).One(&result)

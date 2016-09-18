@@ -4,12 +4,11 @@ import (
 	"apis/checker"
 	"apis/model"
 	"apis/query"
-	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 
 	"labix.org/v2/mgo"
-	"labix.org/v2/mgo/bson"
 )
 
 func AuthC(w http.ResponseWriter, r *http.Request) {
@@ -50,13 +49,13 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 
 func AuthR(w http.ResponseWriter, r *http.Request) {
 
-	var user model.User
-	err := Parse(w, r, user)
+	var req model.AuthRReq
+	err := Parse(w, r, &req)
 	if err != nil {
 		return
 	}
 
-	if err := checker.AuthR(user); err != nil {
+	if err := checker.AuthR(req); err != nil {
 		WriteError(w, err)
 		return
 	}
@@ -69,35 +68,28 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 	defer session.Close()
 	session.SetMode(mgo.Monotonic, true)
 
-	var qryResult model.User
-	c := session.DB("hlog").C("user")
-	c.Find(bson.M{"userid": user.UserId, "password": user.Password}).One(&qryResult)
-
-	if qryResult.UserNo == "" {
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(http.StatusOK)
-		response := model.AuthR{ErrorMessage: "id/pw not match", Result: "fail"}
-		if err := json.NewEncoder(w).Encode(response); err != nil {
-			WriteError(w, err)
+	var result model.User
+	if req.Action == "1" {
+		result = query.GetUserInfoById(session, "hlog", "user", &req)
+		if result.UserNo == "" {
+			WriteError(w, errors.New("id/pw not match"))
 			return
 		}
-		return
+	} else if req.Action == "2" {
+		result = query.GetUserInfoByAccessToken(session, "hlog", "user", &req)
+		if result.UserNo == "" {
+			WriteError(w, errors.New("id/pw not match"))
+			return
+		}
 	}
 
-	/*
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(http.StatusOK)
-		response := model.AuthR{Result: "success"}
-
-			if len(qryResult.TokenList) > 0 {
-				response.TokenId = qryResult.TokenList[0].TokenId
-			}
-			response.UserNo = qryResult.UserNo.Hex()
-
-			if err := json.NewEncoder(w).Encode(response); err != nil {
-				panic(err)
-			}
-	*/
+	response := model.AuthRRep{
+		Result:      "success",
+		AccessToken: result.AccessToken}
+	err = WriteSuccess(w, response)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func AuthU(w http.ResponseWriter, r *http.Request) {

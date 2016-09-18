@@ -29,14 +29,26 @@ func AuthC(user model.AuthCReq) error {
 	return nil
 }
 
-func AuthR(request model.User) error {
+func AuthR(req model.AuthRReq) error {
 
-	if len(request.UserId) <= 0 {
-		return errors.New("UserId not found.")
+	if len(req.Action) <= 0 {
+		return errors.New("Action not found.")
 	}
 
-	if len(request.Password) <= 0 {
-		return errors.New("Password not found.")
+	if req.Action == "1" {
+		if len(req.UserId) <= 0 {
+			return errors.New("UserId not found.")
+		}
+
+		if len(req.Password) <= 0 {
+			return errors.New("Password not found.")
+		}
+	}
+
+	if req.Action == "2" {
+		if len(req.AccessToken) <= 0 {
+			return errors.New("access_token not found.")
+		}
 	}
 
 	return nil
