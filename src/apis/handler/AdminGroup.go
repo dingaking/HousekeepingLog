@@ -28,7 +28,7 @@ func AdminGroupC(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", &req)
+	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -45,6 +45,46 @@ func AdminGroupC(w http.ResponseWriter, r *http.Request) {
 		ErrorMessage: "",
 	}
 	err = WriteSuccess(w, response)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func AdminGroupL(w http.ResponseWriter, r *http.Request) {
+
+	var req model.AdminGroupLReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	if err = checker.AdminGroupL(req); err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
+
+	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	var rep model.AdminGroupLRep
+	err = query.GroupL(session, "hlog", "group", &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
 	if err != nil {
 		panic(err)
 	}

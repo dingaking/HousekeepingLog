@@ -14,3 +14,10 @@ func AdminGroupC(req model.AdminGroupCReq) error {
 	}
 	return nil
 }
+
+func AdminGroupL(req model.AdminGroupLReq) error {
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+	return nil
+}

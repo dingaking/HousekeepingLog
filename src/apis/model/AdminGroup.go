@@ -6,11 +6,6 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-type AdminGroupCReq struct {
-	AccessToken string `json:"access_token"`
-	GroupName   string `json:"group_name"`
-}
-
 type Group struct {
 	GroupNo        bson.ObjectId `bson:"_id,omitempty"`   // groupno 그룹 no
 	GroupName      string        `bson:"group_name"`      // 그룹명
@@ -18,7 +13,23 @@ type Group struct {
 	State          int           `bson:"state"`           // 상태, 1=ON(사용), 0=OFF(삭제)
 }
 
+type AdminGroupCReq struct {
+	AccessToken string `json:"access_token"`
+	GroupName   string `json:"group_name"`
+}
+
 type AdminGroupCRep struct {
 	ErrorMessage string `json:"err_msg"`
 	Result       string `json:"result"`
+}
+
+type AdminGroupLReq struct {
+	AccessToken string `json:"access_token"`
+	GroupName   string `json:"group_name"`
+}
+
+type AdminGroupLRep struct {
+	ErrorMessage string  `json:"err_msg"`
+	Result       string  `json:"result"`
+	Data         []Group `json:"data"`
 }

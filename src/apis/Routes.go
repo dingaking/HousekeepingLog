@@ -23,6 +23,7 @@ var routes = Routes{
 	Route{"AdminUserU", "POST", "/api/admin/userU", handler.AdminUserU},
 
 	Route{"AdminGroupC", "POST", "/api/admin/groupC", handler.AdminGroupC},
+	Route{"AdminGroupL", "POST", "/api/admin/groupL", handler.AdminGroupL},
 
 	Route{"AuthC", "POST", "/api/authC", handler.AuthC},
 	Route{"AuthR", "POST", "/api/authR", handler.AuthR},
