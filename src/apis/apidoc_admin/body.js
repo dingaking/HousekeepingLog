@@ -5,7 +5,7 @@
  * @apiVersion 0.1.0
  * @apiName AdminUserC
  * @apiDescription 가계부 사용자 추가
- * @apiGroup Admin_User
+ * @apiGroup User
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -29,7 +29,7 @@ http://localhost:8082/api/admin/userC
  * @apiVersion 0.1.0
  * @apiName AdminUserR
  * @apiDescription 가계부 사용자 조회
- * @apiGroup Admin_User
+ * @apiGroup User
  *
  * @apiExample {curl} Example : (action=1)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -73,7 +73,7 @@ http://localhost:8082/api/admin/userR
  * @apiVersion 0.1.0
  * @apiName AdminUserU
  * @apiDescription 가계부 관리자 정보 수정
- * @apiGroup Admin_User
+ * @apiGroup User
  *
  * @apiExample {curl} Example : (action=1)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -124,7 +124,7 @@ http://localhost:8082/api/admin/userU
  * @apiVersion 0.1.0
  * @apiName UserDelete
  * @apiDescription 가계부 관리자 회원 삭제
- * @apiGroup Admin_User
+ * @apiGroup User
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -144,7 +144,7 @@ http://localhost:8082/api/admin/userD
  * @apiVersion 0.1.0
  * @apiName AdminUserL
  * @apiDescription 가계부 관리자 회원목록
- * @apiGroup Admin_User
+ * @apiGroup User
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -175,7 +175,7 @@ http://localhost:8082/api/admin/userL
  * @apiVersion 0.1.0
  * @apiName AdminUserS
  * @apiDescription 가계부 관리자 회원 검색
- * @apiGroup Admin_User
+ * @apiGroup User
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -216,7 +216,7 @@ http://localhost:8082/api/admin/userL
  * @apiVersion 0.1.0
  * @apiName AdminSystemR
  * @apiDescription 가계부 시스템 조회
- * @apiGroup Admin_System
+ * @apiGroup System
  *
  * @apiExample {curl} Example
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -242,7 +242,7 @@ http://localhost:8082/api/admin/systemR
  * @apiVersion 0.1.0
  * @apiName AdminSystemU
  * @apiDescription 가계부 시스템 갱신
- * @apiGroup Admin_System
+ * @apiGroup System
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -262,7 +262,7 @@ http://localhost:8082/api/admin/systemU
  * @apiVersion 0.1.0
  * @apiName AdminSystemL
  * @apiDescription 가계부 시스템 목록 조회
- * @apiGroup Admin_System
+ * @apiGroup System
  *
  * @apiExample {curl} Example
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -284,7 +284,7 @@ http://localhost:8082/api/admin/systemL
  * @apiVersion 0.1.0
  * @apiName AdminSystemS
  * @apiDescription 가계부 시스템 목록 검색
- * @apiGroup Admin_System
+ * @apiGroup System
  *
  * @apiExample {curl} Example
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -307,7 +307,7 @@ http://localhost:8082/api/admin/systemS
  * @apiVersion 0.1.0
  * @apiName AdminGroupCreate
  * @apiDescription 그룹 추가
- * @apiGroup Admin_Group
+ * @apiGroup Group
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -332,7 +332,7 @@ http://localhost:8082/api/admin/groupC
  * @apiVersion 0.1.0
  * @apiName AdminGroupRead
  * @apiDescription 그룹 정보 조회
- * @apiGroup Admin_Group
+ * @apiGroup Group
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -354,7 +354,7 @@ http://localhost:8082/api/admin/groupR
  * @apiVersion 0.1.0
  * @apiName AdminGroupUpdate
  * @apiDescription 그룹 정보 갱신
- * @apiGroup Admin_Group
+ * @apiGroup Group
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -374,7 +374,7 @@ http://localhost:8082/api/deviceU
  * @apiVersion 0.1.0
  * @apiName AdminGroupDelete
  * @apiDescription 그룹 삭제
- * @apiGroup Admin_Group
+ * @apiGroup Group
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -394,7 +394,7 @@ http://localhost:8082/api/admin/groupD
  * @apiVersion 0.1.0
  * @apiName AdminGroupList
  * @apiDescription 그룹 목록 조회
- * @apiGroup Admin_Group
+ * @apiGroup Group
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
@@ -418,7 +418,7 @@ http://localhost:8082/api/admin/groupL
  * @apiVersion 0.1.0
  * @apiName AdminGroupSearch
  * @apiDescription 그룹 목록 검색
- * @apiGroup Admin_Group
+ * @apiGroup Group
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
