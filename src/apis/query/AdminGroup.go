@@ -55,3 +55,12 @@ func GroupL(s *mgo.Session, db string, collection string, rep *model.AdminGroupL
 	}
 	return err
 }
+
+func GroupD(s *mgo.Session, db string, collection string, groupno string) error {
+
+	c := s.DB(db).C(collection)
+
+	err := c.Remove(bson.M{"_id": bson.ObjectIdHex(groupno)})
+
+	return err
+}

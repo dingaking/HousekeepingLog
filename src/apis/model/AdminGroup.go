@@ -40,3 +40,13 @@ type AdminGroupLRep struct {
 	Result       string   `json:"result"`
 	Data         []GroupJ `json:"data"`
 }
+
+type AdminGroupDReq struct {
+	AccessToken string `json:"access_token"`
+	GroupNo     string `json:"groupno"` // groupno 그룹 no
+}
+
+type AdminGroupDRep struct {
+	ErrorMessage string `json:"err_msg"`
+	Result       string `json:"result"`
+}
