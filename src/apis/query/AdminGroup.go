@@ -3,7 +3,6 @@ package query
 import (
 	"apis/model"
 	"errors"
-	"fmt"
 	"time"
 
 	"labix.org/v2/mgo"
@@ -69,10 +68,26 @@ func GroupD(s *mgo.Session, db string, collection string, groupno string) error 
 func GroupR(s *mgo.Session, db string, collection string, groupno string) (error, []model.GroupJ) {
 	c := s.DB(db).C(collection)
 
-	fmt.Println(groupno)
-
 	var data []model.Group
 	err := c.Find(bson.M{"_id": bson.ObjectIdHex(groupno)}).All(&data)
+
+	rep_data := make([]model.GroupJ, 0, 0)
+	for _, group := range data {
+		rep_data = append(rep_data, model.GroupJ{
+			GroupNo:        group.GroupNo.Hex(),
+			GroupName:      group.GroupName,
+			CreateDateTime: group.CreateDateTime,
+			State:          group.State,
+		})
+	}
+	return err, rep_data
+}
+
+func GroupS(s *mgo.Session, db string, collection string, group_name string) (error, []model.GroupJ) {
+	c := s.DB(db).C(collection)
+
+	var data []model.Group
+	err := c.Find(bson.M{"group_name": bson.M{"$regex": group_name}}).All(&data)
 
 	rep_data := make([]model.GroupJ, 0, 0)
 	for _, group := range data {
