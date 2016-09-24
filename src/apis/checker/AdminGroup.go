@@ -31,3 +31,13 @@ func AdminGroupD(req model.AdminGroupDReq) error {
 	}
 	return nil
 }
+
+func AdminGroupR(req model.AdminGroupRReq) error {
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+	if len(req.GroupNo) <= 0 {
+		return errors.New("Group Number not found.")
+	}
+	return nil
+}
