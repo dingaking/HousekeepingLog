@@ -3,6 +3,7 @@ package query
 import (
 	"apis/model"
 	"errors"
+	"strconv"
 	"time"
 
 	"labix.org/v2/mgo"
@@ -99,4 +100,33 @@ func GroupS(s *mgo.Session, db string, collection string, group_name string) (er
 		})
 	}
 	return err, rep_data
+}
+
+func GroupU(s *mgo.Session, db string, collection string, req model.AdminGroupUReq) error {
+	c := s.DB(db).C(collection)
+
+	var result model.Group
+	c.Find(bson.M{"_id": bson.ObjectIdHex(req.GroupNo)}).One(&result)
+	if result.GroupNo == "" {
+		return errors.New("invalid groupno.")
+	}
+
+	colQuerier := bson.M{"_id": result.GroupNo}
+	var change bson.M
+	if len(req.State) <= 0 {
+		change = bson.M{"$set": bson.M{"group_name": req.GroupName}}
+	} else if len(req.GroupName) <= 0 {
+		i, _ := strconv.Atoi(req.State)
+		change = bson.M{"$set": bson.M{"state": i}}
+	} else {
+		i, _ := strconv.Atoi(req.State)
+		change = bson.M{"$set": bson.M{"group_name": req.GroupName, "state": i}}
+	}
+
+	err := c.Update(colQuerier, change)
+	if err != nil {
+		return errors.New("update err")
+	}
+
+	return nil
 }

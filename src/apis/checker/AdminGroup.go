@@ -3,6 +3,7 @@ package checker
 import (
 	"apis/model"
 	"errors"
+	"strconv"
 )
 
 func AdminGroupC(req model.AdminGroupCReq) error {
@@ -48,6 +49,28 @@ func AdminGroupS(req model.AdminGroupSReq) error {
 	}
 	if len(req.GroupName) <= 0 {
 		return errors.New("Group Name not found.")
+	}
+	return nil
+}
+
+func AdminGroupU(req model.AdminGroupUReq) error {
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+	if len(req.GroupNo) <= 0 {
+		return errors.New("Group Name not found.")
+	}
+	if len(req.State) <= 0 && len(req.GroupName) <= 0 {
+		return errors.New("Has no update field.")
+	}
+	if len(req.State) > 0 {
+		i, err := strconv.Atoi(req.State)
+		if err != nil {
+			return errors.New("state value is invalid.")
+		}
+		if i != 0 && i != 1 {
+			return errors.New("state value is invalid.")
+		}
 	}
 	return nil
 }

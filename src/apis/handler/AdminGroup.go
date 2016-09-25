@@ -220,3 +220,46 @@ func AdminGroupS(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+
+func AdminGroupU(w http.ResponseWriter, r *http.Request) {
+
+	var req model.AdminGroupUReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	if err = checker.AdminGroupU(req); err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
+
+	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = query.GroupU(session, "hlog", "group", req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	rep := model.AdminGroupURep{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
+}

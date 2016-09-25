@@ -358,12 +358,13 @@ http://localhost:8082/api/admin/groupR
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "group_name":"gname", "state":"1"}' \
-http://localhost:8082/api/deviceU
+-d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "groupno":"57e643b5aaaf21f8dcb103b2", "state":"1"}' \
+http://localhost:8082/api/admin/groupU
  *
  * @apiParam {String} access_token 인증키
- * @apiParam {String} [group_name] 그룹명
+ * @apiParam {String} groupno 그룹no
  * @apiParam {String} [state] 1:ON(사용),0:OFF(삭제)
+ * @apiParam {String} [group_name] 그룸명
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지
