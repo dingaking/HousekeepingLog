@@ -111,7 +111,7 @@ func GroupU(s *mgo.Session, db string, collection string, req model.AdminGroupUR
 		return errors.New("invalid groupno.")
 	}
 
-	colQuerier := bson.M{"_id": result.GroupNo}
+	target := bson.M{"_id": result.GroupNo}
 	var change bson.M
 	if len(req.State) <= 0 {
 		change = bson.M{"$set": bson.M{"group_name": req.GroupName}}
@@ -123,7 +123,7 @@ func GroupU(s *mgo.Session, db string, collection string, req model.AdminGroupUR
 		change = bson.M{"$set": bson.M{"group_name": req.GroupName, "state": i}}
 	}
 
-	err := c.Update(colQuerier, change)
+	err := c.Update(target, change)
 	if err != nil {
 		return errors.New("update err")
 	}

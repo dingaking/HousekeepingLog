@@ -88,18 +88,3 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
-
-func AdminInitFromBoot() {
-
-	session, err := query.GetConnect()
-	if err != nil {
-		panic(err)
-	}
-
-	defer session.Close()
-
-	err = query.AdminInitFromBoot(session, "hlog", "user")
-	if err != nil {
-		panic(err)
-	}
-}
