@@ -220,15 +220,15 @@ http://localhost:8082/api/admin/userL
  *
  * @apiExample {curl} Example
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+-d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f","adminno":"57e78edbaaaf21f8dcb105a7"}' \
 http://localhost:8082/api/admin/systemR
  *
  * @apiParam {String} access_token 인증키
+ * @apiParam {String} adminno 관리항목no
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우
- * @apiSuccess {Object[]} data system 정보
- * @apiSuccess {String} data.adminno 관리항목no
+ * @apiSuccess {Object} data system 정보
  * @apiSuccess {String} data.smtp_url SMTP 서버
  * @apiSuccess {String} data.smtp_port SMTP 포트
  * @apiSuccess {String} data.smtp_id SMTP 아이디

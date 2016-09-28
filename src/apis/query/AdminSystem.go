@@ -25,3 +25,18 @@ func SystemL(s *mgo.Session, db string, collection string, rep *model.AdminSyste
 
 	return err
 }
+
+func SystemR(s *mgo.Session, db string, collection string, adminno string, rep *model.AdminSystemRRep) error {
+	c := s.DB(db).C(collection)
+
+	var data model.AdminItem
+	err := c.Find(bson.M{"_id": bson.ObjectIdHex(adminno)}).One(&data)
+
+	rep.Data = model.AdminItemJ{
+		ItemKey:   data.ItemKey,
+		ItemValue: data.ItemValue,
+		ItemDesc:  data.ItemDesc,
+	}
+
+	return err
+}
