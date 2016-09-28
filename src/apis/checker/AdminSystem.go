@@ -24,3 +24,15 @@ func AdminSystemR(req model.AdminSystemRReq) error {
 	}
 	return nil
 }
+
+func AdminSystemS(req model.AdminSystemSReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+
+	if len(req.Search) <= 0 {
+		return errors.New("search valuenot found.")
+	}
+	return nil
+}

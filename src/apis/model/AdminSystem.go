@@ -37,3 +37,14 @@ type AdminSystemRRep struct {
 	Result       string     `json:"result"`
 	Data         AdminItemJ `json:"data"`
 }
+
+type AdminSystemSReq struct {
+	AccessToken string `json:"access_token"`
+	Search      string `bson:"search"` // 관리항목 설명
+}
+
+type AdminSystemSRep struct {
+	ErrorMessage string       `json:"err_msg"`
+	Result       string       `json:"result"`
+	Data         []AdminItemJ `json:"data"`
+}

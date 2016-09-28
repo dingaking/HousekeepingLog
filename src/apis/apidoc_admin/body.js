@@ -289,11 +289,11 @@ http://localhost:8082/api/admin/systemL
  *
  * @apiExample {curl} Example
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd","item_name":"search value"}' \
+-d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f","search":"system"}' \
 http://localhost:8082/api/admin/systemS
  *
  * @apiParam {String} access_token 인증키
- * @apiParam {String} item_name 관리항목 이름
+ * @apiParam {String} search 검색어
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우

@@ -92,3 +92,46 @@ func AdminSystemR(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+
+func AdminSystemS(w http.ResponseWriter, r *http.Request) {
+
+	var req model.AdminSystemSReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	if err = checker.AdminSystemS(req); err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
+
+	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	rep := model.AdminSystemSRep{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.SystemS(session, "hlog", "admin", req.Search, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
+}
