@@ -496,3 +496,5 @@ src/apis/apidoc_user/output/vendor/prettify/lang-yaml.js
 src/apis/apidoc_user/output/vendor/prettify/prettify.css
 src/apis/apidoc_user/output/vendor/prettify/prettify.js
 src/apis/apidoc_user/output/vendor/prettify/run_prettify.js
+!src/mgoExample/
+mgo
