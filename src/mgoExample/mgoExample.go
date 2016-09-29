@@ -30,8 +30,29 @@ func main() {
 	sample_insert()
 	sample_select_one()
 	sample_select_all()
+	sample_search()
 	sample_update()
 	sample_delete()
+}
+
+func sample_search() {
+
+	session, err := mgo.Dial("localhost")
+	if err != nil {
+		panic(err)
+	}
+	defer session.Close()
+
+	// Collection People
+	c := session.DB("test").C("people")
+
+	// search
+	var results []Person
+	err = c.Find(bson.M{"name": bson.M{"$regex": "le"}}).Sort("-timestamp").All(&results)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Results All: ", results)
 }
 
 func sample_delete() {
