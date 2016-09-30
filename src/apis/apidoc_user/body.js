@@ -734,7 +734,7 @@ http://localhost:8082/api/itemS
  * @apiVersion 0.1.0
  * @apiName SystemRead
  * @apiDescription 시스템 정보 조회
- * @apiGroup Device
+ * @apiGroup System
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \

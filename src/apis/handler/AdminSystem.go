@@ -135,3 +135,6 @@ func AdminSystemS(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+
+func AdminSystemU(w http.ResponseWriter, r *http.Request) {
+}

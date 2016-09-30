@@ -15,6 +15,8 @@ type Route struct {
 type Routes []Route
 
 var routes = Routes{
+
+	// 관리자 API
 	Route{"AdminWeb", "GET", "/admin/", handler.StaticHandler},
 	Route{"AdminWeb", "GET", "/admin/index.html", handler.StaticHandler},
 	Route{"AdminWeb", "GET", "/admin/admin.js", handler.StaticHandler},
@@ -32,7 +34,16 @@ var routes = Routes{
 	Route{"AdminSystemL", "POST", "/api/admin/systemL", handler.AdminSystemL},
 	Route{"AdminSystemR", "POST", "/api/admin/systemR", handler.AdminSystemR},
 	Route{"AdminSystemS", "POST", "/api/admin/systemS", handler.AdminSystemS},
+	Route{"AdminSystemU", "POST", "/api/admin/systemU", handler.AdminSystemU},
 
+	Route{"AdminUserC", "POST", "/api/admin/userC", handler.AdminUserC},
+	Route{"AdminUserL", "POST", "/api/admin/userL", handler.AdminUserL},
+	Route{"AdminUserD", "POST", "/api/admin/userD", handler.AdminUserD},
+	Route{"AdminUserR", "POST", "/api/admin/userR", handler.AdminUserR},
+	Route{"AdminUserS", "POST", "/api/admin/userS", handler.AdminUserS},
+	Route{"AdminUserU", "POST", "/api/admin/userU", handler.AdminUserU},
+
+	// 사용자 API
 	Route{"AuthC", "POST", "/api/authC", handler.AuthC},
 	Route{"AuthR", "POST", "/api/authR", handler.AuthR},
 	Route{"AuthU", "POST", "/api/authU", handler.AuthU},
@@ -66,4 +77,8 @@ var routes = Routes{
 	Route{"ItemS", "POST", "/api/itemS", handler.ItemS},
 
 	Route{"SystemR", "POST", "/api/systemR", handler.SystemR},
+
+	Route{"OrganizationL", "POST", "/api/organizationL", handler.OrganizationL},
+	Route{"OrganizationR", "POST", "/api/organizationR", handler.OrganizationR},
+	Route{"OrganizationS", "POST", "/api/organizationS", handler.OrganizationS},
 }

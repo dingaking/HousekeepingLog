@@ -88,3 +88,15 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+
+func AdminUserC(w http.ResponseWriter, r *http.Request) {
+}
+
+func AdminUserL(w http.ResponseWriter, r *http.Request) {
+}
+
+func AdminUserD(w http.ResponseWriter, r *http.Request) {
+}
+
+func AdminUserS(w http.ResponseWriter, r *http.Request) {
+}
