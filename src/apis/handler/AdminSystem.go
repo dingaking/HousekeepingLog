@@ -4,6 +4,7 @@ import (
 	"apis/checker"
 	"apis/model"
 	"apis/query"
+	"errors"
 	"net/http"
 )
 
@@ -137,6 +138,9 @@ func AdminSystemS(w http.ResponseWriter, r *http.Request) {
 }
 
 func AdminSystemU(w http.ResponseWriter, r *http.Request) {
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 
 	var req model.AdminSystemSReq
 	err := Parse(w, r, &req)

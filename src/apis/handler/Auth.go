@@ -5,7 +5,6 @@ import (
 	"apis/model"
 	"apis/query"
 	"errors"
-	"fmt"
 	"net/http"
 
 	"labix.org/v2/mgo"
@@ -93,9 +92,13 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 }
 
 func AuthU(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AuthU")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func AuthD(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AuthD")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }

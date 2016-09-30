@@ -4,7 +4,7 @@ import (
 	"apis/checker"
 	"apis/model"
 	"encoding/json"
-	"fmt"
+	"errors"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -90,21 +90,31 @@ func CapitalC(w http.ResponseWriter, r *http.Request) {
 }
 
 func CapitalR(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CapitalR")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CapitalU(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CapitalU")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CapitalD(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CapitalD")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CapitalL(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CapitalL")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CapitalS(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CapitalS")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }

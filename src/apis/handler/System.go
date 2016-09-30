@@ -1,10 +1,12 @@
 package handler
 
 import (
-	"fmt"
+	"errors"
 	"net/http"
 )
 
 func SystemR(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("SystemR")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }

@@ -1,26 +1,36 @@
 package handler
 
 import (
-	"fmt"
+	"errors"
 	"net/http"
 )
 
 func DeviceR(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("DeviceR")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func DeviceU(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("DeviceU")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func DeviceD(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("DeviceD")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func DeviceL(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("DeviceL")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func DeviceS(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("DeviceS")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }

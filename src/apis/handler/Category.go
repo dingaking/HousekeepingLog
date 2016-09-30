@@ -1,30 +1,42 @@
 package handler
 
 import (
-	"fmt"
+	"errors"
 	"net/http"
 )
 
 func CategoryC(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CategoryC")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CategoryR(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CategoryR")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CategoryU(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CategoryU")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CategoryD(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CategoryD")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CategoryL(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CategoryL")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func CategoryS(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CategoryS")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }

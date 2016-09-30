@@ -4,7 +4,7 @@ import (
 	"apis/checker"
 	"apis/model"
 	"apis/query"
-	"fmt"
+	"errors"
 	"net/http"
 )
 
@@ -91,17 +91,25 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 }
 
 func AdminUserC(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AdminUserC")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func AdminUserL(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AdminUserL")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func AdminUserD(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AdminUserD")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func AdminUserS(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AdminUserS")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }

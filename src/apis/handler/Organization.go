@@ -1,18 +1,24 @@
 package handler
 
 import (
-	"fmt"
+	"errors"
 	"net/http"
 )
 
 func OrganizationR(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("OrganizationR")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func OrganizationL(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("OrganizationL")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func OrganizationS(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("OrganizationS")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }

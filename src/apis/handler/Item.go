@@ -1,30 +1,42 @@
 package handler
 
 import (
-	"fmt"
+	"errors"
 	"net/http"
 )
 
 func ItemC(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("ItemC")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func ItemR(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("ItemR")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func ItemU(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("ItemU")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func ItemD(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("ItemD")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func ItemL(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("ItemL")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
 
 func ItemS(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("ItemS")
+
+	WriteError(w, errors.New("Not Implemented"))
+	return
 }
