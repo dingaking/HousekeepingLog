@@ -94,22 +94,50 @@ func AdminUserC(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.AdminUserCReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func AdminUserL(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.AdminUserCReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func AdminUserD(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.AdminUserCReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func AdminUserS(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.AdminUserCReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
