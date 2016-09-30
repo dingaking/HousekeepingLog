@@ -48,3 +48,15 @@ type AdminSystemSRep struct {
 	Result       string       `json:"result"`
 	Data         []AdminItemJ `json:"data"`
 }
+
+type AdminSystemUReq struct {
+	AccessToken string `json:"access_token"`
+	ItemKey     string `json:"item_key"`   // 관리항목 키
+	ItemValue   string `json:"item_value"` // 관리항목 값
+	ItemDesc    string `json:"item_desc"`  // 관리항목 설명
+}
+
+type AdminSystemURep struct {
+	ErrorMessage string `json:"err_msg"`
+	Result       string `json:"result"`
+}

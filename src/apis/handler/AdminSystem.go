@@ -137,4 +137,11 @@ func AdminSystemS(w http.ResponseWriter, r *http.Request) {
 }
 
 func AdminSystemU(w http.ResponseWriter, r *http.Request) {
+
+	var req model.AdminSystemSReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }

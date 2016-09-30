@@ -251,7 +251,8 @@ http://localhost:8082/api/admin/systemU
  *
  * @apiParam {String} access_token 인증키
  * @apiParam {String} adminno 관리항목no
- * @apiParam {String} admin_value 관리항목value
+ * @apiParam {String} admin_value 관리항목 value
+ * @apiParam {String} [admin_desc] 관리항목 설명
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지

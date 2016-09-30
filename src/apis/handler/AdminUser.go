@@ -4,6 +4,7 @@ import (
 	"apis/checker"
 	"apis/model"
 	"apis/query"
+	"fmt"
 	"net/http"
 )
 
@@ -90,13 +91,17 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 }
 
 func AdminUserC(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("AdminUserC")
 }
 
 func AdminUserL(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("AdminUserL")
 }
 
 func AdminUserD(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("AdminUserD")
 }
 
 func AdminUserS(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("AdminUserS")
 }
