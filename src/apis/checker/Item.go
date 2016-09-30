@@ -5,7 +5,7 @@ import (
 	"errors"
 )
 
-func AdminSystemL(req model.AdminSystemLReq) error {
+func ItemC(req model.ItemCReq) error {
 
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
@@ -13,35 +13,42 @@ func AdminSystemL(req model.AdminSystemLReq) error {
 	return nil
 }
 
-func AdminSystemR(req model.AdminSystemRReq) error {
+func ItemR(req model.ItemRReq) error {
 
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
-	}
-
-	if len(req.AdminNo) <= 0 {
-		return errors.New("AdminNo not found.")
 	}
 	return nil
 }
 
-func AdminSystemS(req model.AdminSystemSReq) error {
+func ItemU(req model.ItemUReq) error {
 
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
-	}
-
-	if len(req.Search) <= 0 {
-		return errors.New("search valuenot found.")
 	}
 	return nil
 }
 
-func AdminSystemU(req model.AdminSystemUReq) error {
+func ItemD(req model.ItemDReq) error {
 
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
 	}
+	return nil
+}
 
+func ItemL(req model.ItemLReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+	return nil
+}
+
+func ItemS(req model.ItemSReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
 	return nil
 }

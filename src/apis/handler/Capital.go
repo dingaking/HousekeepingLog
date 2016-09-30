@@ -69,6 +69,11 @@ func CapitalR(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	if err = checker.CapitalR(req); err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func CapitalU(w http.ResponseWriter, r *http.Request) {
@@ -79,6 +84,11 @@ func CapitalU(w http.ResponseWriter, r *http.Request) {
 	var req model.CapitalUReq
 	err := Parse(w, r, &req)
 	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	if err = checker.CapitalU(req); err != nil {
 		WriteError(w, err)
 		return
 	}
@@ -95,6 +105,11 @@ func CapitalD(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	if err = checker.CapitalD(req); err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func CapitalL(w http.ResponseWriter, r *http.Request) {
@@ -108,6 +123,11 @@ func CapitalL(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	if err = checker.CapitalL(req); err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func CapitalS(w http.ResponseWriter, r *http.Request) {
@@ -118,6 +138,11 @@ func CapitalS(w http.ResponseWriter, r *http.Request) {
 	var req model.CapitalSReq
 	err := Parse(w, r, &req)
 	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	if err = checker.CapitalS(req); err != nil {
 		WriteError(w, err)
 		return
 	}

@@ -5,7 +5,7 @@ import (
 	"errors"
 )
 
-func AdminSystemL(req model.AdminSystemLReq) error {
+func DeviceC(req model.DeviceCReq) error {
 
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
@@ -13,35 +13,42 @@ func AdminSystemL(req model.AdminSystemLReq) error {
 	return nil
 }
 
-func AdminSystemR(req model.AdminSystemRReq) error {
+func DeviceR(req model.DeviceRReq) error {
 
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
-	}
-
-	if len(req.AdminNo) <= 0 {
-		return errors.New("AdminNo not found.")
 	}
 	return nil
 }
 
-func AdminSystemS(req model.AdminSystemSReq) error {
+func DeviceU(req model.DeviceUReq) error {
 
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
-	}
-
-	if len(req.Search) <= 0 {
-		return errors.New("search valuenot found.")
 	}
 	return nil
 }
 
-func AdminSystemU(req model.AdminSystemUReq) error {
+func DeviceD(req model.DeviceDReq) error {
 
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
 	}
+	return nil
+}
 
+func DeviceL(req model.DeviceLReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+	return nil
+}
+
+func DeviceS(req model.DeviceSReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
 	return nil
 }

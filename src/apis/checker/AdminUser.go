@@ -34,3 +34,39 @@ func AdminUserU(req model.AdminUserUReq) error {
 	}
 	return nil
 }
+
+func AdminUserC(req model.AdminUserCReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+
+	return nil
+}
+
+func AdminUserL(req model.AdminUserLReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+
+	return nil
+}
+
+func AdminUserD(req model.AdminUserDReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+
+	return nil
+}
+
+func AdminUserS(req model.AdminUserSReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+
+	return nil
+}

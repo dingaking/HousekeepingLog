@@ -102,6 +102,11 @@ func AuthU(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	if err = checker.AuthU(req); err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func AuthD(w http.ResponseWriter, r *http.Request) {
@@ -109,9 +114,14 @@ func AuthD(w http.ResponseWriter, r *http.Request) {
 	WriteError(w, errors.New("Not Implemented"))
 	return
 
-	var req model.AuthUReq
+	var req model.AuthDReq
 	err := Parse(w, r, &req)
 	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	if err = checker.AuthD(req); err != nil {
 		WriteError(w, err)
 		return
 	}

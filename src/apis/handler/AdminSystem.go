@@ -142,9 +142,14 @@ func AdminSystemU(w http.ResponseWriter, r *http.Request) {
 	WriteError(w, errors.New("Not Implemented"))
 	return
 
-	var req model.AdminSystemSReq
+	var req model.AdminSystemUReq
 	err := Parse(w, r, &req)
 	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	if err = checker.AdminSystemU(req); err != nil {
 		WriteError(w, err)
 		return
 	}

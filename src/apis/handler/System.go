@@ -17,4 +17,9 @@ func SystemR(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	if err = checker.SystemR(req); err != nil {
+		WriteError(w, err)
+		return
+	}
 }

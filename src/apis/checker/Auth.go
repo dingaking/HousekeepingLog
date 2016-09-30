@@ -63,3 +63,21 @@ func validatePassword(password string) bool {
 	Re := regexp.MustCompile("^[a-zA-Z0-9~!@#$%^&*()-=]*$")
 	return Re.MatchString(password)
 }
+
+func AuthU(req model.AuthUReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+
+	return nil
+}
+
+func AuthD(req model.AuthDReq) error {
+
+	if len(req.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
+	}
+
+	return nil
+}
