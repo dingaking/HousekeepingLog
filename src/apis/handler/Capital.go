@@ -62,28 +62,63 @@ func CapitalR(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.CapitalRReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func CapitalU(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.CapitalUReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func CapitalD(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.CapitalDReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func CapitalL(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.CapitalLReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func CapitalS(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.CapitalSReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }

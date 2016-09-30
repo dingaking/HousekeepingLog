@@ -95,10 +95,24 @@ func AuthU(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.AuthUReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }
 
 func AuthD(w http.ResponseWriter, r *http.Request) {
 
 	WriteError(w, errors.New("Not Implemented"))
 	return
+
+	var req model.AuthUReq
+	err := Parse(w, r, &req)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 }

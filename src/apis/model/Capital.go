@@ -19,3 +19,57 @@ type CapitalC struct {
 	ErrorMessage string `json:"err_msg"`
 	Result       string `json:"result"`
 }
+
+type CapitalCReq struct {
+	AccessToken string `json:"access_token"`
+}
+
+type CapitalCRep struct {
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+}
+
+type CapitalRReq struct {
+	AccessToken string `json:"access_token"`
+}
+
+type CapitalRRep struct {
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+}
+
+type CapitalUReq struct {
+	AccessToken string `json:"access_token"`
+}
+
+type CapitalURep struct {
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+}
+
+type CapitalDReq struct {
+	AccessToken string `json:"access_token"`
+}
+
+type CapitalDRep struct {
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+}
+
+type CapitalLReq struct {
+	AccessToken string `json:"access_token"`
+}
+
+type CapitalLRep struct {
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+}
+
+type CapitalSReq struct {
+	AccessToken string `json:"access_token"`
+}
+
+type CapitalSRep struct {
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+}
