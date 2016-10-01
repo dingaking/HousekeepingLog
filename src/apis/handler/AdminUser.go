@@ -29,7 +29,7 @@ func AdminUserU(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.AdminUserU(session, "hlog", "user", &req)
+	err = query.AdminUserU(session, "user", &req)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -65,7 +65,7 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err, msg := query.AdminUserR(session, "hlog", "user", &req)
+	err, msg := query.AdminUserR(session, "user", &req)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -124,7 +124,7 @@ func AdminUserC(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminUserC(session, "hlog", req, &rep)
+	err = query.AdminUserC(session, req, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -170,7 +170,7 @@ func AdminUserL(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminUserL(session, "hlog", req, &rep)
+	err = query.AdminUserL(session, req, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -216,7 +216,7 @@ func AdminUserD(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminUserD(session, "hlog", req, &rep)
+	err = query.AdminUserD(session, req, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -262,7 +262,7 @@ func AdminUserS(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminUserS(session, "hlog", req, &rep)
+	err = query.AdminUserS(session, req, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return

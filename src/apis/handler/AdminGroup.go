@@ -34,7 +34,7 @@ func AdminGroupC(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = query.InsertGroup(session, "hlog", "group", &req)
+	err = query.InsertGroup(session, &req)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -78,7 +78,7 @@ func AdminGroupL(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var rep model.AdminGroupLRep
-	err = query.GroupL(session, "hlog", "group", &rep)
+	err = query.GroupL(session, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -117,7 +117,7 @@ func AdminGroupD(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = query.GroupD(session, "hlog", "group", req.GroupNo)
+	err = query.GroupD(session, req.GroupNo)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -160,7 +160,7 @@ func AdminGroupR(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err, rep_data := query.GroupR(session, "hlog", "group", req.GroupNo)
+	err, rep_data := query.GroupR(session, req.GroupNo)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -204,7 +204,7 @@ func AdminGroupS(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err, rep_data := query.GroupS(session, "hlog", "group", req.GroupName)
+	err, rep_data := query.GroupS(session, req.GroupName)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -248,7 +248,7 @@ func AdminGroupU(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = query.GroupU(session, "hlog", "group", req)
+	err = query.GroupU(session, req)
 	if err != nil {
 		WriteError(w, err)
 		return

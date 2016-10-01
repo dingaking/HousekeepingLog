@@ -9,9 +9,9 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func AdminUserR(s *mgo.Session, db string, collection string, req *model.AdminUserRReq) (error, string) {
+func AdminUserR(s *mgo.Session, collection string, req *model.AdminUserRReq) (error, string) {
 
-	c := s.DB(db).C(collection)
+	c := s.DB(DatabaseName).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": req.UserId, "password": req.Password}).One(&result)
@@ -28,8 +28,8 @@ func AdminUserR(s *mgo.Session, db string, collection string, req *model.AdminUs
 }
 
 //
-func AdminUserU(s *mgo.Session, db string, collection string, req *model.AdminUserUReq) error {
-	c := s.DB(db).C(collection)
+func AdminUserU(s *mgo.Session, collection string, req *model.AdminUserUReq) error {
+	c := s.DB(DatabaseName).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&result)
@@ -49,22 +49,22 @@ func AdminUserU(s *mgo.Session, db string, collection string, req *model.AdminUs
 	return nil
 }
 
-func AdminUserC(s *mgo.Session, db string, req model.AdminUserCReq, rep *model.AdminUserCRes) error {
+func AdminUserC(s *mgo.Session, req model.AdminUserCReq, rep *model.AdminUserCRes) error {
 
 	return nil
 }
 
-func AdminUserL(s *mgo.Session, db string, req model.AdminUserLReq, rep *model.AdminUserLRes) error {
+func AdminUserL(s *mgo.Session, req model.AdminUserLReq, rep *model.AdminUserLRes) error {
 
 	return nil
 }
 
-func AdminUserD(s *mgo.Session, db string, req model.AdminUserDReq, rep *model.AdminUserDRes) error {
+func AdminUserD(s *mgo.Session, req model.AdminUserDReq, rep *model.AdminUserDRes) error {
 
 	return nil
 }
 
-func AdminUserS(s *mgo.Session, db string, req model.AdminUserSReq, rep *model.AdminUserSRes) error {
+func AdminUserS(s *mgo.Session, req model.AdminUserSReq, rep *model.AdminUserSRes) error {
 
 	return nil
 }

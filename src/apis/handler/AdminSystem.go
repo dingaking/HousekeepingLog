@@ -39,7 +39,7 @@ func AdminSystemL(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminSystemL(session, "hlog", "admin", &rep)
+	err = query.AdminSystemL(session, "admin", &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -82,7 +82,7 @@ func AdminSystemR(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminSystemR(session, "hlog", "admin", req.AdminNo, &rep)
+	err = query.AdminSystemR(session, "admin", req.AdminNo, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -125,7 +125,7 @@ func AdminSystemS(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminSystemS(session, "hlog", "admin", req.Search, &rep)
+	err = query.AdminSystemS(session, "admin", req.Search, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -171,7 +171,7 @@ func AdminSystemU(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminSystemU(session, "hlog", req, &rep)
+	err = query.AdminSystemU(session, req, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return

@@ -29,7 +29,7 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.AuthC(session, "hlog", "user", &authc)
+	err = query.AuthC(session, "user", &authc)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -66,13 +66,13 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 
 	var result model.User
 	if req.Action == "1" {
-		result = query.GetUserInfoById(session, "hlog", "user", &req)
+		result = query.GetUserInfoById(session, "user", &req)
 		if result.UserNo == "" {
 			WriteError(w, errors.New("id/pw not match"))
 			return
 		}
 	} else if req.Action == "2" {
-		result = query.GetUserInfoByAccessToken(session, "hlog", "user", &req)
+		result = query.GetUserInfoByAccessToken(session, "user", &req)
 		if result.UserNo == "" {
 			WriteError(w, errors.New("id/pw not match"))
 			return
@@ -116,7 +116,7 @@ func AuthU(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AuthU(session, "hlog", req, &rep)
+	err = query.AuthU(session, req, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -156,7 +156,7 @@ func AuthD(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AuthD(session, "hlog", req, &rep)
+	err = query.AuthD(session, req, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return

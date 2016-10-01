@@ -10,8 +10,9 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func InsertGroup(s *mgo.Session, db string, collection string, req *model.AdminGroupCReq) error {
-	c := s.DB(db).C(collection)
+func InsertGroup(s *mgo.Session, req *model.AdminGroupCReq) error {
+	
+	c := s.DB(DatabaseName).C(CollGroup)
 
 	var insert = model.Group{
 		GroupName:      req.GroupName,
@@ -23,8 +24,8 @@ func InsertGroup(s *mgo.Session, db string, collection string, req *model.AdminG
 	return err
 }
 
-func GroupL(s *mgo.Session, db string, collection string, rep *model.AdminGroupLRep) error {
-	c := s.DB(db).C(collection)
+func GroupL(s *mgo.Session, rep *model.AdminGroupLRep) error {
+	c := s.DB(DatabaseName).C(CollGroup)
 
 	var data []model.Group
 	err := c.Find(bson.M{}).All(&data)
@@ -41,17 +42,17 @@ func GroupL(s *mgo.Session, db string, collection string, rep *model.AdminGroupL
 	return err
 }
 
-func GroupD(s *mgo.Session, db string, collection string, groupno string) error {
+func GroupD(s *mgo.Session, groupno string) error {
 
-	c := s.DB(db).C(collection)
+	c := s.DB(DatabaseName).C(CollGroup)
 
 	err := c.Remove(bson.M{"_id": bson.ObjectIdHex(groupno)})
 
 	return err
 }
 
-func GroupR(s *mgo.Session, db string, collection string, groupno string) (error, []model.GroupJ) {
-	c := s.DB(db).C(collection)
+func GroupR(s *mgo.Session, groupno string) (error, []model.GroupJ) {
+	c := s.DB(DatabaseName).C(CollGroup)
 
 	var data []model.Group
 	err := c.Find(bson.M{"_id": bson.ObjectIdHex(groupno)}).All(&data)
@@ -68,8 +69,8 @@ func GroupR(s *mgo.Session, db string, collection string, groupno string) (error
 	return err, rep_data
 }
 
-func GroupS(s *mgo.Session, db string, collection string, group_name string) (error, []model.GroupJ) {
-	c := s.DB(db).C(collection)
+func GroupS(s *mgo.Session, group_name string) (error, []model.GroupJ) {
+	c := s.DB(DatabaseName).C(CollGroup)
 
 	var data []model.Group
 	err := c.Find(bson.M{"group_name": bson.M{"$regex": group_name}}).All(&data)
@@ -86,8 +87,8 @@ func GroupS(s *mgo.Session, db string, collection string, group_name string) (er
 	return err, rep_data
 }
 
-func GroupU(s *mgo.Session, db string, collection string, req model.AdminGroupUReq) error {
-	c := s.DB(db).C(collection)
+func GroupU(s *mgo.Session, req model.AdminGroupUReq) error {
+	c := s.DB(DatabaseName).C(CollGroup)
 
 	var result model.Group
 	c.Find(bson.M{"_id": bson.ObjectIdHex(req.GroupNo)}).One(&result)

@@ -10,23 +10,23 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func AuthC(s *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
+func AuthC(s *mgo.Session, collection string, authc *model.AuthCReq) error {
 
-	err := checkDuplicationUserId(s, db, collection, authc)
+	err := checkDuplicationUserId(s, collection, authc)
 	if err != nil {
 		return err
 	}
 
-	err = insertUserId(s, db, collection, authc)
+	err = insertUserId(s, collection, authc)
 	return err
 }
 
 // insert user document
 // 1. make access token and set value to AuthCReq.AccessToken field
 // 2. insert info to DB
-func insertUserId(s *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
+func insertUserId(s *mgo.Session, collection string, authc *model.AuthCReq) error {
 
-	c := s.DB(db).C(collection)
+	c := s.DB(DatabaseName).C(collection)
 
 	authc.AccessToken = util.SHA1()
 
@@ -48,9 +48,9 @@ func insertUserId(s *mgo.Session, db string, collection string, authc *model.Aut
 // userid duplication check
 // return nil : success
 // return error : duplicated
-func checkDuplicationUserId(s *mgo.Session, db string, collection string, authc *model.AuthCReq) error {
+func checkDuplicationUserId(s *mgo.Session, collection string, authc *model.AuthCReq) error {
 
-	c := s.DB(db).C(collection)
+	c := s.DB(DatabaseName).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": authc.UserId}).One(&result)
@@ -61,26 +61,26 @@ func checkDuplicationUserId(s *mgo.Session, db string, collection string, authc 
 	return nil
 }
 
-func GetUserInfoById(s *mgo.Session, db string, collection string, req *model.AuthRReq) model.User {
+func GetUserInfoById(s *mgo.Session, collection string, req *model.AuthRReq) model.User {
 	var result model.User
-	c := s.DB(db).C(collection)
+	c := s.DB(DatabaseName).C(collection)
 	c.Find(bson.M{"userid": req.UserId, "password": req.Password}).One(&result)
 	return result
 }
 
-func GetUserInfoByAccessToken(s *mgo.Session, db string, collection string, req *model.AuthRReq) model.User {
+func GetUserInfoByAccessToken(s *mgo.Session, collection string, req *model.AuthRReq) model.User {
 	var result model.User
-	c := s.DB(db).C(collection)
+	c := s.DB(DatabaseName).C(collection)
 	c.Find(bson.M{"accesstoken": req.AccessToken}).One(&result)
 	return result
 }
 
-func AuthU(s *mgo.Session, db string, req model.AuthUReq, rep *model.AuthURes) error {
+func AuthU(s *mgo.Session, req model.AuthUReq, rep *model.AuthURes) error {
 
 	return nil
 }
 
-func AuthD(s *mgo.Session, db string, req model.AuthDReq, rep *model.AuthDRes) error {
+func AuthD(s *mgo.Session, req model.AuthDReq, rep *model.AuthDRes) error {
 
 	return nil
 }

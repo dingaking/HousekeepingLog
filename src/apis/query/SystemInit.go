@@ -11,13 +11,13 @@ import (
 )
 
 // add admin account if has no admin user
-func AdminInitOnBoot(s *mgo.Session, db string, collection string) error {
+func AdminInitOnBoot(s *mgo.Session, collection string) error {
 
 	fmt.Println("/////////////////////////////////////////////////")
 	fmt.Println("AdminInitFromBoot")
 	fmt.Println("/////////////////////////////////////////////////")
 
-	c := s.DB(db).C(collection)
+	c := s.DB(DatabaseName).C(collection)
 
 	var result model.User
 	c.Find(bson.M{"userid": "admin"}).One(&result)
@@ -40,9 +40,9 @@ func AdminInitOnBoot(s *mgo.Session, db string, collection string) error {
 }
 
 // add system configuration field if needed on boot.
-func AdminSystemConfigurationOnBoot(s *mgo.Session, db string, collection string) error {
+func AdminSystemConfigurationOnBoot(s *mgo.Session, collection string) error {
 
-	c := s.DB(db).C(collection)
+	c := s.DB(DatabaseName).C(collection)
 
 	var result []model.AdminItem
 	c.Find(bson.M{}).All(&result)
