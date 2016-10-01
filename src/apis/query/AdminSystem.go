@@ -7,8 +7,9 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func AdminSystemL(s *mgo.Session, collection string, rep *model.AdminSystemLRep) error {
-	c := s.DB(DatabaseName).C(collection)
+func AdminSystemL(s *mgo.Session, rep *model.AdminSystemLRep) error {
+
+	c := s.DB(DatabaseName).C(CollAdmin)
 
 	var data []model.AdminItem
 	err := c.Find(bson.M{}).All(&data)
@@ -26,8 +27,8 @@ func AdminSystemL(s *mgo.Session, collection string, rep *model.AdminSystemLRep)
 	return err
 }
 
-func AdminSystemR(s *mgo.Session, collection string, adminno string, rep *model.AdminSystemRRep) error {
-	c := s.DB(DatabaseName).C(collection)
+func AdminSystemR(s *mgo.Session, adminno string, rep *model.AdminSystemRRep) error {
+	c := s.DB(DatabaseName).C(CollAdmin)
 
 	var data model.AdminItem
 	err := c.Find(bson.M{"_id": bson.ObjectIdHex(adminno)}).One(&data)
@@ -41,8 +42,8 @@ func AdminSystemR(s *mgo.Session, collection string, adminno string, rep *model.
 	return err
 }
 
-func AdminSystemS(s *mgo.Session, collection string, search string, rep *model.AdminSystemSRep) error {
-	c := s.DB(DatabaseName).C(collection)
+func AdminSystemS(s *mgo.Session, search string, rep *model.AdminSystemSRep) error {
+	c := s.DB(DatabaseName).C(CollAdmin)
 
 	var data []model.AdminItem
 	err := c.Find(bson.M{"item_desc": bson.M{"$regex": search}}).All(&data)

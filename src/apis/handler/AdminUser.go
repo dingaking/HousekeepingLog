@@ -29,7 +29,7 @@ func AdminUserU(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.AdminUserU(session, "user", &req)
+	err = query.AdminUserU(session, &req)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -65,7 +65,7 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err, msg := query.AdminUserR(session, "user", &req)
+	err, msg := query.AdminUserR(session, &req)
 	if err != nil {
 		WriteError(w, err)
 		return

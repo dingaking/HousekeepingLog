@@ -29,7 +29,7 @@ func AuthC(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.AuthC(session, "user", &authc)
+	err = query.AuthC(session, &authc)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -66,13 +66,13 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 
 	var result model.User
 	if req.Action == "1" {
-		result = query.GetUserInfoById(session, "user", &req)
+		result = query.GetUserInfoById(session, &req)
 		if result.UserNo == "" {
 			WriteError(w, errors.New("id/pw not match"))
 			return
 		}
 	} else if req.Action == "2" {
-		result = query.GetUserInfoByAccessToken(session, "user", &req)
+		result = query.GetUserInfoByAccessToken(session, &req)
 		if result.UserNo == "" {
 			WriteError(w, errors.New("id/pw not match"))
 			return

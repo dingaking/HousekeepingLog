@@ -21,7 +21,7 @@ func initAdminUserIfNeeded() {
 	if err != nil {
 		panic(err)
 	}
-	query.AdminInitOnBoot(session, "user")
+	query.AdminInitOnBoot(session)
 }
 
 // 시스템 설정
@@ -30,5 +30,5 @@ func initSystemConfiguration() {
 	if err != nil {
 		panic(err)
 	}
-	query.AdminSystemConfigurationOnBoot(session, "admin")
+	query.AdminSystemConfigurationOnBoot(session)
 }

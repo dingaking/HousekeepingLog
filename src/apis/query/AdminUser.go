@@ -9,9 +9,9 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func AdminUserR(s *mgo.Session, collection string, req *model.AdminUserRReq) (error, string) {
+func AdminUserR(s *mgo.Session, req *model.AdminUserRReq) (error, string) {
 
-	c := s.DB(DatabaseName).C(collection)
+	c := s.DB(DatabaseName).C(CollUser)
 
 	var result model.User
 	c.Find(bson.M{"userid": req.UserId, "password": req.Password}).One(&result)
@@ -28,8 +28,8 @@ func AdminUserR(s *mgo.Session, collection string, req *model.AdminUserRReq) (er
 }
 
 //
-func AdminUserU(s *mgo.Session, collection string, req *model.AdminUserUReq) error {
-	c := s.DB(DatabaseName).C(collection)
+func AdminUserU(s *mgo.Session, req *model.AdminUserUReq) error {
+	c := s.DB(DatabaseName).C(CollUser)
 
 	var result model.User
 	c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&result)
