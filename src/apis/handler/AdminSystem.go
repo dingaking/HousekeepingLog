@@ -29,7 +29,7 @@ func AdminSystemL(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -72,7 +72,7 @@ func AdminSystemR(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -115,7 +115,7 @@ func AdminSystemS(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -161,7 +161,7 @@ func AdminSystemU(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return

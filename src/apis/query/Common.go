@@ -4,6 +4,8 @@ import "labix.org/v2/mgo"
 
 var DatabaseServer = "localhost"
 
+var DatabaseName = "hlog"
+
 var CollUser = "user"
 var CollTerminal = "terminal"
 var CollGroup = "group"

@@ -8,8 +8,9 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func CheckPermission(s *mgo.Session, db string, collection string, access_token string) error {
-	c := s.DB(db).C(collection)
+func CheckPermission(s *mgo.Session, access_token string) error {
+
+	c := s.DB(DatabaseName).C(CollUser)
 
 	var result model.User
 	c.Find(bson.M{"access_token": access_token}).One(&result)

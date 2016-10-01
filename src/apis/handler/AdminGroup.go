@@ -28,7 +28,7 @@ func AdminGroupC(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -71,7 +71,7 @@ func AdminGroupL(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -111,7 +111,7 @@ func AdminGroupD(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -154,7 +154,7 @@ func AdminGroupR(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -198,7 +198,7 @@ func AdminGroupS(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -242,7 +242,7 @@ func AdminGroupU(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return

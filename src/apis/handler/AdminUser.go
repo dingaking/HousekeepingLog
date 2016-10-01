@@ -114,7 +114,7 @@ func AdminUserC(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -160,7 +160,7 @@ func AdminUserL(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -206,7 +206,7 @@ func AdminUserD(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
@@ -252,7 +252,7 @@ func AdminUserS(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err = query.CheckPermission(session, "hlog", "user", req.AccessToken)
+	err = query.CheckPermission(session, req.AccessToken)
 	if err != nil {
 		WriteError(w, err)
 		return
