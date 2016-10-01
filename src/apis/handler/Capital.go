@@ -3,13 +3,13 @@ package handler
 import (
 	"apis/checker"
 	"apis/model"
+	"apis/query"
 	"encoding/json"
 	"errors"
 	"io"
 	"io/ioutil"
 	"net/http"
 
-	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
 )
 
@@ -45,12 +45,12 @@ func CapitalC(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	session, err := mgo.Dial("localhost")
+	session, err := query.GetConnect()
 	if err != nil {
-		panic(err)
+		WriteError(w, err)
+		return
 	}
 	defer session.Close()
-	session.SetMode(mgo.Monotonic, true)
 
 	var qryResult model.User
 	c := session.DB("hlog").C("user")
@@ -74,6 +74,13 @@ func CapitalR(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func CapitalU(w http.ResponseWriter, r *http.Request) {
@@ -92,6 +99,13 @@ func CapitalU(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func CapitalD(w http.ResponseWriter, r *http.Request) {
@@ -110,6 +124,13 @@ func CapitalD(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func CapitalL(w http.ResponseWriter, r *http.Request) {
@@ -128,6 +149,13 @@ func CapitalL(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func CapitalS(w http.ResponseWriter, r *http.Request) {
@@ -146,4 +174,11 @@ func CapitalS(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }

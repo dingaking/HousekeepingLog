@@ -3,6 +3,7 @@ package handler
 import (
 	"apis/checker"
 	"apis/model"
+	"apis/query"
 	"errors"
 	"net/http"
 )
@@ -23,6 +24,13 @@ func DeviceC(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func DeviceR(w http.ResponseWriter, r *http.Request) {
@@ -41,6 +49,13 @@ func DeviceR(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func DeviceU(w http.ResponseWriter, r *http.Request) {
@@ -59,6 +74,13 @@ func DeviceU(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func DeviceD(w http.ResponseWriter, r *http.Request) {
@@ -77,6 +99,13 @@ func DeviceD(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func DeviceL(w http.ResponseWriter, r *http.Request) {
@@ -95,6 +124,13 @@ func DeviceL(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func DeviceS(w http.ResponseWriter, r *http.Request) {
@@ -113,4 +149,11 @@ func DeviceS(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }

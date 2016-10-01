@@ -3,6 +3,7 @@ package handler
 import (
 	"apis/checker"
 	"apis/model"
+	"apis/query"
 	"errors"
 	"net/http"
 )
@@ -23,6 +24,13 @@ func OrganizationR(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func OrganizationL(w http.ResponseWriter, r *http.Request) {
@@ -41,6 +49,13 @@ func OrganizationL(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func OrganizationS(w http.ResponseWriter, r *http.Request) {
@@ -59,4 +74,11 @@ func OrganizationS(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }

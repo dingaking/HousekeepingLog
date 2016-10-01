@@ -3,6 +3,7 @@ package handler
 import (
 	"apis/checker"
 	"apis/model"
+	"apis/query"
 	"errors"
 	"net/http"
 )
@@ -23,6 +24,13 @@ func ItemC(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func ItemR(w http.ResponseWriter, r *http.Request) {
@@ -41,6 +49,13 @@ func ItemR(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func ItemU(w http.ResponseWriter, r *http.Request) {
@@ -59,6 +74,13 @@ func ItemU(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func ItemD(w http.ResponseWriter, r *http.Request) {
@@ -77,6 +99,13 @@ func ItemD(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func ItemL(w http.ResponseWriter, r *http.Request) {
@@ -95,6 +124,13 @@ func ItemL(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func ItemS(w http.ResponseWriter, r *http.Request) {
@@ -113,4 +149,11 @@ func ItemS(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }

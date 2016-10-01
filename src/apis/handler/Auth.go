@@ -6,8 +6,6 @@ import (
 	"apis/query"
 	"errors"
 	"net/http"
-
-	"labix.org/v2/mgo"
 )
 
 func AuthC(w http.ResponseWriter, r *http.Request) {
@@ -59,13 +57,12 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	session, err := mgo.Dial("localhost")
+	session, err := query.GetConnect()
 	if err != nil {
 		WriteError(w, err)
 		return
 	}
 	defer session.Close()
-	session.SetMode(mgo.Monotonic, true)
 
 	var result model.User
 	if req.Action == "1" {
@@ -107,6 +104,13 @@ func AuthU(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
 
 func AuthD(w http.ResponseWriter, r *http.Request) {
@@ -125,4 +129,11 @@ func AuthD(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
 }
