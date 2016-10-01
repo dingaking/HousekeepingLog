@@ -25,6 +25,7 @@ func InsertGroup(s *mgo.Session, req *model.AdminGroupCReq) error {
 }
 
 func GroupL(s *mgo.Session, rep *model.AdminGroupLRep) error {
+
 	c := s.DB(DatabaseName).C(CollGroup)
 
 	var data []model.Group

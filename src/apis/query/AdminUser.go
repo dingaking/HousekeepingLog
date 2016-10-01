@@ -63,7 +63,29 @@ func AdminUserC(s *mgo.Session, req model.AdminUserCReq, rep *model.AdminUserCRe
 
 func AdminUserL(s *mgo.Session, req model.AdminUserLReq, rep *model.AdminUserLRes) error {
 
-	return nil
+	c := s.DB(DatabaseName).C(CollUser)
+
+	var data []model.User
+	err := c.Find(bson.M{}).All(&data)
+
+	rep.Data = make([]model.UserJ, 0, 0)
+	for _, user := range data {
+		rep.Data = append(rep.Data, model.UserJ{
+			UserNo:         user.UserNo.Hex(),
+			UserId:         user.UserId,
+			UserType:       user.UserType,
+			DisplayName:    user.DisplayName,
+			Intro:          user.Intro,
+			Profile:        user.Profile,
+			CreateDateTime: user.CreateDateTime,
+			PhoneNumber:    user.PhoneNumber,
+			State:          user.State,
+			Activated:      user.Activated,
+			Public:         user.Public,
+		})
+	}
+
+	return err
 }
 
 func AdminUserD(s *mgo.Session, req model.AdminUserDReq, rep *model.AdminUserDRes) error {

@@ -42,8 +42,9 @@ type AdminUserLReq struct {
 }
 
 type AdminUserLRes struct {
-	Result       string `json:"result"`
-	ErrorMessage string `json:"err_msg"`
+	Result       string  `json:"result"`
+	ErrorMessage string  `json:"err_msg"`
+	Data         []UserJ `json:"data"`
 }
 
 type AdminUserDReq struct {

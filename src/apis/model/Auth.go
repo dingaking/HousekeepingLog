@@ -26,6 +26,21 @@ type User struct {
 	AccessToken    string        `bson:"access_token"`    // 회원접속키
 }
 
+type UserJ struct {
+	UserNo         string    `json:"userno"`          // 회원키
+	UserId         string    `json:"userid"`          // userid(email)
+	UserType       int       `json:"usertype"`        // 5:사용자, 9:관리자
+	DisplayName    string    `json:"displayname"`     // 대화명
+	Intro          string    `json:"intro"`           // 자기소개
+	Profile        string    `json:"profile"`         // 프로필 사진
+	CreateDateTime time.Time `json:"create_datetime"` // 가입일시
+	PhoneNumber    string    `json:"phone_number"`    // 전화번호
+	State          int       `json:"state"`           // 회원상태, 1=ON(사용), 0=OFF(탈퇴)
+	Activated      int       `json:"activated"`       // 인증여부, 2=관리자인증, 1=URL인증, 0=OFF(미인증)
+	Public         int       `json:"public"`          // 그룹에 공개여부, 1=공개 0=비공개
+	AccessToken    string    `json:"access_token"`    // 회원접속키
+}
+
 // 단말기 모델
 type Terminal struct {
 	TerminalNo     bson.ObjectId `bson:"_id,omitempty"`   // 단말키
