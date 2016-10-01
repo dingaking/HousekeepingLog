@@ -246,13 +246,20 @@ http://localhost:8082/api/admin/systemR
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "adminno":"36", "adminvalue":"admin@test.com"}' \
-http://localhost:8082/api/admin/systemU
+ -d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f",
+ "adminno":"57e78edbaaaf21f8dcb105a7", "item_value":"admin@test.com"}' \
+ http://localhost:8082/api/admin/systemU
+ *
+ * @apiExample {curl} Example : update desc
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+ -d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "adminno":"57e78edbaaaf21f8dcb105a7", 
+ "item_value":"admin222@test.com", "item_desc": "인증 이메일 발송자 계정(email id)"}' \
+ http://localhost:8082/api/admin/systemU
  *
  * @apiParam {String} access_token 인증키
  * @apiParam {String} adminno 관리항목no
- * @apiParam {String} admin_value 관리항목 value
- * @apiParam {String} [admin_desc] 관리항목 설명
+ * @apiParam {String} item_value 관리항목 value
+ * @apiParam {String} [item_desc] 관리항목 설명
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우 에러 메시지

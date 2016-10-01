@@ -4,7 +4,6 @@ import (
 	"apis/checker"
 	"apis/model"
 	"apis/query"
-	"errors"
 	"net/http"
 )
 
@@ -35,7 +34,7 @@ func AdminSystemL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	rep := model.AdminSystemLRep{
+	rep := model.AdminSystemLRes{
 		Result:       "success",
 		ErrorMessage: "",
 	}
@@ -78,7 +77,7 @@ func AdminSystemR(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	rep := model.AdminSystemRRep{
+	rep := model.AdminSystemRRes{
 		Result:       "success",
 		ErrorMessage: "",
 	}
@@ -121,7 +120,7 @@ func AdminSystemS(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	rep := model.AdminSystemSRep{
+	rep := model.AdminSystemSRes{
 		Result:       "success",
 		ErrorMessage: "",
 	}
@@ -138,9 +137,6 @@ func AdminSystemS(w http.ResponseWriter, r *http.Request) {
 }
 
 func AdminSystemU(w http.ResponseWriter, r *http.Request) {
-
-	WriteError(w, errors.New("Not Implemented"))
-	return
 
 	var req model.AdminSystemUReq
 	err := Parse(w, r, &req)
@@ -167,7 +163,7 @@ func AdminSystemU(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	rep := model.AdminSystemSRep{
+	rep := model.AdminSystemURes{
 		Result:       "success",
 		ErrorMessage: "",
 	}

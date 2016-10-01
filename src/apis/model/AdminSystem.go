@@ -21,7 +21,7 @@ type AdminSystemLReq struct {
 	Page        string `json:"page"`
 }
 
-type AdminSystemLRep struct {
+type AdminSystemLRes struct {
 	ErrorMessage string       `json:"err_msg"`
 	Result       string       `json:"result"`
 	Data         []AdminItemJ `json:"data"`
@@ -32,7 +32,7 @@ type AdminSystemRReq struct {
 	AdminNo     string `json:"adminno"` // 관리항목 no
 }
 
-type AdminSystemRRep struct {
+type AdminSystemRRes struct {
 	ErrorMessage string     `json:"err_msg"`
 	Result       string     `json:"result"`
 	Data         AdminItemJ `json:"data"`
@@ -43,7 +43,7 @@ type AdminSystemSReq struct {
 	Search      string `bson:"search"` // 관리항목 설명
 }
 
-type AdminSystemSRep struct {
+type AdminSystemSRes struct {
 	ErrorMessage string       `json:"err_msg"`
 	Result       string       `json:"result"`
 	Data         []AdminItemJ `json:"data"`
@@ -51,12 +51,13 @@ type AdminSystemSRep struct {
 
 type AdminSystemUReq struct {
 	AccessToken string `json:"access_token"`
+	AdminNo     string `json:"adminno"`
 	ItemKey     string `json:"item_key"`   // 관리항목 키
 	ItemValue   string `json:"item_value"` // 관리항목 값
 	ItemDesc    string `json:"item_desc"`  // 관리항목 설명
 }
 
-type AdminSystemURep struct {
+type AdminSystemURes struct {
 	ErrorMessage string `json:"err_msg"`
 	Result       string `json:"result"`
 }

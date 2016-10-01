@@ -2,12 +2,13 @@ package query
 
 import (
 	"apis/model"
+	"errors"
 
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
 )
 
-func AdminSystemL(s *mgo.Session, rep *model.AdminSystemLRep) error {
+func AdminSystemL(s *mgo.Session, rep *model.AdminSystemLRes) error {
 
 	c := s.DB(DatabaseName).C(CollAdmin)
 
@@ -27,7 +28,7 @@ func AdminSystemL(s *mgo.Session, rep *model.AdminSystemLRep) error {
 	return err
 }
 
-func AdminSystemR(s *mgo.Session, adminno string, rep *model.AdminSystemRRep) error {
+func AdminSystemR(s *mgo.Session, adminno string, rep *model.AdminSystemRRes) error {
 	c := s.DB(DatabaseName).C(CollAdmin)
 
 	var data model.AdminItem
@@ -42,7 +43,8 @@ func AdminSystemR(s *mgo.Session, adminno string, rep *model.AdminSystemRRep) er
 	return err
 }
 
-func AdminSystemS(s *mgo.Session, search string, rep *model.AdminSystemSRep) error {
+func AdminSystemS(s *mgo.Session, search string, rep *model.AdminSystemSRes) error {
+
 	c := s.DB(DatabaseName).C(CollAdmin)
 
 	var data []model.AdminItem
@@ -61,7 +63,22 @@ func AdminSystemS(s *mgo.Session, search string, rep *model.AdminSystemSRep) err
 	return err
 }
 
-func AdminSystemU(s *mgo.Session, req model.AdminSystemUReq, rep *model.AdminSystemSRep) error {
+func AdminSystemU(s *mgo.Session, req model.AdminSystemUReq, rep *model.AdminSystemURes) error {
 
-	return nil
+	c := s.DB(DatabaseName).C(CollAdmin)
+
+	var data model.AdminItem
+	err := c.Find(bson.M{"_id": bson.ObjectIdHex(req.AdminNo)}).One(&data)
+	if len(data.ItemKey) <= 0 {
+		return errors.New("key not found error.")
+	}
+
+	target := bson.M{"_id": bson.ObjectIdHex(req.AdminNo)}
+	change := bson.M{"$set": bson.M{"item_value": req.ItemValue}}
+	if len(req.ItemDesc) > 0 {
+		change = bson.M{"$set": bson.M{"item_value": req.ItemValue, "item_desc": req.ItemDesc}}
+	}
+	err = c.Update(target, change)
+
+	return err
 }
