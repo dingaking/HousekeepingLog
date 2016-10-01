@@ -59,3 +59,8 @@ func SystemS(s *mgo.Session, db string, collection string, search string, rep *m
 
 	return err
 }
+
+func SystemU(s *mgo.Session, db string, req model.AdminSystemUReq, rep *model.AdminSystemSRep) error {
+
+	return nil
+}

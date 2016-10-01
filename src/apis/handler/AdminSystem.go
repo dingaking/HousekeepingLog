@@ -166,4 +166,19 @@ func AdminSystemU(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	rep := model.AdminSystemSRep{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.SystemU(session, "hlog", req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
