@@ -4,6 +4,7 @@ import (
 	"apis/model"
 	"apis/util"
 	"errors"
+	"time"
 
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
@@ -51,7 +52,13 @@ func AdminUserU(s *mgo.Session, req *model.AdminUserUReq) error {
 
 func AdminUserC(s *mgo.Session, req model.AdminUserCReq, rep *model.AdminUserCRes) error {
 
-	return nil
+	err := checkDuplicationUserIdFromAdmin(s, req)
+	if err != nil {
+		return err
+	}
+
+	err = insertUserIdFromAdmin(s, req)
+	return err
 }
 
 func AdminUserL(s *mgo.Session, req model.AdminUserLReq, rep *model.AdminUserLRes) error {
@@ -67,4 +74,44 @@ func AdminUserD(s *mgo.Session, req model.AdminUserDReq, rep *model.AdminUserDRe
 func AdminUserS(s *mgo.Session, req model.AdminUserSReq, rep *model.AdminUserSRes) error {
 
 	return nil
+}
+
+// userid duplication check
+// return nil : success
+// return error : duplicated
+func checkDuplicationUserIdFromAdmin(s *mgo.Session, req model.AdminUserCReq) error {
+
+	c := s.DB(DatabaseName).C(CollUser)
+
+	var result model.User
+	c.Find(bson.M{"userid": req.UserId}).One(&result)
+	if result.UserNo != "" {
+		return errors.New("duplicated userid error.")
+	}
+
+	return nil
+}
+
+// insert user document
+// 1. make access token and set value to AccessToken field
+// 2. insert info to DB
+func insertUserIdFromAdmin(s *mgo.Session, req model.AdminUserCReq) error {
+
+	c := s.DB(DatabaseName).C(CollUser)
+
+	req.AccessToken = util.SHA1()
+
+	var insert = model.User{
+		UserId:         req.UserId,
+		Password:       req.Password,
+		UserType:       5,
+		CreateDateTime: time.Now(),
+		State:          1,
+		Activated:      0,
+		Public:         0,
+		AccessToken:    req.AccessToken,
+	}
+
+	err := c.Insert(&insert)
+	return err
 }

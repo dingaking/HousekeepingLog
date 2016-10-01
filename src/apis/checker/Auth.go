@@ -3,7 +3,6 @@ package checker
 import (
 	"apis/model"
 	"errors"
-	"fmt"
 	"regexp"
 )
 
@@ -14,8 +13,7 @@ func AuthC(user model.AuthCReq) error {
 	}
 
 	if !validateEmail(user.UserId) {
-		fmt.Println("adfadfadfadsf")
-		return errors.New("invalid email address.")
+		return errors.New("invalid userid(email) address.")
 	}
 
 	if len(user.Password) <= 0 {

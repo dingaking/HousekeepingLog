@@ -41,6 +41,22 @@ func AdminUserC(req model.AdminUserCReq) error {
 		return errors.New("AccessToken not found.")
 	}
 
+	if len(req.UserId) <= 0 {
+		return errors.New("UserId not found.")
+	}
+
+	if !validateEmail(req.UserId) {
+		return errors.New("invalid userid(email) address.")
+	}
+
+	if len(req.Password) <= 0 {
+		return errors.New("Password not found.")
+	}
+
+	if !validatePassword(req.Password) {
+		return errors.New("invalid password.")
+	}
+
 	return nil
 }
 

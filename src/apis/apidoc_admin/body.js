@@ -9,8 +9,9 @@
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"userid":"admin@aaa.com", "password":"admin"}' \
-http://localhost:8082/api/admin/userC
+ -d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f",
+ "userid":"admin@aaa.com", "password":"admin"}' \
+ http://localhost:8082/api/admin/userC
  *
  * @apiParam {String} userid userid
  * @apiParam {String} password 비밀번호

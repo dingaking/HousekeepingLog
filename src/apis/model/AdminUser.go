@@ -27,6 +27,8 @@ type AdminUserURes struct {
 }
 
 type AdminUserCReq struct {
+	UserId      string `json:"userid"`
+	Password    string `json:"password"`
 	AccessToken string `json:"access_token"`
 }
 
