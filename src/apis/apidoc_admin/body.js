@@ -149,7 +149,7 @@ http://localhost:8082/api/admin/userD
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"1", "access_token":"access_token_value"}' \
+-d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f"}' \
 http://localhost:8082/api/admin/userL
  *
  * @apiParam {String} access_token 인증키
