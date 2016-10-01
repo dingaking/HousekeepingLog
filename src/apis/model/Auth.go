@@ -84,7 +84,7 @@ type AuthUReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type AuthURep struct {
+type AuthURes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -93,7 +93,7 @@ type AuthDReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type AuthDRep struct {
+type AuthDRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }

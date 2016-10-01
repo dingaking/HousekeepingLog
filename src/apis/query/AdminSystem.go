@@ -7,7 +7,7 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func SystemL(s *mgo.Session, db string, collection string, rep *model.AdminSystemLRep) error {
+func AdminSystemL(s *mgo.Session, db string, collection string, rep *model.AdminSystemLRep) error {
 	c := s.DB(db).C(collection)
 
 	var data []model.AdminItem
@@ -26,7 +26,7 @@ func SystemL(s *mgo.Session, db string, collection string, rep *model.AdminSyste
 	return err
 }
 
-func SystemR(s *mgo.Session, db string, collection string, adminno string, rep *model.AdminSystemRRep) error {
+func AdminSystemR(s *mgo.Session, db string, collection string, adminno string, rep *model.AdminSystemRRep) error {
 	c := s.DB(db).C(collection)
 
 	var data model.AdminItem
@@ -41,7 +41,7 @@ func SystemR(s *mgo.Session, db string, collection string, adminno string, rep *
 	return err
 }
 
-func SystemS(s *mgo.Session, db string, collection string, search string, rep *model.AdminSystemSRep) error {
+func AdminSystemS(s *mgo.Session, db string, collection string, search string, rep *model.AdminSystemSRep) error {
 	c := s.DB(db).C(collection)
 
 	var data []model.AdminItem
@@ -60,7 +60,7 @@ func SystemS(s *mgo.Session, db string, collection string, search string, rep *m
 	return err
 }
 
-func SystemU(s *mgo.Session, db string, req model.AdminSystemUReq, rep *model.AdminSystemSRep) error {
+func AdminSystemU(s *mgo.Session, db string, req model.AdminSystemUReq, rep *model.AdminSystemSRep) error {
 
 	return nil
 }

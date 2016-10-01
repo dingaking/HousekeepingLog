@@ -119,6 +119,21 @@ func AdminUserC(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	rep := model.AdminUserCRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.AdminUserC(session, "hlog", req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func AdminUserL(w http.ResponseWriter, r *http.Request) {
@@ -149,6 +164,21 @@ func AdminUserL(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		WriteError(w, err)
 		return
+	}
+
+	rep := model.AdminUserLRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.AdminUserL(session, "hlog", req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
 	}
 }
 
@@ -181,6 +211,21 @@ func AdminUserD(w http.ResponseWriter, r *http.Request) {
 		WriteError(w, err)
 		return
 	}
+
+	rep := model.AdminUserDRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.AdminUserD(session, "hlog", req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func AdminUserS(w http.ResponseWriter, r *http.Request) {
@@ -211,5 +256,20 @@ func AdminUserS(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		WriteError(w, err)
 		return
+	}
+
+	rep := model.AdminUserSRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.AdminUserS(session, "hlog", req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
 	}
 }

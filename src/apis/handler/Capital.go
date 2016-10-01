@@ -4,13 +4,8 @@ import (
 	"apis/checker"
 	"apis/model"
 	"apis/query"
-	"encoding/json"
 	"errors"
-	"io"
-	"io/ioutil"
 	"net/http"
-
-	"labix.org/v2/mgo/bson"
 )
 
 func CapitalC(w http.ResponseWriter, r *http.Request) {
@@ -18,30 +13,15 @@ func CapitalC(w http.ResponseWriter, r *http.Request) {
 	WriteError(w, errors.New("Not Implemented"))
 	return
 
-	var capital model.Capital
-	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	var req model.CapitalCReq
+	err := Parse(w, r, &req)
 	if err != nil {
-		panic(err)
-	}
-	if err := r.Body.Close(); err != nil {
-		panic(err)
-	}
-	if err := json.Unmarshal(body, &capital); err != nil {
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(422)
-		if err := json.NewEncoder(w).Encode(err); err != nil {
-			panic(err)
-		}
+		WriteError(w, err)
 		return
 	}
 
-	if chkResult := checker.CapitalC(capital); chkResult != "" {
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(http.StatusOK)
-		response := model.CapitalC{ErrorMessage: chkResult, Result: "fail"}
-		if err := json.NewEncoder(w).Encode(response); err != nil {
-			panic(err)
-		}
+	if err = checker.CapitalC(req); err != nil {
+		WriteError(w, err)
 		return
 	}
 
@@ -52,10 +32,20 @@ func CapitalC(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	var qryResult model.User
-	c := session.DB("hlog").C("user")
-	c.Find(bson.M{"_id": bson.ObjectIdHex(capital.UserNo)}).One(&qryResult)
+	rep := model.CapitalCRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.CapitalC(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
 
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func CapitalR(w http.ResponseWriter, r *http.Request) {
@@ -81,6 +71,21 @@ func CapitalR(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.CapitalRRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.CapitalR(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func CapitalU(w http.ResponseWriter, r *http.Request) {
@@ -106,6 +111,21 @@ func CapitalU(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.CapitalURes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.CapitalU(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func CapitalD(w http.ResponseWriter, r *http.Request) {
@@ -131,6 +151,21 @@ func CapitalD(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.CapitalDRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.CapitalD(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func CapitalL(w http.ResponseWriter, r *http.Request) {
@@ -156,6 +191,21 @@ func CapitalL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.CapitalLRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.CapitalL(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func CapitalS(w http.ResponseWriter, r *http.Request) {
@@ -181,4 +231,19 @@ func CapitalS(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.CapitalSRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.CapitalS(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }

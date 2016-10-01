@@ -4,7 +4,7 @@ type DeviceCReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type DeviceCRep struct {
+type DeviceCRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -13,7 +13,7 @@ type DeviceRReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type DeviceRRep struct {
+type DeviceRRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -22,7 +22,7 @@ type DeviceUReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type DeviceURep struct {
+type DeviceURes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -31,7 +31,7 @@ type DeviceDReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type DeviceDRep struct {
+type DeviceDRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -40,7 +40,7 @@ type DeviceLReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type DeviceLRep struct {
+type DeviceLRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -49,7 +49,7 @@ type DeviceSReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type DeviceSRep struct {
+type DeviceSRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }

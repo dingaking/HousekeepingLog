@@ -24,7 +24,7 @@ type CapitalCReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CapitalCRep struct {
+type CapitalCRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -33,7 +33,7 @@ type CapitalRReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CapitalRRep struct {
+type CapitalRRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -42,7 +42,7 @@ type CapitalUReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CapitalURep struct {
+type CapitalURes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -51,7 +51,7 @@ type CapitalDReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CapitalDRep struct {
+type CapitalDRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -60,7 +60,7 @@ type CapitalLReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CapitalLRep struct {
+type CapitalLRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -69,7 +69,7 @@ type CapitalSReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CapitalSRep struct {
+type CapitalSRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }

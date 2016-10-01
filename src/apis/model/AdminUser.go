@@ -31,8 +31,8 @@ type AdminUserCReq struct {
 }
 
 type AdminUserCRes struct {
-	Result  string `json:"result"`
-	Message string `json:"message"`
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
 }
 
 type AdminUserLReq struct {
@@ -40,8 +40,8 @@ type AdminUserLReq struct {
 }
 
 type AdminUserLRes struct {
-	Result  string `json:"result"`
-	Message string `json:"message"`
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
 }
 
 type AdminUserDReq struct {
@@ -49,8 +49,8 @@ type AdminUserDReq struct {
 }
 
 type AdminUserDRes struct {
-	Result  string `json:"result"`
-	Message string `json:"message"`
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
 }
 
 type AdminUserSReq struct {
@@ -58,6 +58,6 @@ type AdminUserSReq struct {
 }
 
 type AdminUserSRes struct {
-	Result  string `json:"result"`
-	Message string `json:"message"`
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
 }

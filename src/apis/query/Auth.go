@@ -74,3 +74,13 @@ func GetUserInfoByAccessToken(s *mgo.Session, db string, collection string, req 
 	c.Find(bson.M{"accesstoken": req.AccessToken}).One(&result)
 	return result
 }
+
+func AuthU(s *mgo.Session, db string, req model.AuthUReq, rep *model.AuthURes) error {
+
+	return nil
+}
+
+func AuthD(s *mgo.Session, db string, req model.AuthDReq, rep *model.AuthDRes) error {
+
+	return nil
+}

@@ -111,6 +111,21 @@ func AuthU(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.AuthURes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.AuthU(session, "hlog", req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func AuthD(w http.ResponseWriter, r *http.Request) {
@@ -136,4 +151,19 @@ func AuthD(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.AuthDRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.AuthD(session, "hlog", req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }

@@ -4,7 +4,7 @@ type OrganizationRReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type OrganizationRRep struct {
+type OrganizationRRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -13,7 +13,7 @@ type OrganizationLReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type OrganizationLRep struct {
+type OrganizationLRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -22,7 +22,7 @@ type OrganizationSReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type OrganizationSRep struct {
+type OrganizationSRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }

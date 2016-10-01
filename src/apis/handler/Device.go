@@ -31,6 +31,21 @@ func DeviceC(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.DeviceCRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.DeviceC(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func DeviceR(w http.ResponseWriter, r *http.Request) {
@@ -56,6 +71,21 @@ func DeviceR(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.DeviceRRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.DeviceR(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func DeviceU(w http.ResponseWriter, r *http.Request) {
@@ -81,6 +111,21 @@ func DeviceU(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.DeviceURes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.DeviceU(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func DeviceD(w http.ResponseWriter, r *http.Request) {
@@ -106,6 +151,21 @@ func DeviceD(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.DeviceDRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.DeviceD(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func DeviceL(w http.ResponseWriter, r *http.Request) {
@@ -131,6 +191,21 @@ func DeviceL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.DeviceLRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.DeviceL(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func DeviceS(w http.ResponseWriter, r *http.Request) {
@@ -156,4 +231,19 @@ func DeviceS(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.DeviceSRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.DeviceS(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }

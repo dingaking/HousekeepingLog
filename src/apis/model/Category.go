@@ -14,7 +14,7 @@ type CategoryCReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CategoryCRep struct {
+type CategoryCRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -23,7 +23,7 @@ type CategoryRReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CategoryRRep struct {
+type CategoryRRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -32,7 +32,7 @@ type CategoryUReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CategoryURep struct {
+type CategoryURes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -41,7 +41,7 @@ type CategoryDReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CategoryDRep struct {
+type CategoryDRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -50,7 +50,7 @@ type CategoryLReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CategoryLRep struct {
+type CategoryLRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -59,7 +59,7 @@ type CategorySReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type CategorySRep struct {
+type CategorySRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }

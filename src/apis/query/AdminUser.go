@@ -48,3 +48,23 @@ func AdminUserU(s *mgo.Session, db string, collection string, req *model.AdminUs
 
 	return nil
 }
+
+func AdminUserC(s *mgo.Session, db string, req model.AdminUserCReq, rep *model.AdminUserCRes) error {
+
+	return nil
+}
+
+func AdminUserL(s *mgo.Session, db string, req model.AdminUserLReq, rep *model.AdminUserLRes) error {
+
+	return nil
+}
+
+func AdminUserD(s *mgo.Session, db string, req model.AdminUserDReq, rep *model.AdminUserDRes) error {
+
+	return nil
+}
+
+func AdminUserS(s *mgo.Session, db string, req model.AdminUserSReq, rep *model.AdminUserSRes) error {
+
+	return nil
+}

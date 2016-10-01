@@ -16,7 +16,7 @@ type ItemCReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type ItemCRep struct {
+type ItemCRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -25,7 +25,7 @@ type ItemRReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type ItemRRep struct {
+type ItemRRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -34,7 +34,7 @@ type ItemUReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type ItemURep struct {
+type ItemURes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -43,7 +43,7 @@ type ItemDReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type ItemDRep struct {
+type ItemDRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -52,7 +52,7 @@ type ItemLReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type ItemLRep struct {
+type ItemLRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }
@@ -61,7 +61,7 @@ type ItemSReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type ItemSRep struct {
+type ItemSRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }

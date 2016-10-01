@@ -31,6 +31,21 @@ func OrganizationR(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.OrganizationRRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.OrganizationR(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func OrganizationL(w http.ResponseWriter, r *http.Request) {
@@ -56,6 +71,21 @@ func OrganizationL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.OrganizationLRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.OrganizationL(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func OrganizationS(w http.ResponseWriter, r *http.Request) {
@@ -81,4 +111,19 @@ func OrganizationS(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer session.Close()
+
+	rep := model.OrganizationSRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.OrganizationS(session, req, &rep)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	err = WriteSuccess(w, rep)
+	if err != nil {
+		panic(err)
+	}
 }

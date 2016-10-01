@@ -4,7 +4,7 @@ type SystemRReq struct {
 	AccessToken string `json:"access_token"`
 }
 
-type SystemRRep struct {
+type SystemRRes struct {
 	Result       string `json:"result"`
 	ErrorMessage string `json:"err_msg"`
 }

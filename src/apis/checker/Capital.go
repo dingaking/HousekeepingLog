@@ -5,13 +5,13 @@ import (
 	"errors"
 )
 
-func CapitalC(request model.Capital) string {
+func CapitalC(request model.CapitalCReq) error {
 
-	if len(request.CapitalName) <= 0 {
-		return "Capital Name not found."
+	if len(request.AccessToken) <= 0 {
+		return errors.New("AccessToken not found.")
 	}
 
-	return ""
+	return nil
 }
 
 func CapitalR(req model.CapitalRReq) error {
