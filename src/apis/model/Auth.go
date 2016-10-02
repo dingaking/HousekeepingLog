@@ -55,6 +55,16 @@ type UserSearch struct {
 	Public      int    `json:"public"`       // 그룹에 공개여부, 1=공개 0=비공개
 }
 
+type UserUpdate struct {
+	UserType    string `json:"usertype"`     // 5:사용자, 4:관리자
+	DisplayName string `json:"displayname"`  // 대화명
+	Intro       string `json:"intro"`        // 자기소개
+	PhoneNumber string `json:"phone_number"` // 전화번호
+	State       string `json:"state"`        // 회원상태, 1=ON(사용), 0=OFF(탈퇴)
+	Activated   string `json:"activated"`    // 인증여부, 2=관리자인증, 1=URL인증, 0=OFF(미인증)
+	Public      string `json:"public"`       // 그룹에 공개여부, 1=공개 0=비공개
+}
+
 // 단말기 모델
 type Terminal struct {
 	TerminalNo     bson.ObjectId `bson:"_id,omitempty"`   // 단말키

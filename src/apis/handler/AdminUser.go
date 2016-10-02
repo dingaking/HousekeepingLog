@@ -7,6 +7,9 @@ import (
 	"net/http"
 )
 
+// action=1(비밀번호 변경)
+// action=2(회원정보 변경)
+// action=3(프로필 이미지 변경)
 func AdminUserU(w http.ResponseWriter, r *http.Request) {
 
 	var req model.AdminUserUReq

@@ -28,11 +28,13 @@ type AdminUserRRes2 struct {
 }
 
 type AdminUserUReq struct {
-	Action      string `json:action`
-	UserId      string `json:"userid"`
-	OldPassword string `json:"old_password"`
-	NewPassword string `json:"new_password"`
-	AccessToken string `json:"access_token"`
+	Action      string     `json:action`
+	UserId      string     `json:"userid"`
+	OldPassword string     `json:"old_password"`
+	NewPassword string     `json:"new_password"`
+	UserNo      string 	   `json:"userno"`
+	AccessToken string     `json:"access_token"`
+	UserUpdate  UserUpdate `json:"update"`
 }
 
 type AdminUserURes struct {

@@ -79,17 +79,19 @@ http://localhost:8082/api/admin/userR
  *
  * @apiExample {curl} Example : (action=1)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"1", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
+-d '{"action":"1", "userid":"admin@aaa.com", "old_password":"admin", "new_password":"12345678"}' \
 http://localhost:8082/api/admin/userU
  *
  * @apiExample {curl} Example : (action=2)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"1", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
+-d '{"action":"2", "access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", 
+"userno":"57efaa32aaaf21f8dcb105b8",
+"update":{"usertype":"4", "displayname":"대화명"}}' \
 http://localhost:8082/api/admin/userU
  *
  * @apiExample {curl} Example : (action=3)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"1", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
+-d '{"action":"3", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
 http://localhost:8082/api/admin/userU
  *
  * @apiParam (Param_Action_1) {String} action 1 : admin init password change
@@ -99,14 +101,15 @@ http://localhost:8082/api/admin/userU
  *
  * @apiParam (Param_Action_2) {String} action 2 : update user info
  * @apiParam (Param_Action_2) {String} access_token 인증키
- * @apiParam (Param_Action_2) {Object} data 갱신 대상 정보
- * @apiParam (Param_Action_2) {String} [data.usertype] 5:사용자, 9:관리자
- * @apiParam (Param_Action_2) {String} [data.dispname] 대화명
- * @apiParam (Param_Action_2) {String} [data.intro] 자기소개
- * @apiParam (Param_Action_2) {String} [data.phone_number] 전화번호
- * @apiParam (Param_Action_2) {String} [data.state] 1:ON(사용), 0:OFF(탈퇴)
- * @apiParam (Param_Action_2) {String} [data.activated] 2:관리자 인증, 1:URL 인증,0:OFF 미인증
- * @apiParam (Param_Action_2) {String} [data.public] 1 = 공개 0 = 비공개
+ * @apiParam (Param_Action_2) {String} userno 회원키
+ * @apiParam (Param_Action_2) {Object} update 갱신 대상 정보
+ * @apiParam (Param_Action_2) {String} [update.usertype] 5:사용자, 9:관리자
+ * @apiParam (Param_Action_2) {String} [update.dispname] 대화명
+ * @apiParam (Param_Action_2) {String} [update.intro] 자기소개
+ * @apiParam (Param_Action_2) {String} [update.phone_number] 전화번호
+ * @apiParam (Param_Action_2) {String} [update.state] 1:ON(사용), 0:OFF(탈퇴)
+ * @apiParam (Param_Action_2) {String} [update.activated] 2:관리자 인증, 1:URL 인증,0:OFF 미인증
+ * @apiParam (Param_Action_2) {String} [update.public] 1 = 공개 0 = 비공개
  *
  * @apiParam (Param_Action_3) {String} action 3 : update user profile
  * @apiParam (Param_Action_3) {file} pimage 프로필 이미지

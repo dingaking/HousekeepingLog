@@ -4,6 +4,7 @@ import (
 	"apis/model"
 	"apis/util"
 	"errors"
+	"strconv"
 	"time"
 
 	"labix.org/v2/mgo"
@@ -54,23 +55,58 @@ func AdminUserR(s *mgo.Session, req model.AdminUserRReq, rep *model.AdminUserRRe
 	}
 }
 
-//
+// action=1(비밀번호 변경)
+// action=2(회원정보 변경)
+// action=3(프로필 이미지 변경)
 func AdminUserU(s *mgo.Session, req *model.AdminUserUReq) error {
+
 	c := s.DB(DatabaseName).C(CollUser)
 
-	var data model.User
-	c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&data)
-	if data.UserNo == "" {
-		return errors.New("invalid userid or password.")
-	}
+	if req.Action == "1" {
+		var data model.User
+		c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&data)
+		if data.UserNo == "" {
+			return errors.New("invalid userid or password.")
+		}
 
-	req.AccessToken = util.SHA1()
+		req.AccessToken = util.SHA1()
 
-	colQuerier := bson.M{"_id": data.UserNo}
-	change := bson.M{"$set": bson.M{"password": req.NewPassword, "accesstoken": req.AccessToken}}
-	err := c.Update(colQuerier, change)
-	if err != nil {
-		return errors.New("update err")
+		target := bson.M{"_id": data.UserNo}
+		change := bson.M{"$set": bson.M{"password": req.NewPassword, "accesstoken": req.AccessToken}}
+		err := c.Update(target, change)
+		if err != nil {
+			return errors.New("update err")
+		}
+	} else if req.Action == "2" {
+
+		conditions := bson.M{}
+
+		if len(req.UserUpdate.UserType) > 0 {
+			conditions["usertype"], _ = strconv.Atoi(req.UserUpdate.UserType)
+		}
+		if len(req.UserUpdate.DisplayName) > 0 {
+			conditions["displayname"] = req.UserUpdate.DisplayName
+		}
+		if len(req.UserUpdate.Intro) > 0 {
+			conditions["intro"] = req.UserUpdate.Intro
+		}
+		if len(req.UserUpdate.PhoneNumber) > 0 {
+			conditions["phone_number"] = req.UserUpdate.PhoneNumber
+		}
+		if len(req.UserUpdate.State) > 0 {
+			conditions["state"], _ = strconv.Atoi(req.UserUpdate.State)
+		}
+		if len(req.UserUpdate.Activated) > 0 {
+			conditions["activated"], _ = strconv.Atoi(req.UserUpdate.Activated)
+		}
+		if len(req.UserUpdate.Public) > 0 {
+			conditions["public"], _ = strconv.Atoi(req.UserUpdate.Public)
+		}
+
+		target := bson.M{"_id": bson.ObjectIdHex(req.UserNo)}
+		change := bson.M{"$set": conditions}
+		err := c.Update(target, change)
+		return err
 	}
 
 	return nil
