@@ -4,7 +4,6 @@ import (
 	"apis/checker"
 	"apis/model"
 	"apis/query"
-	"errors"
 	"net/http"
 )
 
@@ -248,9 +247,6 @@ func AdminUserD(w http.ResponseWriter, r *http.Request) {
 }
 
 func AdminUserS(w http.ResponseWriter, r *http.Request) {
-
-	WriteError(w, errors.New("Not Implemented"))
-	return
 
 	var req model.AdminUserSReq
 	err := Parse(w, r, &req)

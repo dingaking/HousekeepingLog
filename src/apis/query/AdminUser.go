@@ -131,7 +131,32 @@ func AdminUserD(s *mgo.Session, req model.AdminUserDReq, rep *model.AdminUserDRe
 
 func AdminUserS(s *mgo.Session, req model.AdminUserSReq, rep *model.AdminUserSRes) error {
 
-	return nil
+	c := s.DB(DatabaseName).C(CollUser)
+
+	var data []model.User
+	err := c.Find(bson.M{"userid": bson.M{"$regex": req.Search.UserId}}).All(&data)
+	if err != nil {
+		return err
+	}
+
+	rep.Data = make([]model.UserJ, 0, 0)
+	for _, user := range data {
+		rep.Data = append(rep.Data, model.UserJ{
+			UserNo:         user.UserNo.Hex(),
+			UserId:         user.UserId,
+			UserType:       user.UserType,
+			DisplayName:    user.DisplayName,
+			Intro:          user.Intro,
+			Profile:        user.Profile,
+			CreateDateTime: user.CreateDateTime,
+			PhoneNumber:    user.PhoneNumber,
+			State:          user.State,
+			Activated:      user.Activated,
+			Public:         user.Public,
+		})
+	}
+
+	return err
 }
 
 // userid duplication check

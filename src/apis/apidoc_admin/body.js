@@ -181,12 +181,12 @@ http://localhost:8082/api/admin/userL
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"1", "access_token":"access_token_value"}' \
-http://localhost:8082/api/admin/userL
+-d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f","search":{"userid":"admin"}}' \
+http://localhost:8082/api/admin/userS
  *
  * @apiParam {String} access_token 인증키
  * @apiParam {String} [page] 페이지
- * @apiParam {Object[]} search 검색 필터
+ * @apiParam {Object} search 검색 필터
  * @apiParam {String} [search.userid] login id(email)
  * @apiParam {String} [search.usertype] 5:사용자, 9:관리자
  * @apiParam {String} [search.dispname] 대화명

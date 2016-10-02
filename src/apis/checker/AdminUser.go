@@ -105,5 +105,9 @@ func AdminUserS(req model.AdminUserSReq) error {
 		return errors.New("AccessToken not found.")
 	}
 
+	if len(req.Search.UserId) <= 0 {
+		return errors.New("search data not found.")
+	}
+
 	return nil
 }

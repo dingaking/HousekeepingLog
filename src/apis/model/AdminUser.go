@@ -73,10 +73,13 @@ type AdminUserDRes struct {
 }
 
 type AdminUserSReq struct {
-	AccessToken string `json:"access_token"`
+	AccessToken string     `json:"access_token"`
+	Page        string     `json:"page"`
+	Search      UserSearch `json:"search"`
 }
 
 type AdminUserSRes struct {
-	Result       string `json:"result"`
-	ErrorMessage string `json:"err_msg"`
+	Result       string  `json:"result"`
+	ErrorMessage string  `json:"err_msg"`
+	Data         []UserJ `json:"data"`
 }
