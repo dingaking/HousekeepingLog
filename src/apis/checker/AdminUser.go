@@ -7,11 +7,29 @@ import (
 
 func AdminUserR(req model.AdminUserRReq) error {
 
-	if len(req.UserId) <= 0 {
-		return errors.New("UserId not found.")
+	if len(req.Action) <= 0 {
+		return errors.New("Action not found.")
 	}
-	if len(req.Password) <= 0 {
-		return errors.New("Password not found.")
+	if req.Action != "1" && req.Action != "2" {
+		return errors.New("Action value is Invalid.")
+	}
+
+	if req.Action == "1" {
+		if len(req.UserId) <= 0 {
+			return errors.New("UserId not found.")
+		}
+		if len(req.Password) <= 0 {
+			return errors.New("Password not found.")
+		}
+	}
+
+	if req.Action == "2" {
+		if len(req.AccessToken) <= 0 {
+			return errors.New("AccessToken not found.")
+		}
+		if len(req.UserNo) <= 0 {
+			return errors.New("Password not found.")
+		}
 	}
 
 	return nil

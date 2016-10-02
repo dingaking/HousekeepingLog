@@ -1,15 +1,30 @@
 package model
 
 type AdminUserRReq struct {
+	Action      string `json:"action"`
+	UserNo      string `json:"userno"`
 	UserId      string `json:"userid"`
 	Password    string `json:"password"`
 	AccessToken string `json:"access_token"`
 }
 
 type AdminUserRRes struct {
-	Result      string `json:"result"`
-	Message     string `json:"message"`
-	AccessToken string `json:"access_token"`
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+	AccessToken  string `json:"access_token"`
+	Data         UserJ  `json:"data"`
+}
+
+type AdminUserRRes1 struct {
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+	AccessToken  string `json:"access_token"`
+}
+
+type AdminUserRRes2 struct {
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+	Data         UserJ  `json:"data"`
 }
 
 type AdminUserUReq struct {
@@ -21,9 +36,9 @@ type AdminUserUReq struct {
 }
 
 type AdminUserURes struct {
-	Result      string `json:"result"`
-	Message     string `json:"message"`
-	AccessToken string `json:"access_token"`
+	Result       string `json:"result"`
+	ErrorMessage string `json:"err_msg"`
+	AccessToken  string `json:"access_token"`
 }
 
 type AdminUserCReq struct {

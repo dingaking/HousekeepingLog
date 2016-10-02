@@ -20,7 +20,7 @@ func AdminInitOnBoot(s *mgo.Session) error {
 	c := s.DB(DatabaseName).C(CollUser)
 
 	var result model.User
-	c.Find(bson.M{"userid": "admin"}).One(&result)
+	c.Find(bson.M{"userid": "admin@localhost.com"}).One(&result)
 	if result.UserNo != "" {
 		return nil
 	}

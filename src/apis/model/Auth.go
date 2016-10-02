@@ -83,9 +83,10 @@ type AuthCRep struct {
 }
 
 type AuthRReq struct {
+	Action      string `json:"action"`
 	UserId      string `json:"userid"`
 	Password    string `json:"password"`
-	Action      string `json:"action"`
+	UserNo      string `json:"userno"`
 	AccessToken string `json:"access_token"`
 }
 

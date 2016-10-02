@@ -34,12 +34,13 @@
  *
  * @apiExample {curl} Example : (action=1)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"userid":"admin", "password":"admin"}' \
+-d '{"action":"1", "userid":"admin@localhost.com", "password":"12345678"}' \
 http://localhost:8082/api/admin/userR
  *
  * @apiExample {curl} Example : (action=2)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"userid":"admin", "password":"12345678"}' \
+-d '{"action":"2", "access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", 
+"userno":"57b97e21681b956fd6eb93de"}' \
 http://localhost:8082/api/admin/userR
  *
  * @apiParam (Param_Action_1) {String} action 1 : login

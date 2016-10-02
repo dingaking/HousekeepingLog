@@ -498,3 +498,6 @@ src/apis/apidoc_user/output/vendor/prettify/prettify.js
 src/apis/apidoc_user/output/vendor/prettify/run_prettify.js
 !src/mgoExample/
 mgo
+bin/golint
+pkg/darwin_amd64/github.com/golang/lint.a
+pkg/darwin_amd64/golang.org/x/tools/go/gcimporter15.a

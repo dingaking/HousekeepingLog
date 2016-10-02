@@ -58,6 +58,18 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if req.UserId == "admin" && req.Password == "admin" {
+		rep := model.AdminUserRRes{
+			Result:       "success",
+			ErrorMessage: "You must change your initial Password.",
+		}
+		err = WriteSuccess(w, rep)
+		if err != nil {
+			panic(err)
+		}
+		return
+	}
+
 	session, err := query.GetConnect()
 	if err != nil {
 		WriteError(w, err)
@@ -65,28 +77,44 @@ func AdminUserR(w http.ResponseWriter, r *http.Request) {
 	}
 	defer session.Close()
 
-	err, msg := query.AdminUserR(session, &req)
+	if req.Action == "2" {
+		err = query.CheckPermission(session, req.AccessToken)
+		if err != nil {
+			WriteError(w, err)
+			return
+		}
+	}
+
+	rep := model.AdminUserRRes{
+		Result:       "success",
+		ErrorMessage: "",
+	}
+	err = query.AdminUserR(session, req, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return
 	}
-	if err == nil && msg != "" {
-		response := model.AdminUserRRes{
-			Result:  "success",
-			Message: msg}
-		err = WriteSuccess(w, response)
+
+	if req.Action == "1" {
+		rep2 := model.AdminUserRRes1{
+			Result:       "success",
+			ErrorMessage: "",
+			AccessToken:  rep.AccessToken,
+		}
+		err = WriteSuccess(w, rep2)
 		if err != nil {
 			panic(err)
 		}
-		return
-	}
-
-	response := model.AdminUserRRes{
-		Result:      "success",
-		AccessToken: req.AccessToken}
-	err = WriteSuccess(w, response)
-	if err != nil {
-		panic(err)
+	} else if req.Action == "2" {
+		rep2 := model.AdminUserRRes2{
+			Result:       "success",
+			ErrorMessage: "",
+			Data:         rep.Data,
+		}
+		err = WriteSuccess(w, rep2)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 

@@ -10,22 +10,48 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-func AdminUserR(s *mgo.Session, req *model.AdminUserRReq) (error, string) {
+func AdminUserR(s *mgo.Session, req model.AdminUserRReq, rep *model.AdminUserRRes) error {
 
 	c := s.DB(DatabaseName).C(CollUser)
 
-	var result model.User
-	c.Find(bson.M{"userid": req.UserId, "password": req.Password}).One(&result)
+	if req.Action == "1" {
+		var data model.User
+		err := c.Find(bson.M{"userid": req.UserId, "password":req.Password}).One(&data)
+		if data.UserNo == "" {
+			return errors.New("user not found error.")
+		}
+		if data.UserType != 4 {
+			return errors.New("Not Admin User error.")
+		}
+		rep.AccessToken = data.AccessToken
+		
+		return err
+	} else if req.Action == "2" {
+		var data model.User
+		err := c.Find(bson.M{"_id": bson.ObjectIdHex(req.UserNo)}).One(&data)
 
-	if result.UserNo == "" {
-		return errors.New("wrong userid or password error."), ""
-	}
-	if result.UserId == "admin" && result.Password == "admin" {
-		return nil, "You must change your initial Password."
-	}
-	req.AccessToken = result.AccessToken
+		if data.UserNo == "" {
+			return errors.New("user not found error.")
+		}
 
-	return nil, ""
+		rep.Data = model.UserJ{
+			UserNo:         data.UserNo.Hex(),
+			UserId:         data.UserId,
+			UserType:       data.UserType,
+			DisplayName:    data.DisplayName,
+			Intro:          data.Intro,
+			Profile:        data.Profile,
+			CreateDateTime: data.CreateDateTime,
+			PhoneNumber:    data.PhoneNumber,
+			State:          data.State,
+			Activated:      data.Activated,
+			Public:         data.Public,
+		}
+
+		return err
+	} else {
+		return nil
+	}
 }
 
 //
