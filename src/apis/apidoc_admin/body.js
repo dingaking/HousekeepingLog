@@ -130,7 +130,7 @@ http://localhost:8082/api/admin/userU
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", "userno":"36"}' \
+-d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "userno":"57f077e5aaaf21f8dcb105ba"}' \
 http://localhost:8082/api/admin/userD
  *
  * @apiParam {String} access_token 인증키

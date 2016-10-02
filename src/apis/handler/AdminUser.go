@@ -206,9 +206,6 @@ func AdminUserL(w http.ResponseWriter, r *http.Request) {
 
 func AdminUserD(w http.ResponseWriter, r *http.Request) {
 
-	WriteError(w, errors.New("Not Implemented"))
-	return
-
 	var req model.AdminUserDReq
 	err := Parse(w, r, &req)
 	if err != nil {

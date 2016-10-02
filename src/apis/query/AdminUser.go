@@ -16,7 +16,7 @@ func AdminUserR(s *mgo.Session, req model.AdminUserRReq, rep *model.AdminUserRRe
 
 	if req.Action == "1" {
 		var data model.User
-		err := c.Find(bson.M{"userid": req.UserId, "password":req.Password}).One(&data)
+		err := c.Find(bson.M{"userid": req.UserId, "password": req.Password}).One(&data)
 		if data.UserNo == "" {
 			return errors.New("user not found error.")
 		}
@@ -24,7 +24,7 @@ func AdminUserR(s *mgo.Session, req model.AdminUserRReq, rep *model.AdminUserRRe
 			return errors.New("Not Admin User error.")
 		}
 		rep.AccessToken = data.AccessToken
-		
+
 		return err
 	} else if req.Action == "2" {
 		var data model.User
@@ -58,15 +58,15 @@ func AdminUserR(s *mgo.Session, req model.AdminUserRReq, rep *model.AdminUserRRe
 func AdminUserU(s *mgo.Session, req *model.AdminUserUReq) error {
 	c := s.DB(DatabaseName).C(CollUser)
 
-	var result model.User
-	c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&result)
-	if result.UserNo == "" {
+	var data model.User
+	c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&data)
+	if data.UserNo == "" {
 		return errors.New("invalid userid or password.")
 	}
 
 	req.AccessToken = util.SHA1()
 
-	colQuerier := bson.M{"_id": result.UserNo}
+	colQuerier := bson.M{"_id": data.UserNo}
 	change := bson.M{"$set": bson.M{"password": req.NewPassword, "accesstoken": req.AccessToken}}
 	err := c.Update(colQuerier, change)
 	if err != nil {
@@ -116,7 +116,17 @@ func AdminUserL(s *mgo.Session, req model.AdminUserLReq, rep *model.AdminUserLRe
 
 func AdminUserD(s *mgo.Session, req model.AdminUserDReq, rep *model.AdminUserDRes) error {
 
-	return nil
+	c := s.DB(DatabaseName).C(CollUser)
+
+	var data model.User
+	c.Find(bson.M{"_id": bson.ObjectIdHex(req.UserNo)}).One(&data)
+
+	if data.UserNo == "" {
+		return errors.New("user not found error.")
+	}
+
+	err := c.Remove(bson.M{"_id": bson.ObjectIdHex(req.UserNo)})
+	return err
 }
 
 func AdminUserS(s *mgo.Session, req model.AdminUserSReq, rep *model.AdminUserSRes) error {
@@ -131,9 +141,9 @@ func checkDuplicationUserIdFromAdmin(s *mgo.Session, req model.AdminUserCReq) er
 
 	c := s.DB(DatabaseName).C(CollUser)
 
-	var result model.User
-	c.Find(bson.M{"userid": req.UserId}).One(&result)
-	if result.UserNo != "" {
+	var data model.User
+	c.Find(bson.M{"userid": req.UserId}).One(&data)
+	if data.UserNo != "" {
 		return errors.New("duplicated userid error.")
 	}
 

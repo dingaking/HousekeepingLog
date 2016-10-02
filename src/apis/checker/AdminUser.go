@@ -92,6 +92,9 @@ func AdminUserD(req model.AdminUserDReq) error {
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
 	}
+	if len(req.UserNo) <= 0 {
+		return errors.New("UserNo not found.")
+	}
 
 	return nil
 }

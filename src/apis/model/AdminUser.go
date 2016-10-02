@@ -64,6 +64,7 @@ type AdminUserLRes struct {
 
 type AdminUserDReq struct {
 	AccessToken string `json:"access_token"`
+	UserNo      string `json:"userno"`
 }
 
 type AdminUserDRes struct {
