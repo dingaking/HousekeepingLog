@@ -3,7 +3,11 @@ package query
 import (
 	"apis/model"
 	"apis/util"
+	"bufio"
 	"errors"
+	"io"
+	"mime/multipart"
+	"net/http"
 	"strconv"
 	"time"
 
@@ -109,6 +113,51 @@ func AdminUserU(s *mgo.Session, req *model.AdminUserUReq) error {
 		return err
 	}
 
+	return nil
+}
+
+func AdminUserUAction3(s *mgo.Session, r *http.Request) error {
+
+	db := s.DB(DatabaseNameFile)
+
+	for _, fileHeaders := range r.MultipartForm.File {
+		for _, fileHeader := range fileHeaders {
+			file, _ := fileHeader.Open()
+			if gridFile, err := db.GridFS(FileCollProfile).Create("filename"); err != nil {
+				return err
+			} else {
+				//gridFile.SetMeta(fileMetadata)
+				gridFile.SetName(fileHeader.Filename)
+				if err := writeToGridFile(file, gridFile); err != nil {
+					return err
+				}
+			}
+		}
+	}
+
+	return nil
+}
+
+func writeToGridFile(file multipart.File, gridFile *mgo.GridFile) error {
+	reader := bufio.NewReader(file)
+	defer func() { file.Close() }()
+	// make a buffer to keep chunks that are read
+	buf := make([]byte, 1024)
+	for {
+		// read a chunk
+		n, err := reader.Read(buf)
+		if err != nil && err != io.EOF {
+			return errors.New("Could not read the input file")
+		}
+		if n == 0 {
+			break
+		}
+		// write a chunk
+		if _, err := gridFile.Write(buf[:n]); err != nil {
+			return errors.New("Could not write to GridFs for " + gridFile.Name())
+		}
+	}
+	gridFile.Close()
 	return nil
 }
 

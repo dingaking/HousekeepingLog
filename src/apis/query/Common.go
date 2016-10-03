@@ -4,7 +4,14 @@ import "labix.org/v2/mgo"
 
 var DatabaseServer = "localhost"
 
+// 가계부 데이터베이스(hlog)
 var DatabaseName = "hlog"
+
+// 가계부 파일 데이터베이스(hlog_file)
+var DatabaseNameFile = "hlog_file"
+
+// 파일 데이터베이스 프로필
+var FileCollProfile = "profile_file"
 
 var CollUser = "user"
 var CollTerminal = "terminal"

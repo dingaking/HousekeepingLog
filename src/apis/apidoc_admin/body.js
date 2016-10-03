@@ -90,9 +90,12 @@ http://localhost:8082/api/admin/userU
 http://localhost:8082/api/admin/userU
  *
  * @apiExample {curl} Example : (action=3)
- * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"3", "userid":"admin", "old_password":"12345678", "new_password":"12345678"}' \
-http://localhost:8082/api/admin/userU
+ * curl \
+-F "action=3" \
+-F "userno=57efaa32aaaf21f8dcb105b8", \
+-F "access_token=c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f" \
+-F "pimage=@/tmp/go_build_for_window.png" \
+http://localhost:8082/api/admin/userU  
  *
  * @apiParam (Param_Action_1) {String} action 1 : admin init password change
  * @apiParam (Param_Action_1) {String} userid userid
@@ -112,6 +115,7 @@ http://localhost:8082/api/admin/userU
  * @apiParam (Param_Action_2) {String} [update.public] 1 = 공개 0 = 비공개
  *
  * @apiParam (Param_Action_3) {String} action 3 : update user profile
+ * @apiParam (Param_Action_3) {String} userno 회원키
  * @apiParam (Param_Action_3) {file} pimage 프로필 이미지
  * @apiParam (Param_Action_3) {String} access_token 인증키
  *
@@ -121,7 +125,6 @@ http://localhost:8082/api/admin/userU
  *
  * @apiSuccess (Response(action=2,3)) {String} result "success" or "fail"
  * @apiSuccess (Response(action=2,3)) {String} err_msg result가 "fail"인 경우
- * @apiSuccess (Response(action=2,3)) {String} access_token result가 "success"인 경우
  */
 
 /**

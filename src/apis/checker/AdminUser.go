@@ -3,6 +3,7 @@ package checker
 import (
 	"apis/model"
 	"errors"
+	"net/http"
 )
 
 func AdminUserR(req model.AdminUserRReq) error {
@@ -76,7 +77,7 @@ func AdminUserU(req model.AdminUserUReq) error {
 			len(req.UserUpdate.Public) <= 0 {
 			return errors.New("update value not found.")
 		}
-		
+
 		if len(req.UserUpdate.UserType) > 0 {
 			if req.UserUpdate.UserType != "4" && req.UserUpdate.UserType != "5" {
 				return errors.New("UserType value is Invalid.")
@@ -106,6 +107,28 @@ func AdminUserU(req model.AdminUserUReq) error {
 		if len(req.UserNo) <= 0 {
 			return errors.New("Password not found.")
 		}
+	}
+
+	return nil
+}
+
+func AdminUserUAction3(r *http.Request) error {
+
+	var action = r.FormValue("action")
+	var userno = r.FormValue("userno")
+	var access_token = r.FormValue("access_token")
+
+	if len(action) <= 0 {
+		return errors.New("Action not found.")
+	}
+	if action != "3" {
+		return errors.New("Action value is Invalid.")
+	}
+	if len(userno) <= 0 {
+		return errors.New("UserNo not found.")
+	}
+	if len(access_token) <= 0 {
+		return errors.New("AccessToken not found.")
 	}
 
 	return nil

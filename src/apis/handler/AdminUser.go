@@ -12,6 +12,12 @@ import (
 // action=3(프로필 이미지 변경)
 func AdminUserU(w http.ResponseWriter, r *http.Request) {
 
+	var action = r.FormValue("action")
+	if action == "3" {
+		AdminUserUAction3(w, r)
+		return
+	}
+
 	var req model.AdminUserUReq
 	err := Parse(w, r, &req)
 	if err != nil {
@@ -40,6 +46,35 @@ func AdminUserU(w http.ResponseWriter, r *http.Request) {
 	response := model.AdminUserURes{
 		Result:      "success",
 		AccessToken: req.AccessToken}
+	err = WriteSuccess(w, response)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func AdminUserUAction3(w http.ResponseWriter, r *http.Request) {
+
+	if err := checker.AdminUserUAction3(r); err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	session, err := query.GetConnect()
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+	defer session.Close()
+
+	err = query.AdminUserUAction3(session, r)
+	if err != nil {
+		WriteError(w, err)
+		return
+	}
+
+	response := model.AdminUserURes{
+		Result: "success",
+	}
 	err = WriteSuccess(w, response)
 	if err != nil {
 		panic(err)
