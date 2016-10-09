@@ -126,8 +126,9 @@ func AdminUserUAction3(s *mgo.Session, r *http.Request) error {
 			if gridFile, err := db.GridFS(FileCollProfile).Create("filename"); err != nil {
 				return err
 			} else {
-				//gridFile.SetMeta(fileMetadata)
+				var userno = r.FormValue("userno")
 				gridFile.SetName(fileHeader.Filename)
+				gridFile.SetMeta(bson.M{"userno": userno})
 				if err := writeToGridFile(file, gridFile); err != nil {
 					return err
 				}
