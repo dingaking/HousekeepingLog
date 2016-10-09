@@ -77,6 +77,32 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 			WriteError(w, errors.New("id/pw not match"))
 			return
 		}
+	} else if req.Action == "3" {
+		err = query.IsExistUserByUserNo(session, &req)
+		if err != nil {
+			WriteError(w, err)
+			return
+		}
+		err = query.IsExistProfileImageByUserNo(session, &req)
+		if err != nil {
+			WriteError(w, err)
+			return
+		}
+
+		gridFile := query.GetUserProfileImage(session, &req)
+		if gridFile.Name() == "" {
+			WriteError(w, errors.New("no image error."))
+			return
+		}
+		var b []byte
+		gridFile.Read(b)
+		if b == nil {
+			WriteError(w, errors.New("no profile raw image error."))
+			return
+		}
+
+		w.Write(b)
+		return
 	}
 
 	response := model.AuthRRep{

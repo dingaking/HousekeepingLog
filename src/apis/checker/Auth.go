@@ -32,7 +32,7 @@ func AuthR(req model.AuthRReq) error {
 	if len(req.Action) <= 0 {
 		return errors.New("Action not found.")
 	}
-	if req.Action != "1" && req.Action != "2" {
+	if req.Action != "1" && req.Action != "2" && req.Action != "3" {
 		return errors.New("Action value is Invalid.")
 	}
 
@@ -46,7 +46,7 @@ func AuthR(req model.AuthRReq) error {
 		}
 	}
 
-	if req.Action == "2" {
+	if req.Action == "2" || req.Action == "3" {
 		if len(req.AccessToken) <= 0 {
 			return errors.New("access_token not found.")
 		}

@@ -4,6 +4,7 @@ import (
 	"apis/model"
 	"apis/util"
 	"errors"
+	"fmt"
 	"time"
 
 	"labix.org/v2/mgo"
@@ -72,6 +73,38 @@ func GetUserInfoByAccessToken(s *mgo.Session, req *model.AuthRReq) model.User {
 	var result model.User
 	c := s.DB(DatabaseName).C(CollUser)
 	c.Find(bson.M{"accesstoken": req.AccessToken}).One(&result)
+	return result
+}
+
+func IsExistUserByUserNo(s *mgo.Session, req *model.AuthRReq) error {
+	c := s.DB(DatabaseName).C(CollUser)
+
+	var result model.User
+	c.Find(bson.M{"_id": req.UserNo}).One(&result)
+	if result.UserNo != "" {
+		return errors.New("invalid userno error.")
+	}
+
+	return nil
+}
+
+func IsExistProfileImageByUserNo(s *mgo.Session, req *model.AuthRReq) error {
+	c := s.DB(DatabaseNameFile).C(FileCollProfile)
+
+	var result model.User
+	c.Find(bson.M{"userno": req.UserNo}).One(&result)
+	if result.UserNo != "" {
+		return errors.New("has no profile image error.")
+	}
+	return nil
+}
+
+func GetUserProfileImage(s *mgo.Session, req *model.AuthRReq) mgo.GridFile {
+
+	c := s.DB(DatabaseNameFile).GridFS(FileCollProfile)
+	var result mgo.GridFile
+	c.Find(bson.M{"userno": req.UserNo}).One(&result)
+	fmt.Println(result)
 	return result
 }
 

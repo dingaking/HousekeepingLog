@@ -34,15 +34,23 @@ http://localhost:8082/api/authR
  *
  * @apiExample {curl} Example : (action=2)
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"2", "access_token":"ef53163004dd7257c52e9571fff5751f72940bdd"}' \
+-d '{"action":"2", "access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", 
+"userno":"57b97e21681b956fd6eb93de"}' \
+http://localhost:8082/api/authR
+ *
+ * @apiExample {curl} Example : (action=3)
+ * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
+-d '{"action":"3", "access_token":"ef53163004dd7257c52e9571fff5751f72940bdd", 
+"userno":"57b97e21681b956fd6eb93de"}' \
 http://localhost:8082/api/authR
  *
  * @apiParam (Param_Action_1) {String} action 1 : login
  * @apiParam (Param_Action_1) {String} userid userid(email)
  * @apiParam (Param_Action_1) {String} password 비밀번호(8~16자리)
  *
- * @apiParam (Param_Action_2) {String} action 2 : 회원정보 조회
- * @apiParam (Param_Action_2) {String} access_token 인증키
+ * @apiParam (Param_Action_2_3) {String} action 2 : 회원정보 조회, 3 : 프로필 이미지 조회
+ * @apiParam (Param_Action_2_3) {String} access_token 인증키
+ * @apiParam (Param_Action_2_3) {String} userno 회원번호
  *
  * @apiSuccess (Response_Action_1) {String} result "success" or "fail"
  * @apiSuccess (Response_Action_1) {String} err_msg result가 "fail"인 경우 에러 메시지
@@ -58,22 +66,7 @@ http://localhost:8082/api/authR
  * @apiSuccess (Response_Action_2) {String} public 그룹에 공개여부
  * @apiSuccess (Response_Action_2) {String} access_token 접속키
  *
- */
-/**
- * @apiDefine AuthRead_Action_1
- * Parameter(action=1)
- */
-/**
- * @apiDefine AuthRead_Action_2
- * Parameter(action=2)
- */
-/**
- * @apiDefine AuthRead_Success_Action_1
- * Response(action=1)
- */
-/**
- * @apiDefine AuthRead_Success_Action_2
- * Response(action=2)
+ * @apiSuccess (Response_Action_3) {File}	attachment 프로필 이미지 데이터﻿
  */
 
 /**
@@ -126,6 +119,10 @@ http://localhost:8082/api/authU
  * Parameter(action=3)
  */
 /**
+ * @apiDefine Param_Action_2_3
+ * Parameter(action=2,3)
+ */
+/**
  * @apiDefine Response_Action_1
  * Response(action=1)
  */
@@ -136,6 +133,10 @@ http://localhost:8082/api/authU
 /**
  * @apiDefine Response_Action_3
  * Response(action=3)
+ */
+/**
+ * @apiDefine Response_Action_2_3
+ * Response(action=2,3)
  */
 
 /**
