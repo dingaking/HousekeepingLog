@@ -94,14 +94,14 @@ func AuthR(w http.ResponseWriter, r *http.Request) {
 			WriteError(w, errors.New("no image error."))
 			return
 		}
-		var b []byte
-		gridFile.Read(b)
-		if b == nil {
+		bytes := make([]byte, gridFile.Size())
+		n, err := gridFile.Read(bytes)
+		if bytes == nil {
 			WriteError(w, errors.New("no profile raw image error."))
 			return
 		}
 
-		w.Write(b)
+		w.Write(bytes)
 		return
 	}
 
