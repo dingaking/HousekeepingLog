@@ -92,7 +92,7 @@ http://localhost:8082/api/admin/userU
  * @apiExample {curl} Example : (action=3)
  * curl \
 -F "action=3" \
--F "userno=57efaa32aaaf21f8dcb105b8", \
+-F "userno=57efaa32aaaf21f8dcb105b8" \
 -F "access_token=c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f" \
 -F "pimage=@/tmp/go_build_for_window.png" \
 http://localhost:8082/api/admin/userU  
