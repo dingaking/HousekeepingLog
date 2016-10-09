@@ -4,7 +4,6 @@ import (
 	"apis/model"
 	"apis/util"
 	"errors"
-	"fmt"
 	"time"
 
 	"labix.org/v2/mgo"
@@ -99,13 +98,14 @@ func IsExistProfileImageByUserNo(s *mgo.Session, req *model.AuthRReq) error {
 	return nil
 }
 
-func GetUserProfileImage(s *mgo.Session, req *model.AuthRReq) mgo.GridFile {
+func GetUserProfileImage(s *mgo.Session, req *model.AuthRReq) *mgo.GridFile {
 
 	c := s.DB(DatabaseNameFile).GridFS(FileCollProfile)
-	var result mgo.GridFile
-	c.Find(bson.M{"userno": req.UserNo}).One(&result)
-	fmt.Println(result)
-	return result
+	file, err := c.OpenId(bson.ObjectIdHex("57f1d25fa7f1915eac000001"))
+	if err != nil {
+		panic(err)
+	}
+	return file
 }
 
 func AuthU(s *mgo.Session, req model.AuthUReq, rep *model.AuthURes) error {
