@@ -6,6 +6,7 @@ import (
 	"strconv"
 )
 
+// AdminGroupC : 그룹생성 요청의 파라미터 체크
 func AdminGroupC(req model.AdminGroupCReq) error {
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
@@ -16,6 +17,7 @@ func AdminGroupC(req model.AdminGroupCReq) error {
 	return nil
 }
 
+// AdminGroupL : 그룹목록 요청의 파라미터 체크
 func AdminGroupL(req model.AdminGroupLReq) error {
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
