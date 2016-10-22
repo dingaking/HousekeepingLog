@@ -507,3 +507,16 @@ bin/goreturns
 pkg/darwin_amd64/apis/model.a
 pkg/darwin_amd64/apis/util.a
 pkg/darwin_amd64/sourcegraph.com/sqs/goreturns/returns.a
+bin/go-symbols
+bin/gotests
+bin/guru
+pkg/darwin_amd64/github.com/cweill/gotests.a
+pkg/darwin_amd64/github.com/cweill/gotests/gotests/process.a
+pkg/darwin_amd64/github.com/cweill/gotests/internal/goparser.a
+pkg/darwin_amd64/github.com/cweill/gotests/internal/input.a
+pkg/darwin_amd64/github.com/cweill/gotests/internal/models.a
+pkg/darwin_amd64/github.com/cweill/gotests/internal/output.a
+pkg/darwin_amd64/github.com/cweill/gotests/internal/render.a
+pkg/darwin_amd64/github.com/cweill/gotests/internal/render/bindata.a
+pkg/darwin_amd64/golang.org/x/tools/cmd/guru/serial.a
+pkg/darwin_amd64/golang.org/x/tools/go/callgraph/static.a
