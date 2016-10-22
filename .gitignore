@@ -520,3 +520,10 @@ pkg/darwin_amd64/github.com/cweill/gotests/internal/render.a
 pkg/darwin_amd64/github.com/cweill/gotests/internal/render/bindata.a
 pkg/darwin_amd64/golang.org/x/tools/cmd/guru/serial.a
 pkg/darwin_amd64/golang.org/x/tools/go/callgraph/static.a
+bin/apis
+pkg/darwin_amd64/apis/checker.a
+pkg/darwin_amd64/apis/handler.a
+pkg/darwin_amd64/apis/query.a
+pkg/darwin_amd64/github.com/gorilla/mux.a
+src/apis/apidoc_admin/output/locales/it.js
+src/apis/apidoc_user/output/locales/it.js
