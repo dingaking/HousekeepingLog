@@ -9,11 +9,11 @@ go test -v
 # run database
 cd {workspace}<br>
 mongod --dbpath {db_path}<br>
-ex) cd ~/Document/workspace;<br>
+ex) cd ~/Documents/workspace;<br>
 mongod --dbpath ./MongoDB/ &
 
 # run server
 cd {workspace}<br>
 go build; ./apis<br>
-ex) cd ~/Document/workspace/HousekeepingLog/src/apis;<br>
+ex) cd ~/Documents/workspace/HousekeepingLog/src/apis;<br>
 go build; ./apis
