@@ -10,7 +10,7 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
-// add admin account if has no admin user
+// AdminInitOnBoot : add admin account if has no admin user
 func AdminInitOnBoot(s *mgo.Session) error {
 
 	fmt.Println("/////////////////////////////////////////////////")
@@ -20,7 +20,7 @@ func AdminInitOnBoot(s *mgo.Session) error {
 	c := s.DB(DatabaseName).C(CollUser)
 
 	var result model.User
-	c.Find(bson.M{"userid": "admin@localhost.com"}).One(&result)
+	c.Find(bson.M{"userid": "admin"}).One(&result)
 	if result.UserNo != "" {
 		return nil
 	}

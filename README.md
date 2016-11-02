@@ -1,3 +1,6 @@
+# HousekeepingLog GOPATH
+export GOPATH="`pwd`"
+
 # HousekeepingLog Help
 cd $GOPATH;<br>
 godoc -http=:6060;
