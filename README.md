@@ -1,5 +1,5 @@
 # HousekeepingLog GOPATH
-export GOPATH="`pwd`"
+export GOPATH="\`pwd\`"
 
 # HousekeepingLog Help
 cd $GOPATH;<br>
