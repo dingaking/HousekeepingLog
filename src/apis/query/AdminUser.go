@@ -70,13 +70,13 @@ func AdminUserU(s *mgo.Session, req *model.AdminUserUReq) error {
 		var data model.User
 		c.Find(bson.M{"userid": req.UserId, "password": req.OldPassword}).One(&data)
 		if data.UserNo == "" {
-			return errors.New("invalid userid or password.")
+			return errors.New("invalid userid or password")
 		}
 
 		req.AccessToken = util.SHA1()
 
 		target := bson.M{"_id": data.UserNo}
-		change := bson.M{"$set": bson.M{"password": req.NewPassword, "accesstoken": req.AccessToken}}
+		change := bson.M{"$set": bson.M{"password": req.NewPassword, "access_token": req.AccessToken}}
 		err := c.Update(target, change)
 		if err != nil {
 			return errors.New("update err")
