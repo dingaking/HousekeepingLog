@@ -23,3 +23,15 @@ cd {workspace}<br>
 go build; ./apis<br>
 ex) cd ~/Documents/workspace/HousekeepingLog/src/apis;<br>
 go build; ./apis
+
+# update api admin
+cd {workspace}<br>
+apidoc -o output<br>
+ex) cd ~/Documents/workspace/HousekeepingLog/src/apidoc_admin;<br>
+apidoc -o output
+
+# update api user
+cd {workspace}<br>
+apidoc -o output<br>
+ex) cd ~/Documents/workspace/HousekeepingLog/src/apidoc_user;<br>
+apidoc -o output
