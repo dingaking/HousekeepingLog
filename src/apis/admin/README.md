@@ -1,10 +1,9 @@
-# node-gyp 모듈 설치
+# 환경설정
+## node-gyp 모듈 설치
 sudo npm install -g node-gyp
-
 ## Browserify 설치
 npm install --save-dev browserify
-
-# Gulp.js 전역 설치
+## Gulp.js 전역 설치
 sudo npm install -g --save-dev gulp
 
 # babelify 모듈 설치
