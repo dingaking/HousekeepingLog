@@ -17,3 +17,4 @@ npm install --save react@0.14.0-beta3 react-dom@0.14.0-beta3
 
 # gulp 명령 실행
 gulp
+http://localhost:8082/admin/
