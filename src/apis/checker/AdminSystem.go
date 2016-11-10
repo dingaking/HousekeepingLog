@@ -19,8 +19,8 @@ func AdminSystemR(req model.AdminSystemRReq) error {
 		return errors.New("AccessToken not found.")
 	}
 
-	if len(req.AdminNo) <= 0 {
-		return errors.New("AdminNo not found.")
+	if len(req.SystemNo) <= 0 {
+		return errors.New("SystemNo not found.")
 	}
 	return nil
 }
@@ -42,8 +42,8 @@ func AdminSystemU(req model.AdminSystemUReq) error {
 	if len(req.AccessToken) <= 0 {
 		return errors.New("AccessToken not found.")
 	}
-	if len(req.AdminNo) <= 0 {
-		return errors.New("AdminNo not found.")
+	if len(req.SystemNo) <= 0 {
+		return errors.New("SystemNo not found.")
 	}
 	if len(req.ItemValue) <= 0 {
 		return errors.New("ItemValue not found.")

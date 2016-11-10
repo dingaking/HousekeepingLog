@@ -3,14 +3,14 @@ package model
 import "labix.org/v2/mgo/bson"
 
 type AdminItem struct {
-	AdminNo   bson.ObjectId `bson:"_id,omitempty"` // 관리항목 no
+	SystemNo  bson.ObjectId `bson:"_id,omitempty"` // 관리항목 no
 	ItemKey   string        `bson:"item_key"`      // 관리항목 키
 	ItemValue string        `bson:"item_value"`    // 관리항목 값
 	ItemDesc  string        `bson:"item_desc"`     // 관리항목 설명
 }
 
 type AdminItemJ struct {
-	AdminNo   string `json:"adminno"`    // 관리항목 no
+	SystemNo  string `json:"systemno"`   // 관리항목 no
 	ItemKey   string `json:"item_key"`   // 관리항목 키
 	ItemValue string `json:"item_value"` // 관리항목 값
 	ItemDesc  string `json:"item_desc"`  // 관리항목 설명
@@ -29,7 +29,7 @@ type AdminSystemLRes struct {
 
 type AdminSystemRReq struct {
 	AccessToken string `json:"access_token"`
-	AdminNo     string `json:"adminno"` // 관리항목 no
+	SystemNo    string `json:"systemno"` // 관리항목 no
 }
 
 type AdminSystemRRes struct {
@@ -51,7 +51,7 @@ type AdminSystemSRes struct {
 
 type AdminSystemUReq struct {
 	AccessToken string `json:"access_token"`
-	AdminNo     string `json:"adminno"`
+	SystemNo    string `json:"systemno"`
 	ItemKey     string `json:"item_key"`   // 관리항목 키
 	ItemValue   string `json:"item_value"` // 관리항목 값
 	ItemDesc    string `json:"item_desc"`  // 관리항목 설명

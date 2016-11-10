@@ -81,7 +81,7 @@ func AdminSystemR(w http.ResponseWriter, r *http.Request) {
 		Result:       "success",
 		ErrorMessage: "",
 	}
-	err = query.AdminSystemR(session, req.AdminNo, &rep)
+	err = query.AdminSystemR(session, req.SystemNo, &rep)
 	if err != nil {
 		WriteError(w, err)
 		return

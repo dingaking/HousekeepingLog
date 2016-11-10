@@ -85,7 +85,7 @@ type Terminal struct {
 // 시스템에서 사용하는 관리 항목에 대한 정보를 처리합니다.
 // email_addr, email_pass, email_smtp, email_port 등등.
 type Admin struct {
-	AdminNo   bson.ObjectId `bson:"_id,omitempty"` // 관리 항목키
+	SystemNo  bson.ObjectId `bson:"_id,omitempty"` // 관리 항목키
 	ItemKey   string        `json:"item_key"`      // 관리항목
 	ItemValue string        `json:"item_value"`    // 관리내용
 	State     int           `json:"state"`         // 사용여부, 1=ON(사용), 0=OFF(삭제)

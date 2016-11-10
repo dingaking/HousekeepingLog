@@ -9,7 +9,7 @@
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
- -d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f",
+ -d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848",
  "userid":"admin@aaa.com", "password":"admin"}' \
  http://localhost:8082/api/admin/userC
  *
@@ -39,7 +39,7 @@ http://localhost:8082/api/admin/userR
  *
  * @apiExample {curl} Example : (action=2)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"2", "access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", 
+-d '{"action":"2", "access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848", 
 "userno":"57b97e21681b956fd6eb93de"}' \
 http://localhost:8082/api/admin/userR
  *
@@ -84,7 +84,7 @@ http://localhost:8082/api/admin/userU
  *
  * @apiExample {curl} Example : (action=2)
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"action":"2", "access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", 
+-d '{"action":"2", "access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848", 
 "userno":"57efaa32aaaf21f8dcb105b8",
 "update":{"usertype":"4", "displayname":"대화명"}}' \
 http://localhost:8082/api/admin/userU
@@ -93,7 +93,7 @@ http://localhost:8082/api/admin/userU
  * curl \
 -F "action=3" \
 -F "userno=57efaa32aaaf21f8dcb105b8" \
--F "access_token=c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f" \
+-F "access_token=796f25e350f5b66eb1f8c77ebdeba5db532f3848" \
 -F "pimage=@/tmp/go_build_for_window.png" \
 http://localhost:8082/api/admin/userU  
  *
@@ -136,7 +136,7 @@ http://localhost:8082/api/admin/userU
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "userno":"57f077e5aaaf21f8dcb105ba"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848", "userno":"57f077e5aaaf21f8dcb105ba"}' \
 http://localhost:8082/api/admin/userD
  *
  * @apiParam {String} access_token 인증키
@@ -156,7 +156,7 @@ http://localhost:8082/api/admin/userD
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848"}' \
 http://localhost:8082/api/admin/userL
  *
  * @apiParam {String} access_token 인증키
@@ -187,7 +187,7 @@ http://localhost:8082/api/admin/userL
  *
  * @apiExample {curl} Example :
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f","search":{"userid":"admin"}}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848","search":{"userid":"admin"}}' \
 http://localhost:8082/api/admin/userS
  *
  * @apiParam {String} access_token 인증키
@@ -228,11 +228,11 @@ http://localhost:8082/api/admin/userS
  *
  * @apiExample {curl} Example
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f","adminno":"57e78edbaaaf21f8dcb105a7"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848","systemno":"57e78edbaaaf21f8dcb105a7"}' \
 http://localhost:8082/api/admin/systemR
  *
  * @apiParam {String} access_token 인증키
- * @apiParam {String} adminno 관리항목no
+ * @apiParam {String} systemno 관리항목no
  *
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우
@@ -254,18 +254,18 @@ http://localhost:8082/api/admin/systemR
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
- -d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f",
- "adminno":"57e78edbaaaf21f8dcb105a7", "item_value":"admin@test.com"}' \
+ -d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848",
+ "systemno":"57e78edbaaaf21f8dcb105a7", "item_value":"admin@test.com"}' \
  http://localhost:8082/api/admin/systemU
  *
  * @apiExample {curl} Example : update desc
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
- -d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "adminno":"57e78edbaaaf21f8dcb105a7", 
+ -d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848", "systemno":"57e78edbaaaf21f8dcb105a7", 
  "item_value":"admin222@test.com", "item_desc": "인증 이메일 발송자 계정(email id)"}' \
  http://localhost:8082/api/admin/systemU
  *
  * @apiParam {String} access_token 인증키
- * @apiParam {String} adminno 관리항목no
+ * @apiParam {String} systemno 관리항목no
  * @apiParam {String} item_value 관리항목 value
  * @apiParam {String} [item_desc] 관리항목 설명
  *
@@ -282,7 +282,7 @@ http://localhost:8082/api/admin/systemR
  *
  * @apiExample {curl} Example
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848"}' \
 http://localhost:8082/api/admin/systemL
  *
  * @apiParam {String} access_token 인증키
@@ -291,7 +291,7 @@ http://localhost:8082/api/admin/systemL
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우
  * @apiSuccess {Object[]} data system 정보
- * @apiSuccess {String} data.adminno 관리항목no
+ * @apiSuccess {String} data.systemno 관리항목no
  * @apiSuccess {String} data.item_name 관리항목 이름
  * @apiSuccess {String} data.item_value 관리항목 내용
  */
@@ -305,7 +305,7 @@ http://localhost:8082/api/admin/systemL
  *
  * @apiExample {curl} Example
  * curl -X POST  -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f","search":"system"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848","search":"system"}' \
 http://localhost:8082/api/admin/systemS
  *
  * @apiParam {String} access_token 인증키
@@ -314,7 +314,7 @@ http://localhost:8082/api/admin/systemS
  * @apiSuccess {String} result "success" or "fail"
  * @apiSuccess {String} err_msg result가 "fail"인 경우
  * @apiSuccess {Object[]} data system 정보
- * @apiSuccess {String} data.adminno 관리항목no
+ * @apiSuccess {String} data.systemno 관리항목no
  * @apiSuccess {String} data.item_name 관리항목 이름
  * @apiSuccess {String} data.item_value 관리항목 내용
  */
@@ -328,7 +328,7 @@ http://localhost:8082/api/admin/systemS
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"group_name":"group name.", "access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f"}' \
+-d '{"group_name":"group name.", "access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848"}' \
 http://localhost:8082/api/admin/groupC
  *
  * @apiExample {curl} Example : permission error
@@ -353,7 +353,7 @@ http://localhost:8082/api/admin/groupC
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"groupno":"57ddf6baaaaf21f8dcb0ff69", "access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f"}' \
+-d '{"groupno":"57ddf6baaaaf21f8dcb0ff69", "access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848"}' \
 http://localhost:8082/api/admin/groupR
  *
  * @apiParam {String} access_token 인증키
@@ -375,7 +375,7 @@ http://localhost:8082/api/admin/groupR
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "groupno":"57e643b5aaaf21f8dcb103b2", "state":"1"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848", "groupno":"57e643b5aaaf21f8dcb103b2", "state":"1"}' \
 http://localhost:8082/api/admin/groupU
  *
  * @apiParam {String} access_token 인증키
@@ -396,7 +396,7 @@ http://localhost:8082/api/admin/groupU
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "groupno":"36"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848", "groupno":"36"}' \
 http://localhost:8082/api/admin/groupD
  *
  * @apiParam {String} access_token 인증키
@@ -416,7 +416,7 @@ http://localhost:8082/api/admin/groupD
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848"}' \
 http://localhost:8082/api/admin/groupL
  *
  * @apiParam {String} access_token 인증키
@@ -440,7 +440,7 @@ http://localhost:8082/api/admin/groupL
  *
  * @apiExample {curl} Example :
  * curl -X POST -H "Accept: Application/json" -H "Content-Type: application/json" \
--d '{"access_token":"c0ce862bd490e09f96e4d0dd4f539e33a2dfa64f", "group_name":"my"}' \
+-d '{"access_token":"796f25e350f5b66eb1f8c77ebdeba5db532f3848", "group_name":"my"}' \
 http://localhost:8082/api/admin/groupS
  *
  * @apiParam {String} access_token 인증키

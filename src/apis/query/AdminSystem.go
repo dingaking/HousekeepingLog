@@ -18,7 +18,7 @@ func AdminSystemL(s *mgo.Session, rep *model.AdminSystemLRes) error {
 	rep.Data = make([]model.AdminItemJ, 0, 0)
 	for _, item := range data {
 		rep.Data = append(rep.Data, model.AdminItemJ{
-			AdminNo:   item.AdminNo.Hex(),
+			SystemNo:  item.SystemNo.Hex(),
 			ItemKey:   item.ItemKey,
 			ItemValue: item.ItemValue,
 			ItemDesc:  item.ItemDesc,
@@ -53,7 +53,7 @@ func AdminSystemS(s *mgo.Session, search string, rep *model.AdminSystemSRes) err
 	rep.Data = make([]model.AdminItemJ, 0, 0)
 	for _, item := range data {
 		rep.Data = append(rep.Data, model.AdminItemJ{
-			AdminNo:   item.AdminNo.Hex(),
+			SystemNo:  item.SystemNo.Hex(),
 			ItemKey:   item.ItemKey,
 			ItemValue: item.ItemValue,
 			ItemDesc:  item.ItemDesc,
@@ -68,12 +68,12 @@ func AdminSystemU(s *mgo.Session, req model.AdminSystemUReq, rep *model.AdminSys
 	c := s.DB(DatabaseName).C(CollAdmin)
 
 	var data model.AdminItem
-	err := c.Find(bson.M{"_id": bson.ObjectIdHex(req.AdminNo)}).One(&data)
+	err := c.Find(bson.M{"_id": bson.ObjectIdHex(req.SystemNo)}).One(&data)
 	if len(data.ItemKey) <= 0 {
 		return errors.New("key not found error.")
 	}
 
-	target := bson.M{"_id": bson.ObjectIdHex(req.AdminNo)}
+	target := bson.M{"_id": bson.ObjectIdHex(req.SystemNo)}
 	change := bson.M{"$set": bson.M{"item_value": req.ItemValue}}
 	if len(req.ItemDesc) > 0 {
 		change = bson.M{"$set": bson.M{"item_value": req.ItemValue, "item_desc": req.ItemDesc}}

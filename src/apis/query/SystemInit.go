@@ -51,14 +51,14 @@ func AdminSystemConfigurationOnBoot(s *mgo.Session) error {
 
 		var systemTime model.AdminItem
 		c.Find(bson.M{"item_key": "system_booting_time"}).One(&systemTime)
-		if systemTime.AdminNo == "" {
+		if systemTime.SystemNo == "" {
 			return errors.New("system error about boot time.")
 		}
 
 		now := time.Now()
 		fmt.Println("system booting time inserted at " + now.String())
 
-		target := bson.M{"_id": systemTime.AdminNo}
+		target := bson.M{"_id": systemTime.SystemNo}
 		var boot = model.AdminItem{
 			ItemValue: now.String(),
 		}
