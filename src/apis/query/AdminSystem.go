@@ -28,11 +28,11 @@ func AdminSystemL(s *mgo.Session, rep *model.AdminSystemLRes) error {
 	return err
 }
 
-func AdminSystemR(s *mgo.Session, adminno string, rep *model.AdminSystemRRes) error {
+func AdminSystemR(s *mgo.Session, systemno string, rep *model.AdminSystemRRes) error {
 	c := s.DB(DatabaseName).C(CollAdmin)
 
 	var data model.AdminItem
-	err := c.Find(bson.M{"_id": bson.ObjectIdHex(adminno)}).One(&data)
+	err := c.Find(bson.M{"_id": bson.ObjectIdHex(systemno)}).One(&data)
 
 	rep.Data = model.AdminItemJ{
 		ItemKey:   data.ItemKey,
